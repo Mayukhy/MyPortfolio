@@ -249,10 +249,10 @@ export default function ContactSection() {
               variants={itemVariants}
               className="p-6 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20"
             >
-              <h4 className="text-lg font-semibold mb-2">Let's Work Together</h4>
-              <p className="text-muted-foreground">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-              </p>
+                              <h4 className="text-lg font-semibold mb-2">Let&apos;s Work Together</h4>
+                              <p className="text-muted-foreground">
+                  I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                </p>
             </motion.div>
           </motion.div>
         </div>

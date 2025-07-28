@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { Star, Quote } from "lucide-react"
+import Image from "next/image"
 
 const testimonials = [
   {
@@ -101,7 +102,7 @@ export default function TestimonialSection() {
             Client <span className="heading-gradient">Testimonials</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Hear what clients have to say about working together and the results we've achieved.
+            Hear what clients have to say about working together and the results we&apos;ve achieved.
           </p>
         </motion.div>
 
@@ -136,15 +137,17 @@ export default function TestimonialSection() {
 
                 {/* Content */}
                 <blockquote className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 italic">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </blockquote>
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
+                      width={48}
+                      height={48}
                       className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300"
                     />
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-card"></div>
@@ -178,7 +181,7 @@ export default function TestimonialSection() {
               Ready to Start Your Project?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Let's work together to bring your ideas to life. I'm committed to delivering exceptional results that exceed expectations.
+              Let&apos;s work together to bring your ideas to life. I&apos;m committed to delivering exceptional results that exceed expectations.
             </p>
             <motion.a
               href="#contact"

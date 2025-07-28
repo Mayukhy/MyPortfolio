@@ -62,7 +62,7 @@ export default function AboutSection() {
               className="text-lg text-muted-foreground leading-relaxed"
               variants={itemVariants}
             >
-              I'm a passionate creative developer who loves crafting beautiful and functional digital experiences. 
+              I&apos;m a passionate creative developer who loves crafting beautiful and functional digital experiences. 
               With a strong foundation in modern web technologies, I bring ideas to life through clean code and 
               innovative design solutions.
             </motion.p>
