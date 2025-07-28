@@ -116,10 +116,10 @@ export default function ProjectsSection() {
   const [dragX, setDragX] = useState(0)
   const hasSwipedRef = useRef(false)
   const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
-  const [isClient, setIsClient] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    setMounted(true)
     setWindowWidth(window.innerWidth)
     
     const handleResize = () => {
@@ -177,12 +177,17 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* 3D Carousel */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
-        >
+        {!mounted ? (
+          <div className="w-full md:min-h-[600px] min-h-[400px] flex items-center justify-center">
+            <div className="text-muted-foreground">Loading projects...</div>
+          </div>
+        ) : (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
+          >
           <div
             className="projucts__container relative w-full h-full flex justify-center items-center"
             {...bind()}
@@ -259,32 +264,35 @@ export default function ProjectsSection() {
                     }
                   }}
                 >
-                  <ProjectCard project={project} index={i} isCenter={isCenter} windowWidth={windowWidth} isClient={isClient} />
+                  <ProjectCard project={project} index={i} isCenter={isCenter} windowWidth={windowWidth} isClient={mounted} />
                 </motion.div>
               )
             })}
           </div>
         </motion.div>
+        )}
 
         {/* Navigation Dots */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="flex justify-center items-center space-x-2 mt-4 md:mt-8"
-        >
-          {projects.map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
-                i === index ? "bg-primary" : "bg-muted"
-              }`}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
-        </motion.div>
+        {mounted && (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="flex justify-center items-center space-x-2 mt-4 md:mt-8"
+          >
+            {projects.map((_, i) => (
+              <motion.button
+                key={i}
+                onClick={() => setIndex(i)}
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
+                  i === index ? "bg-primary" : "bg-muted"
+                }`}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              />
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   )
