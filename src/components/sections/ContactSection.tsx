@@ -101,7 +101,7 @@ export default function ContactSection() {
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
             variants={itemVariants}
           >
-            Ready to start a project or just want to chat? I'd love to hear from you!
+            Ready to start a project or just want to chat? I&apos;d love to hear from you!
           </motion.p>
         </motion.div>
 
