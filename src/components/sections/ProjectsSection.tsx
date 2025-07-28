@@ -115,7 +115,7 @@ export default function ProjectsSection() {
   const [isDragging, setIsDragging] = useState(false)
   const [dragX, setDragX] = useState(0)
   const hasSwipedRef = useRef(false)
-  const [windowWidth, setWindowWidth] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -222,8 +222,8 @@ export default function ProjectsSection() {
               const transformValues = offsetMap[key] || { x: 150 * visualOffset, z: -60, rotate: visualOffset < 0 ? 60 : -60 }
               
               // Responsive card width
-              const cardWidth = isClient ? (windowWidth < 649 ? MOBILE_CARD_WIDTH : windowWidth < 990 ? TAB_CARD_WIDTH : CARD_WIDTH) : CARD_WIDTH
-              const cardGap = isClient ? (windowWidth <= 768 ? MOBILE_CARD_GAP : CARD_GAP) : CARD_GAP
+              const cardWidth = windowWidth < 649 ? MOBILE_CARD_WIDTH : windowWidth < 990 ? TAB_CARD_WIDTH : CARD_WIDTH
+              const cardGap = windowWidth <= 768 ? MOBILE_CARD_GAP : CARD_GAP
               const x = isCenter
                 ? dragX
                 : visualOffset * (cardWidth * 0.3 + cardGap * 0.1)
@@ -241,7 +241,7 @@ export default function ProjectsSection() {
                   className="absolute bg-card rounded-xl shadow-xl overflow-hidden"
                   style={{
                     width: `${cardWidth}px`,
-                    height: isClient ? (windowWidth < 650 ? "250px" : windowWidth < 1024 ? "350px" : "450px") : "450px",
+                    height: windowWidth < 650 ? "250px" : windowWidth < 1024 ? "350px" : "450px",
                     top: "50%",
                     left: "50%",
                     transform,
@@ -322,7 +322,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 dark:from-background/80 dark:via-background/60 dark:to-background/80"
                             animate={{
-          opacity: isClient && windowWidth <= 768 ? 1 : (isHovered ? 1 : 0.5),
+          opacity: windowWidth <= 768 ? 1 : (isHovered ? 1 : 0.5),
         }}
         transition={{ duration: 0.3 }}
       />
@@ -337,9 +337,9 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
             alt={project.title}
             className="w-full h-full object-cover"
             animate={{
-              scale: isClient && windowWidth <= 768 ? 1.05 : (isHovered ? 1.15 : 1),
+              scale: windowWidth <= 768 ? 1.05 : (isHovered ? 1.15 : 1),
               filter: isCenter 
-                ? (isClient && windowWidth <= 768 ? "brightness(1.05) contrast(1.05)" : (isHovered ? "brightness(1.1) contrast(1.1)" : ""))
+                ? (windowWidth <= 768 ? "brightness(1.05) contrast(1.05)" : (isHovered ? "brightness(1.1) contrast(1.1)" : ""))
                 : (isHovered ? "grayscale(100%) brightness(0.9) contrast(1.3)" : "grayscale(100%) brightness(0.8) contrast(1.2)")
             }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -349,7 +349,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent dark:from-black/80"
                                       animate={{
-              opacity: (isClient && windowWidth <= 768 && isCenter) ? 0.8 : (isCenter && isHovered) ? 0.8 : 0,
+              opacity: (windowWidth <= 768 && isCenter) ? 0.8 : (isCenter && isHovered) ? 0.8 : 0,
             }}
             transition={{ duration: 0.3 }}
           />
@@ -360,8 +360,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               className="absolute top-2 sm:top-4 z-[20] right-2 sm:right-4 gap-1 flex items-center"
               initial={{ opacity: 0, x: 20 }}
               animate={{ 
-                opacity: isClient && windowWidth <= 768 ? 1 : (isHovered ? 1 : 0),
-                x: isClient && windowWidth <= 768 ? 0 : isHovered ? 0 : 20,
+                opacity: windowWidth <= 768 ? 1 : (isHovered ? 1 : 0),
+                x: windowWidth <= 768 ? 0 : isHovered ? 0 : 20,
               }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
@@ -389,11 +389,11 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
           {/* Content Overlay - Only for center card */}
           {isCenter && (
             <motion.div
-              className={`absolute inset-0 flex flex-col justify-end p-3 sm:p-6 ${isClient && windowWidth <= 768 ? "backdrop-blur-md bg-black/20 dark:bg-black/40" : ""}`}
+              className={`absolute inset-0 flex flex-col justify-end p-3 sm:p-6 ${windowWidth <= 768 ? "backdrop-blur-md bg-black/20 dark:bg-black/40" : ""}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ 
-                opacity: isClient && windowWidth <= 768 ? 1 : (isHovered ? 1 : 0),
-                y: isClient && windowWidth <= 768 ? 0 : isHovered ? 0 : 20,
+                opacity: windowWidth <= 768 ? 1 : (isHovered ? 1 : 0),
+                y: windowWidth <= 768 ? 0 : isHovered ? 0 : 20,
               }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
@@ -401,8 +401,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               <motion.div
                 className="absolute top-0 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/20 to-accent/20 dark:from-background/40 dark:to-background/60 rounded-full blur-xl"
                 animate={{
-                  scale: isClient && windowWidth <= 768 ? 1.1 : (isHovered ? 1.2 : 1),
-                  rotate: isClient && windowWidth <= 768 ? 90 : (isHovered ? 180 : 0),
+                  scale: windowWidth <= 768 ? 1.1 : (isHovered ? 1.2 : 1),
+                  rotate: windowWidth <= 768 ? 90 : (isHovered ? 180 : 0),
                 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               />
@@ -410,8 +410,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               <motion.div
                 className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-secondary/20 to-accent/20 dark:from-background/40 dark:to-background/60 rounded-full blur-xl"
                 animate={{
-                  scale: isClient && windowWidth <= 768 ? 1.15 : (isHovered ? 1.3 : 1),
-                  rotate: isClient && windowWidth <= 768 ? -90 : (isHovered ? -180 : 0),
+                  scale: windowWidth <= 768 ? 1.15 : (isHovered ? 1.3 : 1),
+                  rotate: windowWidth <= 768 ? -90 : (isHovered ? -180 : 0),
                 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
               />
@@ -473,7 +473,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
             <motion.div
               className="absolute backdrop-blur-md bg-black/50 dark:bg-background/80 inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl"
               animate={{
-                opacity: isClient && windowWidth <= 768 ? 0.3 : (isHovered ? 1 : 0),
+                opacity: windowWidth <= 768 ? 0.3 : (isHovered ? 1 : 0),
               }}
               transition={{ duration: 0.3 }}
             />
