@@ -189,7 +189,7 @@ export default function ProjectsSection() {
             className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
           >
           <div
-            className="projucts__container relative w-full h-full flex justify-center items-center"
+            className="w-full h-full flex items-center justify-center"
             {...bind()}
           >
             {projects.map((project, i) => {
@@ -247,8 +247,6 @@ export default function ProjectsSection() {
                   style={{
                     width: `${cardWidth}px`,
                     height: windowWidth < 650 ? "250px" : windowWidth < 1024 ? "350px" : "450px",
-                    top: "50%",
-                    left: "50%",
                     transform,
                     transformStyle: "preserve-3d",
                     cursor: "grab",
