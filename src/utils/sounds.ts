@@ -2,7 +2,7 @@
 class SoundManager {
   private audioContext: AudioContext | null = null
   private sounds: Map<string, AudioBuffer> = new Map()
-  private isEnabled = true
+  private isEnabled = false
 
   constructor() {
     if (typeof window !== 'undefined') {
