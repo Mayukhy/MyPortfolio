@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Portfolio with Cloud Storage
 
-## Getting Started
+A modern portfolio website built with Next.js, featuring theme customization and cloud storage for audio files.
 
-First, run the development server:
+## Features
 
+- 🎨 **Theme Customization** - Create and customize themes with colors, audio, and tags
+- ☁️ **Cloud Storage** - Support for multiple cloud storage providers (Cloudinary, Firebase, AWS S3)
+- 📱 **Responsive Design** - Works perfectly on desktop and mobile
+- 🎵 **Audio Integration** - Upload and play custom audio files with themes
+- 🎭 **Smooth Animations** - Beautiful transitions powered by Framer Motion
+
+## Quick Start
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup Environment Variables
+```bash
+npm run setup-env
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This will create a `.env.local` file with all the necessary environment variables. You'll need to:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Choose a cloud storage provider** (Cloudinary recommended for beginners)
+2. **Get your credentials** from the provider's dashboard
+3. **Update the `.env.local` file** with your actual values
 
-## Learn More
+### 3. Start Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Cloud Storage Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project supports multiple cloud storage providers for audio files:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 🌟 Cloudinary (Recommended)
+- Easy setup
+- Generous free tier
+- No server-side code needed
 
-## Deploy on Vercel
+### 🔥 Firebase Storage
+- Google's cloud storage
+- Good for Google ecosystem users
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ☁️ AWS S3
+- Amazon's cloud storage
+- Enterprise-grade reliability
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 💾 Local Storage
+- Fallback option
+- Limited by browser storage quota
+
+### Setup Instructions
+
+1. **Run the setup script:**
+   ```bash
+   npm run setup-env
+   ```
+
+2. **Choose your provider and get credentials:**
+   - [Cloudinary Console](https://cloudinary.com/console)
+   - [Firebase Console](https://console.firebase.google.com/)
+   - [AWS S3 Console](https://s3.console.aws.amazon.com/)
+
+3. **Update `.env.local` with your credentials**
+
+4. **For detailed setup instructions, see:** `CLOUDINARY_SETUP.md`
+
+## Environment Variables
+
+The following environment variables are supported:
+
+### Cloudinary
+```env
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your-cloud-name
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=ml_default
+NEXT_PUBLIC_CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
+```
+
+### Firebase
+```env
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+```
+
+### AWS S3
+```env
+NEXT_PUBLIC_AWS_S3_BUCKET=your-bucket-name
+NEXT_PUBLIC_AWS_S3_REGION=us-east-1
+NEXT_PUBLIC_AWS_ACCESS_KEY_ID=your-access-key
+AWS_SECRET_ACCESS_KEY=your-secret-key
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── modals/
+│   │   ├── CreateThemeModal.tsx    # Theme creation modal
+│   │   └── MusicSelectionModal.tsx # Music selection modal
+│   ├── ui/
+│   │   └── StorageStatus.tsx       # Storage provider indicator
+│   └── theme/
+│       └── ThemeProvider.tsx       # Theme context provider
+├── utils/
+│   └── cloudinary.ts               # Cloud storage utilities
+└── hooks/
+    ├── useSounds.ts                # Audio hooks
+    └── use-toast.ts               # Toast notifications
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run setup-env` - Setup environment variables
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.

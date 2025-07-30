@@ -2,13 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 
-type Theme = "dark" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe"
-
-interface Music {
-  name?: string
-  icon?: string
-  src: string
-}
+type Theme = "dark" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -24,6 +18,12 @@ type ThemeProviderState = {
   currentMusic: Music | null
   setCurrentMusic: (music: Music | null) => void
   audioRef: React.RefObject<HTMLAudioElement> | null
+  createThemeStep: number
+  setCreateThemeStep: (step: number) => void
+  createThemeData: ThemeData
+  setCreateThemeData: (data: ThemeData) => void
+  themeList: ThemeData[]
+  setThemeList: (list: ThemeData[]) => void
 }
 
 const initialState: ThemeProviderState = {
@@ -34,6 +34,18 @@ const initialState: ThemeProviderState = {
   currentMusic: null,
   setCurrentMusic: () => null,
   audioRef: null,
+  createThemeStep: 1,
+  setCreateThemeStep: () => null,
+  createThemeData: {
+    name: '',
+    description: '',
+    audioFile: null,
+    colorScheme: '',
+    tags: []
+  },
+  setCreateThemeData: () => null,
+  themeList: [],
+  setThemeList: () => null
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
@@ -45,9 +57,35 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [createThemeStep, setCreateThemeStep] = useState(1)
+  const [createThemeData, setCreateThemeData] = useState<ThemeData>({
+    name: '',
+    description: '',
+    audioFile: null as File | null,
+    colorScheme: '',
+    tags: [] as string[]
+  })
   const [mounted, setMounted] = useState(false)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [currentMusic, setCurrentMusic] = useState<Music | null>(null)
+  const [themeList, setThemeList] = useState<ThemeData[]>(() => {
+    // Check for stored themes first
+    if (typeof window !== 'undefined') {
+      const storedThemeList = JSON.parse(localStorage?.getItem("theme-list") || "[]") as ThemeData[]
+      if (storedThemeList.length > 0) {
+        return storedThemeList
+      }
+    }
+    // Return default themes if no stored themes exist
+    return [
+      { name: "Lofi Beats", src: "/audios/lofi.mp3", colorScheme: "🎵 lofi", description: "Relaxing lofi beats for focus", audioFile: null, tags: ["lofi", "relaxing", "focus"] },
+      { name: "Nature Sounds", src: "/audios/nature.mp3", colorScheme: "🌿 nature", description: "Peaceful nature ambience", audioFile: null, tags: ["nature", "peaceful", "ambience"] },
+      { name: "Rain Ambience", src: "/audios/rain.mp3", colorScheme: "🌧️ rain", description: "Soothing rain sounds", audioFile: null, tags: ["rain", "soothing", "ambience"] },
+      { name: "Ocean Waves", src: "/audios/ocean.mp3", colorScheme: "🌊 ocean", description: "Calming ocean waves", audioFile: null, tags: ["ocean", "calming", "waves"] },
+      { name: "Forest Birds", src: "/audios/forest.mp3", colorScheme: "🐦 forest", description: "Chirping forest birds", audioFile: null, tags: ["forest", "birds", "nature"] },
+      { name: "Cafe Ambience", src: "/audios/cafe.mp3", colorScheme: "☕ cafe", description: "Cozy cafe atmosphere", audioFile: null, tags: ["cafe", "cozy", "ambience"] }
+    ]
+  })
   const audioRef = useRef<HTMLAudioElement>(null)
   useEffect(() => {
     setMounted(true)
@@ -56,6 +94,12 @@ export function ThemeProvider({
       setTheme(storedTheme)
     }
   }, [storageKey])
+
+  useEffect(() => {
+    if (themeList.length > 0) {
+      localStorage.setItem("theme-list", JSON.stringify(themeList))
+    }
+  }, [themeList])
 
   useEffect(() => {
     if (currentMusic) {
@@ -74,7 +118,7 @@ export function ThemeProvider({
     const root = window.document.documentElement
 
     // Remove all theme classes
-    root.classList.remove("light", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe")
+    root.classList.remove("light", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -102,6 +146,12 @@ export function ThemeProvider({
     currentMusic,
     setCurrentMusic,
     audioRef,
+    createThemeStep,
+    setCreateThemeStep,
+    createThemeData,
+    setCreateThemeData,
+    themeList,
+    setThemeList
   }
 
   return (
