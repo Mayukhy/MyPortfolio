@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 
-type Theme = "dark" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon"
+type Theme = "dark" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon" | "spring" | "summer" | "autumn" | "winter" | "cosmic" | "galaxy" | "mountain" | "city" | "vintage" | "retro" | "cyberpunk" | "steampunk" | "minimalist" | "luxury" | "rustic" | "tropical" | "arctic" | "sahara"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -107,9 +107,6 @@ export function ThemeProvider({
     } else {
       audioRef.current?.pause()
     }
-    console.log(currentMusic);
-    console.log(audioRef.current);
-    
   }, [currentMusic])
 
   useEffect(() => {
@@ -118,7 +115,7 @@ export function ThemeProvider({
     const root = window.document.documentElement
 
     // Remove all theme classes
-    root.classList.remove("light", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon")
+    root.classList.remove("light", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon", "spring", "summer", "autumn", "winter", "cosmic", "galaxy", "mountain", "city", "vintage", "retro", "cyberpunk", "steampunk", "minimalist", "luxury", "rustic", "tropical", "arctic", "sahara")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")

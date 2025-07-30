@@ -66,12 +66,6 @@ export default function Navigation() {
   const closeMusicModal = () => {
     playClick()
     setIsMusicModalOpen(false)
-    const drawer = document.querySelector("#mobile-deawer") as HTMLElement
-    if (drawer) {
-      console.log("drawer", drawer);
-      
-      drawer.style.animation = "down 0.4s ease-in-out"
-    }
     setTimeout(() => {
       document.body.style.overflow = "auto"
     }, 400)
@@ -86,9 +80,7 @@ export default function Navigation() {
   const closeCreateThemeModal = () => {
     playClick()
     setIsCreateThemeModalOpen(false)
-    setTimeout(() => {
-      document.body.style.overflow = "auto"
-    }, 400)
+    const drawer = document.querySelector("#create-theme-drawer") as HTMLElement
   }
 
   const handleEditTheme = (e: React.MouseEvent<HTMLSpanElement>, music: ThemeData) => {

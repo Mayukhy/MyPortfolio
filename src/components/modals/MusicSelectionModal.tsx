@@ -17,6 +17,8 @@ interface MusicSelectionModalProps {
 export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, onEditTheme }: MusicSelectionModalProps) {
   const { themeList, currentMusic, setCurrentMusic, setIsPlaying, setTheme } = useTheme()
   const { playMusicSelect, playClick } = useSounds()
+  const [showTopFade, setShowTopFade] = useState(false)
+  const [showBottomFade, setShowBottomFade] = useState(true)
 
   // Cleanup body overflow when component unmounts
   useEffect(() => {
@@ -39,6 +41,15 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
       setCurrentMusic(null)
     }
     onClose()
+  }
+
+  const handleScroll = (element: HTMLElement) => {
+    const { scrollTop, scrollHeight, clientHeight } = element
+    const isAtTop = scrollTop === 0
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1
+
+    setShowTopFade(!isAtTop)
+    setShowBottomFade(!isAtBottom)
   }
 
   const handleCreateTheme = () => {
@@ -69,14 +80,14 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-background border border-border rounded-xl shadow-2xl p-6 w-full max-w-md"
+            className="bg-background border border-border rounded-xl shadow-2xl p-3 w-full max-w-md"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-semibold text-foreground">Select Theme Experience</h3>
+            <div className="flex items-center justify-between mb-3 mt-1">
+              <h3 className="text-xl pl-3 font-semibold text-foreground">Select Theme Experience</h3>
               <motion.button
                 onClick={onClose}
-                className="p-2 rounded-full hover:bg-muted transition-colors"
+                className="p-2 mr-3 rounded-full hover:bg-muted transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -85,31 +96,45 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
             </div>
             
             <div className="space-y-3">
-              {themeList.map((music, index) => {
-                const isActive = currentMusic?.name === music.name
-                return (
-                  <motion.button
-                    key={music.name}
-                    onClick={() => handleMusicSelect(music)}
-                    className={`w-full p-4 rounded-lg border transition-all duration-200 flex items-center space-x-3
-                      ${isActive ? 'border-primary bg-primary/10 text-primary font-semibold shadow-lg' : 'border-border hover:border-primary/50 hover:bg-muted/50'}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="text-2xl">{music.colorScheme.split(" ")[0]}</span>
-                    <span className="text-foreground font-medium flex-1">{music.name}</span>
-                    {isActive && (
-                      <span className="ml-2 text-lg text-primary">✓</span>
-                    )}
-                    { music.id && <span
-                    onClick={(e) => onEditTheme(e, music)}
-                    className="ml-2 text-lg text-primary"><Edit/></span>}
-                  </motion.button>
-                )
-              })}
+              <div className="relative">
+                <div 
+                  className="overflow-y-auto py-1 px-3 space-y-3 max-h-[60vh] scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent"
+                  onScroll={(e) => handleScroll(e.currentTarget)}
+                >
+                  {themeList.map((music, index) => {
+                    const isActive = currentMusic?.name === music.name
+                    return (
+                      <motion.button
+                        key={music.name}
+                        onClick={() => handleMusicSelect(music)}
+                        className={`w-full overflow-x-visible p-4 rounded-lg border transition-all duration-200 flex items-center space-x-3
+                          ${isActive ? 'border-primary bg-primary/10 text-primary font-semibold shadow-lg' : 'border-border hover:border-primary/50 hover:bg-muted/50'}`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="text-2xl">{music.colorScheme.split(" ")[0]}</span>
+                        <span className="text-foreground font-medium flex-1">{music.name}</span>
+                        {isActive && (
+                          <span className="ml-2 text-lg text-primary">✓</span>
+                        )}
+                        { music.id && <span
+                        onClick={(e) => onEditTheme(e, music)}
+                        className="ml-2 text-lg text-primary"><Edit/></span>}
+                      </motion.button>
+                    )
+                  })}
+                </div>
+                {/* Fade overlay for desktop */}
+                {showTopFade && (
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none z-10 transition-opacity duration-200"></div>
+                )}
+                {showBottomFade && (
+                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none z-10 transition-opacity duration-200"></div>
+                )}
+              </div>
               <motion.button 
                 onClick={handleCreateTheme}
                 className="w-full p-3 rounded-lg bg-primary text-white flex items-center justify-center space-x-2 hover:bg-primary/90 transition-colors"
@@ -186,31 +211,45 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
                     </div>
                     
                     <div className="space-y-3">
-                      {themeList.map((music, index) => {
-                        const isActive = currentMusic?.name === music.name
-                        return (
-                          <motion.button
-                            key={music.name}
-                            onClick={() => handleMusicSelect(music)}
-                            className={`w-full p-4 rounded-lg border transition-all duration-200 flex items-center space-x-3
-                              ${isActive ? 'border-primary bg-primary/10 text-primary font-semibold shadow-lg' : 'border-border hover:border-primary/50 hover:bg-muted/50'}`}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02, x: 5 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            <span className="text-2xl">{music.colorScheme.split(" ")[0]}</span>
-                            <span className="text-foreground font-medium flex-1">{music.name}</span>
-                            {isActive && (
-                              <span className="ml-2 text-lg text-primary">✓</span>
-                            )}
-                            { music.id && <span
-                            onClick={(e) => onEditTheme(e, music)}
-                            className="ml-2 text-lg text-primary"><Edit/></span>}
-                          </motion.button>
-                        )
-                      })}
+                      <div className="relative">
+                        <div 
+                          className="overflow-y-auto space-y-3 max-h-[60vh] scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent"
+                          onScroll={(e) => handleScroll(e.currentTarget)}
+                        >
+                          {themeList.map((music, index) => {
+                            const isActive = currentMusic?.name === music.name
+                            return (
+                              <motion.button
+                                key={music.name}
+                                onClick={() => handleMusicSelect(music)}
+                                className={`w-full p-4 rounded-lg border transition-all duration-200 flex items-center space-x-3
+                                  ${isActive ? 'border-primary bg-primary/10 text-primary font-semibold shadow-lg' : 'border-border hover:border-primary/50 hover:bg-muted/50'}`}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{ scale: 1.02, x: 5 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <span className="text-2xl">{music.colorScheme.split(" ")[0]}</span>
+                                <span className="text-foreground font-medium flex-1">{music.name}</span>
+                                {isActive && (
+                                  <span className="ml-2 text-lg text-primary">✓</span>
+                                )}
+                                { music.id && <span
+                                onClick={(e) => onEditTheme(e, music)}
+                                className="ml-2 text-lg text-primary"><Edit/></span>}
+                              </motion.button>
+                            )
+                          })}
+                        </div>
+                        {/* Fade overlay for mobile */}
+                        {showTopFade && (
+                          <div className="absolute top-0 left-0 right-0 h-6 bg-gradient-to-b from-background to-transparent pointer-events-none z-10 transition-opacity duration-200"></div>
+                        )}
+                        {showBottomFade && (
+                          <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-background to-transparent pointer-events-none z-10 transition-opacity duration-200"></div>
+                        )}
+                      </div>
                       <motion.button 
                         onClick={handleCreateTheme}
                         className="w-full p-3 rounded-lg bg-primary text-white flex items-center justify-center space-x-2 hover:bg-primary/90 transition-colors mt-3"
