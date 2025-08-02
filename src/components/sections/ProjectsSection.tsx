@@ -1,10 +1,13 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import { useDrag } from "@use-gesture/react"
 import { useSounds } from "@/hooks/useSounds"
+import { randomCanvasData } from "@/data/data"
+import Canvas from "../ui/Canvas"
+import { useTheme } from "../theme/ThemeProvider"
 
 const projects = [
   {
@@ -119,7 +122,17 @@ export default function ProjectsSection() {
   const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
   const [mounted, setMounted] = useState(false)
   const { playCardFlip, playHover, playClick } = useSounds()
-
+  const {isEmojisphereActive, isMobile} = useTheme()
+  
+  // Parallax effects
+  const projectsRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: projectsRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const carouselY = useTransform(scrollYProgress, [0, 1], [0, -100])
   useEffect(() => {
     setMounted(true)
     setWindowWidth(window.innerWidth)
@@ -160,8 +173,11 @@ export default function ProjectsSection() {
   )
 
   return (
-    <section id="projects" className="section-padding relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={projectsRef} id="projects" className="section-padding relative overflow-hidden z-20">
+      { isEmojisphereActive && !isMobile && randomCanvasData[3].map((canvasDetails, index) => (
+        <Canvas key={`projects-${index}`} details={canvasDetails} />
+      ))}
+      <div className="md:container mx-auto px-0 md:px-4 lg:px-8">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -189,6 +205,7 @@ export default function ProjectsSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
+            style={{ y: carouselY }}
           >
           <div
             className="w-full h-full flex items-center justify-center"

@@ -7,6 +7,7 @@ import HeroSection from "@/components/sections/HeroSection"
 import AboutSection from "@/components/sections/AboutSection"
 import ProjectsSection from "@/components/sections/ProjectsSection"
 import TestimonialSection from "@/components/sections/TestimonialSection"
+import AchievementsSection from "@/components/sections/AchievementsSection"
 import ContactSection from "@/components/sections/ContactSection"
 import Footer from "@/components/sections/Footer"
 import LoadingScreen from "@/components/LoadingScreen"
@@ -114,6 +115,10 @@ export default function Home() {
               
               <motion.div variants={sectionVariants}>
                 <TestimonialSection />
+              </motion.div>
+              
+              <motion.div variants={sectionVariants}>
+                <AchievementsSection />
               </motion.div>
               
               <motion.div variants={sectionVariants}>

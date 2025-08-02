@@ -1,9 +1,12 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { Star, Quote } from "lucide-react"
 import Image from "next/image"
+import { randomCanvasData } from "@/data/data"
+import Canvas from "../ui/Canvas"
+import { useTheme } from "../theme/ThemeProvider"
 
 const testimonials = [
   {
@@ -86,9 +89,24 @@ const itemVariants = {
 export default function TestimonialSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
+  const {isEmojisphereActive, isMobile} = useTheme()
+  
+  // Parallax effects
+  const testimonialsRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: testimonialsRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const cardsY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  
   return (
-    <section id="testimonials" className="section-padding relative overflow-hidden bg-gradient-to-br from-background via-muted/20 to-background">
+    <section ref={testimonialsRef} id="testimonials" className="section-padding relative overflow-hidden z-20">
+      { isEmojisphereActive && !isMobile && randomCanvasData[4].map((canvasDetails, index) => (
+        <Canvas key={`testimonials-${index}`} details={canvasDetails} />
+      ))}
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -112,6 +130,7 @@ export default function TestimonialSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          style={{ y: cardsY }}
         >
           {testimonials.map((testimonial, index) => (
             <motion.div

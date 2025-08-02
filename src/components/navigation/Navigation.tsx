@@ -9,9 +9,10 @@ import MusicSelectionModal from "@/components/modals/MusicSelectionModal"
 import CreateThemeModal from "@/components/modals/CreateThemeModal"
 
 const navItems = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -80,7 +81,6 @@ export default function Navigation() {
   const closeCreateThemeModal = () => {
     playClick()
     setIsCreateThemeModalOpen(false)
-    const drawer = document.querySelector("#create-theme-drawer") as HTMLElement
   }
 
   const handleEditTheme = (e: React.MouseEvent<HTMLSpanElement>, music: ThemeData) => {

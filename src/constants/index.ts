@@ -34,3 +34,23 @@
     { name: "forest", emoji: "🌳", desc: "Forest" },
     { name: "cafe", emoji: "☕", desc: "Cafe" },
   ];
+
+// Emojisphere configurations for different sections
+export const emojiConfigs = {
+  hero: {
+    emojis: ["👏", "✨", "💖", "🎉", "🎊", "🎈"],
+    description: "Appreciation vibes"
+  },
+  about: {
+    emojis: ["👨‍💻", "🧐", "🔍️", "💡", "💻", "💬", "✏️"],
+    description: "Coding & Dev vibes"
+  },
+  projects: {
+    emojis: ["🔍️", "🧩", "💻", "📁", "📌", "🚀", "📱"],
+    description: "Library & Tools"
+  },
+  testimonials: {
+    emojis: ["🙏", "🌟", "💬", "💝", "🤝", "👍"],
+    description: "Gratitude & Praise"
+  }
+}
