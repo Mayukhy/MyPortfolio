@@ -27,6 +27,8 @@ type ThemeProviderState = {
   isEmojisphereActive: boolean
   setIsEmojisphereActive: (isActive: boolean) => void
   isMobile: boolean
+  isEmojiSphereTransitioning: boolean
+  setIsEmojiSphereTransitioning: (isTransitioning: boolean) => void
 }
 
 const initialState: ThemeProviderState = {
@@ -51,7 +53,9 @@ const initialState: ThemeProviderState = {
   themeList: [],
   setThemeList: () => null,
   isEmojisphereActive: false,
-  setIsEmojisphereActive: () => null
+  setIsEmojisphereActive: () => null,
+  isEmojiSphereTransitioning: false,
+  setIsEmojiSphereTransitioning: () => null
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
@@ -75,6 +79,7 @@ export function ThemeProvider({
   const [mounted, setMounted] = useState(false)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const [isEmojiSphereTransitioning, setIsEmojiSphereTransitioning] = useState<boolean>(false)
   const [currentMusic, setCurrentMusic] = useState<Music | null>(null)
   const [themeList, setThemeList] = useState<ThemeData[]>(() => {
     // Check for stored themes first
@@ -160,7 +165,9 @@ export function ThemeProvider({
     setThemeList,
     isEmojisphereActive,
     setIsEmojisphereActive,
-    isMobile
+    isMobile,
+    isEmojiSphereTransitioning,
+    setIsEmojiSphereTransitioning
   }
 
   return (

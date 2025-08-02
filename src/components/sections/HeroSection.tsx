@@ -24,7 +24,7 @@ const socialLinks = [
 
 export default function HeroSection() {
   const { playHover, playClick, soundsEnabled } = useSounds()
-  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile} = useTheme()
+  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning} = useTheme()
   const growingSpan = useRef(null)
   const headingref = useRef(null)
   
@@ -41,14 +41,13 @@ export default function HeroSection() {
 
   const handleEmojiSphere = (e: React.MouseEvent) => {
     playClick()
-    
+    setIsEmojiSphereTransitioning(true)
     // Set "to-dark" theme immediately
     if(!isEmojisphereActive) {
       setTheme("to-dark-red")
     } else {
       setTheme("to-light")
     }
-    
     // Set the growing span position and initial scale
     gsap.set(growingSpan.current, {
       top: e.clientY,
@@ -72,6 +71,9 @@ export default function HeroSection() {
         }
       }
     }, 900);
+    setTimeout(() => {
+      setIsEmojiSphereTransitioning(false)
+    }, 1000);
     // Animate the growing span
     gsap.to(growingSpan.current, {
       scale: 3000,
@@ -93,8 +95,8 @@ export default function HeroSection() {
       <span
         ref={growingSpan}
         className={`fixed w-1 h-1 rounded-full pointer-events-none z-10 ${
-          !isEmojisphereActive ? "bg-white" : "bg-red-950"
-        }`}
+          !isEmojisphereActive ? "bg-white" : "bg-[#290000]"
+        } ${isEmojiSphereTransitioning ? "opacity-100" : "opacity-0"}`}
         style={{
           transform: "translate(-50%, -50%)",
         }}

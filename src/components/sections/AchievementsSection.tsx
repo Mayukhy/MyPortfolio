@@ -132,14 +132,9 @@ export default function AchievementsSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -5,
-                transition: { duration: 0.2 }
-              }}
-              onHoverStart={playHover}
-              className="group relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/30"
+              className="group relative"
             >
+              <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               
@@ -179,6 +174,9 @@ export default function AchievementsSection() {
 
               {/* Hover effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+
+
+              </div>
             </motion.div>
           ))}
         </motion.div>

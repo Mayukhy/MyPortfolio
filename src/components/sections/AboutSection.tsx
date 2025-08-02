@@ -70,6 +70,7 @@ export default function AboutSection() {
           <motion.div 
             variants={itemVariants} 
             className="space-y-6"
+            style={{ y: contentY }}
           >
             <motion.h2
               className="text-4xl sm:text-5xl font-bold"
@@ -102,11 +103,11 @@ export default function AboutSection() {
               className="grid grid-cols-2 gap-6 pt-6"
             >
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <div className="text-3xl font-bold text-primary">3+</div>
+                <div className="text-3xl font-bold text-primary">2+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-3xl font-bold text-primary">20+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
             </motion.div>
@@ -116,7 +117,6 @@ export default function AboutSection() {
           <motion.div 
             variants={itemVariants} 
             className="space-y-6"
-            style={{ y: skillsY }}
           >
             <motion.h3
               className="text-2xl font-semibold"
