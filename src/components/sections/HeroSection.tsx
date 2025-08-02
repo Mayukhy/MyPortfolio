@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react"
+import { useSounds } from "@/hooks/useSounds"
 
 const floatingElements = [
   { icon: "⚡", delay: 0 },
@@ -17,6 +18,8 @@ const socialLinks = [
 ]
 
 export default function HeroSection() {
+  const { playHover, playClick } = useSounds()
+  
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
@@ -95,6 +98,8 @@ export default function HeroSection() {
               className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus-ring"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              onHoverStart={playHover}
+              onClick={playClick}
             >
               View My Work
             </motion.a>
@@ -104,6 +109,8 @@ export default function HeroSection() {
               className="px-8 py-4 border-2 border-border text-foreground rounded-full font-semibold hover:bg-muted transition-all duration-300 focus-ring"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              onHoverStart={playHover}
+              onClick={playClick}
             >
               Get In Touch
             </motion.a>
@@ -126,6 +133,8 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + index * 0.1 }}
+                onHoverStart={playHover}
+                onClick={playClick}
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />

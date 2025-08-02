@@ -10,6 +10,7 @@ import TestimonialSection from "@/components/sections/TestimonialSection"
 import ContactSection from "@/components/sections/ContactSection"
 import Footer from "@/components/sections/Footer"
 import LoadingScreen from "@/components/LoadingScreen"
+import { useTheme } from "@/components/theme/ThemeProvider"
 
 // Page load animation variants
 const pageVariants = {
@@ -64,7 +65,7 @@ const sectionVariants = {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-
+  const { currentMusic, audioRef } = useTheme()
   useEffect(() => {
     // Simulate page load time
     const timer = setTimeout(() => {
@@ -80,6 +81,9 @@ export default function Home() {
         {isLoading && <LoadingScreen key="loading" />}
       </AnimatePresence>
       <AnimatePresence mode="wait">
+        {currentMusic && (
+          <audio ref={audioRef} src={currentMusic.src} loop />
+        )}
         {!isLoading && (
           <motion.div
             key="content"
