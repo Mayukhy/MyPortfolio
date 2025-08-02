@@ -9,6 +9,7 @@ A modern portfolio website built with Next.js, featuring theme customization and
 - 📱 **Responsive Design** - Works perfectly on desktop and mobile
 - 🎵 **Audio Integration** - Upload and play custom audio files with themes
 - 🎭 **Smooth Animations** - Beautiful transitions powered by Framer Motion
+- 🧠 **Emojisphere** - Interactive 3D emoji animations that respond to scroll position
 
 ## Quick Start
 
@@ -69,6 +70,24 @@ This project supports multiple cloud storage providers for audio files:
 3. **Update `.env.local` with your credentials**
 
 4. **For detailed setup instructions, see:** `CLOUDINARY_SETUP.md`
+
+## 🧠 Emojisphere Feature
+
+The Emojisphere is an interactive feature that adds floating 3D emojis to your portfolio:
+
+### How to Use
+1. **Click on the hero banner text** ("Creative Developer") to activate the Emojisphere
+2. **Scroll through different sections** to see emojis change based on the content:
+   - **Hero**: 👏 ✨ 💖 🎉 (Appreciation vibes)
+   - **About**: 👨‍💻 🧠 🛠️ 💡 (Coding & Dev vibes)
+   - **Projects**: 📚 🧩 🔧 📁 (Library & Tools)
+   - **Testimonials**: 🙏 🌟 💬 💝 (Gratitude & Praise)
+
+### Technical Details
+- Built with **GSAP** for smooth animations
+- **3D effects** with CSS transforms and drop shadows
+- **Scroll-triggered** transitions between emoji sets
+- **Responsive design** that works on all devices
 
 ## Environment Variables
 
