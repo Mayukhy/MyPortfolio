@@ -44,17 +44,6 @@ This project supports multiple cloud storage providers for audio files:
 - Generous free tier
 - No server-side code needed
 
-### 🔥 Firebase Storage
-- Google's cloud storage
-- Good for Google ecosystem users
-
-### ☁️ AWS S3
-- Amazon's cloud storage
-- Enterprise-grade reliability
-
-### 💾 Local Storage
-- Fallback option
-- Limited by browser storage quota
 
 ### Setup Instructions
 
@@ -65,8 +54,6 @@ This project supports multiple cloud storage providers for audio files:
 
 2. **Choose your provider and get credentials:**
    - [Cloudinary Console](https://cloudinary.com/console)
-   - [Firebase Console](https://console.firebase.google.com/)
-   - [AWS S3 Console](https://s3.console.aws.amazon.com/)
 
 3. **Update `.env.local` with your credentials**
 
