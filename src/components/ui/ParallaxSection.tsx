@@ -34,13 +34,8 @@ export default function ParallaxSection({
     direction === "up" ? [offset, -offset * speed] : [offset, offset * speed]
   )
 
-  const opacityTransform = opacity
-    ? useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3])
-    : undefined
-
-  const scaleTransform = scale
-    ? useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
-    : undefined
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3])
+  const scaleTransform = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
 
   return (
     <motion.div
@@ -48,8 +43,8 @@ export default function ParallaxSection({
       className={className}
       style={{
         y: yTransform,
-        opacity: opacityTransform,
-        scale: scaleTransform
+        opacity: opacity ? opacityTransform : undefined,
+        scale: scale ? scaleTransform : undefined
       }}
     >
       {children}

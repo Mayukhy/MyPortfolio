@@ -19,7 +19,7 @@ export const useSounds = () => {
         setIsPlaying(true)
       }
     }
-  }, [soundsEnabled])
+  }, [soundsEnabled, currentMusic?.name, isEmojisphereActive, isPlaying, setCurrentMusic, setIsPlaying])
 
   useEffect(() => {
     // Initialize sounds on mount
@@ -90,6 +90,6 @@ export const useSounds = () => {
     playThemeChange,
     playMusicSelect,
     toggleSounds,
-    soundsEnabled,
+    soundsEnabled
   }
 } 

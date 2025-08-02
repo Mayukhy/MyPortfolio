@@ -74,7 +74,7 @@ export function ThemeProvider({
   })
   const [mounted, setMounted] = useState(false)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
-  const isMobile = window.innerWidth < 768
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const [currentMusic, setCurrentMusic] = useState<Music | null>(null)
   const [themeList, setThemeList] = useState<ThemeData[]>(() => {
     // Check for stored themes first

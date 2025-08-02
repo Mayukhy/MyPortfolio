@@ -182,11 +182,12 @@ export default function CustomCursor() {
         window.removeEventListener("mousemove", updateMousePosition)
         
         // Clean up all event listeners
-        eventListenersRef.current.forEach((listeners, element) => {
+        const currentEventListeners = eventListenersRef.current
+        currentEventListeners.forEach((listeners, element) => {
           element.removeEventListener("mouseenter", listeners.enter)
           element.removeEventListener("mouseleave", listeners.leave)
         })
-        eventListenersRef.current.clear()
+        currentEventListeners.clear()
         
         if (observerRef.current) {
           observerRef.current.disconnect()
