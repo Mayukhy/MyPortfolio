@@ -1,20 +1,31 @@
 import { useEffect, useCallback, useState } from 'react'
 import soundManager from '@/utils/sounds'
+import { useTheme } from '@/components/theme/ThemeProvider'
 
 export const useSounds = () => {
-  const [soundsEnabled, setSoundsEnabled] = useState(false)
+  const { setCurrentMusic, setIsPlaying, isEmojisphereActive, currentMusic, isPlaying, soundsEnabled, setSoundsEnabled } = useTheme()
+  
+  useEffect(() => {
+    if(!soundsEnabled) {
+      if(!isEmojisphereActive && currentMusic?.name === "base") {
+        setCurrentMusic(null)
+        setIsPlaying(false)
+      }
+    }
+    else {
+      if(!isEmojisphereActive && !isPlaying) {
+        setCurrentMusic({name: "base", src: "/audios/symphony1.mp3", icon: "🎉"})
+        setIsPlaying(true)
+      }
+    }
+  }, [soundsEnabled, currentMusic?.name, isEmojisphereActive, isPlaying, setCurrentMusic, setIsPlaying])
+
 
   useEffect(() => {
     // Initialize sounds on mount
     soundManager.init()
+    soundManager.setSoundsEnabled(soundsEnabled)
     
-    // Load sound preference from localStorage
-    const soundsEnabled = localStorage.getItem('sounds-enabled')
-    if (soundsEnabled !== null) {
-      const enabled = soundsEnabled === 'true'
-      soundManager.setSoundsEnabled(enabled)
-      setSoundsEnabled(enabled)
-    }
   }, [])
 
   const playClick = useCallback(() => {
@@ -74,6 +85,6 @@ export const useSounds = () => {
     playThemeChange,
     playMusicSelect,
     toggleSounds,
-    soundsEnabled,
+    soundsEnabled
   }
 } 

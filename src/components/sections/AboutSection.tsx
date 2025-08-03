@@ -1,9 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Code, Palette, Zap, Globe } from "lucide-react"
+import { randomCanvasData } from "@/data/data"
+import Canvas from "../ui/Canvas"
+import { useTheme } from "../theme/ThemeProvider"
 
 const skills = [
   { name: "React", level: 90, icon: Code },
@@ -38,9 +41,23 @@ const itemVariants = {
 export default function AboutSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
+  const {isEmojisphereActive, isMobile} = useTheme()
+  
+  // Parallax effects
+  const aboutRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: aboutRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const skillsY = useTransform(scrollYProgress, [0, 1], [0, -150])
+  
   return (
-    <section id="about" className="section-padding relative overflow-hidden">
+    <section ref={aboutRef} id="about" className="section-padding relative overflow-hidden z-20">
+      { isEmojisphereActive && !isMobile && randomCanvasData[2].map((canvasDetails, index) => (
+        <Canvas key={`about-${index}`} details={canvasDetails} />
+      ))}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -50,7 +67,11 @@ export default function AboutSection() {
           className="grid lg:grid-cols-2 gap-12 items-center"
         >
           {/* Content */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div 
+            variants={itemVariants} 
+            className="space-y-6"
+            style={{ y: contentY }}
+          >
             <motion.h2
               className="text-4xl sm:text-5xl font-bold"
               variants={itemVariants}
@@ -82,18 +103,21 @@ export default function AboutSection() {
               className="grid grid-cols-2 gap-6 pt-6"
             >
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <div className="text-3xl font-bold text-primary">3+</div>
+                <div className="text-3xl font-bold text-primary">2+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center p-4 rounded-lg bg-muted/50">
-                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-3xl font-bold text-primary">20+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Skills */}
-          <motion.div variants={itemVariants} className="space-y-6">
+          <motion.div 
+            variants={itemVariants} 
+            className="space-y-6"
+          >
             <motion.h3
               className="text-2xl font-semibold"
               variants={itemVariants}

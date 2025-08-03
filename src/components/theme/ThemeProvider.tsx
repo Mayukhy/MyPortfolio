@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 
-type Theme = "dark" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon" | "spring" | "summer" | "autumn" | "winter" | "cosmic" | "galaxy" | "mountain" | "city" | "vintage" | "retro" | "cyberpunk" | "steampunk" | "minimalist" | "luxury" | "rustic" | "tropical" | "arctic" | "sahara"
+type Theme = "dark" | "to-dark" | "to-light" | "to-dark-red" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon" | "spring" | "summer" | "autumn" | "winter" | "cosmic" | "galaxy" | "mountain" | "city" | "vintage" | "retro" | "cyberpunk" | "steampunk" | "minimalist" | "luxury" | "rustic" | "tropical" | "arctic" | "sahara" | "dark-red"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -24,11 +24,19 @@ type ThemeProviderState = {
   setCreateThemeData: (data: ThemeData) => void
   themeList: ThemeData[]
   setThemeList: (list: ThemeData[]) => void
+  isEmojisphereActive: boolean
+  setIsEmojisphereActive: (isActive: boolean) => void
+  isMobile: boolean
+  isEmojiSphereTransitioning: boolean
+  setIsEmojiSphereTransitioning: (isTransitioning: boolean) => void
+  soundsEnabled: boolean
+  setSoundsEnabled: (enabled: boolean) => void
 }
 
 const initialState: ThemeProviderState = {
   theme: "system",
   setTheme: () => null,
+  isMobile: false,
   isPlaying: false,
   setIsPlaying: () => null,
   currentMusic: null,
@@ -45,19 +53,26 @@ const initialState: ThemeProviderState = {
   },
   setCreateThemeData: () => null,
   themeList: [],
-  setThemeList: () => null
+  setThemeList: () => null,
+  isEmojisphereActive: false,
+  setIsEmojisphereActive: () => null,
+  isEmojiSphereTransitioning: false,
+  setIsEmojiSphereTransitioning: () => null,
+  soundsEnabled: false,
+  setSoundsEnabled: () => null
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "light",
   storageKey = "ui-theme",
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme)
   const [createThemeStep, setCreateThemeStep] = useState(1)
+  const [isEmojisphereActive, setIsEmojisphereActive] = useState(false)
   const [createThemeData, setCreateThemeData] = useState<ThemeData>({
     name: '',
     description: '',
@@ -67,6 +82,9 @@ export function ThemeProvider({
   })
   const [mounted, setMounted] = useState(false)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [soundsEnabled, setSoundsEnabled] = useState(false)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const [isEmojiSphereTransitioning, setIsEmojiSphereTransitioning] = useState<boolean>(false)
   const [currentMusic, setCurrentMusic] = useState<Music | null>(null)
   const [themeList, setThemeList] = useState<ThemeData[]>(() => {
     // Check for stored themes first
@@ -101,13 +119,14 @@ export function ThemeProvider({
     }
   }, [themeList])
 
-  useEffect(() => {
-    if (currentMusic) {
-      audioRef.current?.play()
-    } else {
-      audioRef.current?.pause()
-    }
-  }, [currentMusic])
+  // useEffect(() => {
+  //   if(!audioRef.current) return
+  //   if (currentMusic) {
+  //     audioRef.current.play()
+  //   } else {
+  //     audioRef.current.pause()
+  //   }
+  // }, [currentMusic, isPlaying, audioRef, soundsEnabled])
 
   useEffect(() => {
     if (!mounted) return
@@ -115,7 +134,7 @@ export function ThemeProvider({
     const root = window.document.documentElement
 
     // Remove all theme classes
-    root.classList.remove("light", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon", "spring", "summer", "autumn", "winter", "cosmic", "galaxy", "mountain", "city", "vintage", "retro", "cyberpunk", "steampunk", "minimalist", "luxury", "rustic", "tropical", "arctic", "sahara")
+    root.classList.remove("light", "to-dark", "to-light", "to-dark-red", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon", "spring", "summer", "autumn", "winter", "cosmic", "galaxy", "mountain", "city", "vintage", "retro", "cyberpunk", "steampunk", "minimalist", "luxury", "rustic", "tropical", "arctic", "sahara", "dark-red")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -148,7 +167,14 @@ export function ThemeProvider({
     createThemeData,
     setCreateThemeData,
     themeList,
-    setThemeList
+    setThemeList,
+    isEmojisphereActive,
+    setIsEmojisphereActive,
+    isMobile,
+    isEmojiSphereTransitioning,
+    setIsEmojiSphereTransitioning,
+    soundsEnabled,
+    setSoundsEnabled
   }
 
   return (

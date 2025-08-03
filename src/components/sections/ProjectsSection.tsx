@@ -1,10 +1,13 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import { useDrag } from "@use-gesture/react"
 import { useSounds } from "@/hooks/useSounds"
+import { randomCanvasData } from "@/data/data"
+import Canvas from "../ui/Canvas"
+import { useTheme } from "../theme/ThemeProvider"
 
 const projects = [
   {
@@ -119,7 +122,17 @@ export default function ProjectsSection() {
   const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
   const [mounted, setMounted] = useState(false)
   const { playCardFlip, playHover, playClick } = useSounds()
-
+  const {isEmojisphereActive, isMobile} = useTheme()
+  
+  // Parallax effects
+  const projectsRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: projectsRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const carouselY = useTransform(scrollYProgress, [0, 1], [0, -100])
   useEffect(() => {
     setMounted(true)
     setWindowWidth(window.innerWidth)
@@ -160,8 +173,11 @@ export default function ProjectsSection() {
   )
 
   return (
-    <section id="projects" className="section-padding relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={projectsRef} id="projects" className="section-padding relative overflow-hidden z-20">
+      { isEmojisphereActive && !isMobile && randomCanvasData[3].map((canvasDetails, index) => (
+        <Canvas key={`projects-${index}`} details={canvasDetails} />
+      ))}
+      <div className="md:container mx-auto px-0 md:px-4 lg:px-8">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -189,6 +205,7 @@ export default function ProjectsSection() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
+            style={{ y: carouselY }}
           >
           <div
             className="w-full h-full flex items-center justify-center"
@@ -337,7 +354,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
     >
       {/* Background Gradient */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 dark:from-background/80 dark:via-background/60 dark:to-background/80 lofi:from-purple-500/20 lofi:via-purple-600/10 lofi:to-purple-700/20 nature:from-green-500/20 nature:via-green-600/10 nature:to-green-700/20 rain:from-blue-500/20 rain:via-blue-600/10 rain:to-blue-700/20 ocean:from-cyan-500/20 ocean:via-cyan-600/10 ocean:to-cyan-700/20 forest:from-amber-500/20 forest:via-amber-600/10 forest:to-amber-700/20 cafe:from-orange-500/20 cafe:via-orange-600/10 cafe:to-orange-700/20"
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 dark:from-background/80 dark:via-background/60 dark:to-background/80 lofi:from-purple-500/20 lofi:via-purple-600/10 lofi:to-purple-700/20 nature:from-green-500/20 nature:via-green-600/10 nature:to-green-700/20 rain:from-blue-500/20 rain:via-blue-600/10 rain:to-blue-700/20 ocean:from-cyan-500/20 ocean:via-cyan-600/10 ocean:to-cyan-700/20 forest:from-amber-500/20 forest:via-amber-600/10 forest:to-amber-700/20 cafe:from-orange-500/20 cafe:via-orange-600/10 cafe:to-orange-700/20 symphony1:from-purple-500/20 symphony1:via-purple-600/10 symphony1:to-purple-700/20 symphony2:from-pink-500/20 symphony2:via-pink-600/10 symphony2:to-pink-700/20 warm:from-rose-500/20 warm:via-rose-600/10 warm:to-rose-700/20 cool:from-cyan-500/20 cool:via-cyan-600/10 cool:to-cyan-700/20 neutral:from-gray-500/20 neutral:via-gray-600/10 neutral:to-gray-700/20 vibrant:from-yellow-500/20 vibrant:via-yellow-600/10 vibrant:to-yellow-700/20 pastel:from-pink-500/20 pastel:via-pink-600/10 pastel:to-pink-700/20 monochrome:from-gray-500/20 monochrome:via-gray-600/10 monochrome:to-gray-700/20 sunset:from-orange-500/20 sunset:via-orange-600/10 sunset:to-orange-700/20 midnight:from-indigo-500/20 midnight:via-indigo-600/10 midnight:to-indigo-700/20 trees:from-green-500/20 trees:via-green-600/10 trees:to-green-700/20 desert:from-amber-500/20 desert:via-amber-600/10 desert:to-amber-700/20 aurora:from-emerald-500/20 aurora:via-emerald-600/10 aurora:to-emerald-700/20 neon:from-green-500/20 neon:via-green-600/10 neon:to-green-700/20 spring:from-lime-500/20 spring:via-lime-600/10 spring:to-lime-700/20 summer:from-yellow-500/20 summer:via-yellow-600/10 summer:to-yellow-700/20 autumn:from-orange-500/20 autumn:via-orange-600/10 autumn:to-orange-700/20 winter:from-cyan-500/20 winter:via-cyan-600/10 winter:to-cyan-700/20 cosmic:from-purple-500/20 cosmic:via-purple-600/10 cosmic:to-purple-700/20 galaxy:from-indigo-500/20 galaxy:via-indigo-600/10 galaxy:to-indigo-700/20 mountain:from-gray-500/20 mountain:via-gray-600/10 mountain:to-gray-700/20 city:from-yellow-500/20 city:via-yellow-600/10 city:to-yellow-700/20 vintage:from-amber-500/20 vintage:via-amber-600/10 vintage:to-amber-700/20 retro:from-pink-500/20 retro:via-pink-600/10 retro:to-pink-700/20 cyberpunk:from-cyan-500/20 cyberpunk:via-cyan-600/10 cyberpunk:to-cyan-700/20 steampunk:from-amber-500/20 steampunk:via-amber-600/10 steampunk:to-amber-700/20 minimalist:from-gray-500/20 minimalist:via-gray-600/10 minimalist:to-gray-700/20 luxury:from-yellow-500/20 luxury:via-yellow-600/10 luxury:to-yellow-700/20 rustic:from-amber-500/20 rustic:via-amber-600/10 rustic:to-amber-700/20 tropical:from-emerald-500/20 tropical:via-emerald-600/10 tropical:to-emerald-700/20 arctic:from-cyan-500/20 arctic:via-cyan-600/10 arctic:to-cyan-700/20 sahara:from-yellow-500/20 sahara:via-yellow-600/10 sahara:to-yellow-700/20 dark-red:from-red-500/20 dark-red:via-red-600/10 dark-red:to-red-700/20"
                             animate={{
           opacity: windowWidth <= 768 ? 1 : (isHovered ? 1 : 0.5),
         }}
@@ -356,20 +373,25 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
             animate={{
               scale: windowWidth <= 768 ? 1.05 : (isHovered ? 1.15 : 1),
               filter: isCenter 
-                ? (windowWidth <= 768 ? "brightness(1.05) contrast(1.05)" : (isHovered ? "brightness(1.1) contrast(1.1)" : ""))
-                : (isHovered ? "grayscale(100%) brightness(0.9) contrast(1.3)" : "grayscale(100%) brightness(0.8) contrast(1.2)")
+                ? ""
+                : (isHovered && windowWidth > 768 ? "brightness(0.9) contrast(1.3)": isHovered && windowWidth < 768 ? "brightness(0.9) contrast(1.3) grayscale(100%)" : "brightness(0.8) grayscale(100%) contrast(1.2)")
             }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           />
-          
-          {/* Gradient Overlay - Only for center card */}
+          {/* Background Overlay - Only for center card */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent dark:from-black/80"
-                                      animate={{
+            animate={{
               opacity: (windowWidth <= 768 && isCenter) ? 0.8 : (isCenter && isHovered) ? 0.8 : 0,
             }}
             transition={{ duration: 0.3 }}
           />
+
+          {/* Background Overlay - Only for non-center cards */}
+           { !isCenter && <motion.div
+            className="absolute inset-0 bg-muted/60"
+            transition={{ duration: 0.3 }}
+          />}
 
           {/* Floating Action Buttons - Only for center card */}
           {isCenter && (
@@ -420,7 +442,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
             >
                         {/* Animated Background Elements */}
           <motion.div
-            className="absolute top-0 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-500/30 lofi:to-purple-600/40 nature:from-green-500/30 nature:to-green-600/40 rain:from-blue-500/30 rain:to-blue-600/40 ocean:from-cyan-500/30 ocean:to-cyan-600/40 forest:from-amber-500/30 forest:to-amber-600/40 cafe:from-orange-500/30 cafe:to-orange-600/40 rounded-full blur-xl"
+            className="absolute top-0 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-500/30 lofi:to-purple-600/40 nature:from-green-500/30 nature:to-green-600/40 rain:from-blue-500/30 rain:to-blue-600/40 ocean:from-cyan-500/30 ocean:to-cyan-600/40 forest:from-amber-500/30 forest:to-amber-600/40 cafe:from-orange-500/30 cafe:to-orange-600/40 symphony1:from-purple-500/30 symphony1:to-purple-600/40 symphony2:from-pink-500/30 symphony2:to-pink-600/40 warm:from-rose-500/30 warm:to-rose-600/40 cool:from-cyan-500/30 cool:to-cyan-600/40 neutral:from-gray-500/30 neutral:to-gray-600/40 vibrant:from-yellow-500/30 vibrant:to-yellow-600/40 pastel:from-pink-500/30 pastel:to-pink-600/40 monochrome:from-gray-500/30 monochrome:to-gray-600/40 sunset:from-orange-500/30 sunset:to-orange-600/40 midnight:from-indigo-500/30 midnight:to-indigo-600/40 trees:from-green-500/30 trees:to-green-600/40 desert:from-amber-500/30 desert:to-amber-600/40 aurora:from-emerald-500/30 aurora:to-emerald-600/40 neon:from-green-500/30 neon:to-green-600/40 spring:from-lime-500/30 spring:to-lime-600/40 summer:from-yellow-500/30 summer:to-yellow-600/40 autumn:from-orange-500/30 autumn:to-orange-600/40 winter:from-cyan-500/30 winter:to-cyan-600/40 cosmic:from-purple-500/30 cosmic:to-purple-600/40 galaxy:from-indigo-500/30 galaxy:to-indigo-600/40 mountain:from-gray-500/30 mountain:to-gray-600/40 city:from-yellow-500/30 city:to-yellow-600/40 vintage:from-amber-500/30 vintage:to-amber-600/40 retro:from-pink-500/30 retro:to-pink-600/40 cyberpunk:from-cyan-500/30 cyberpunk:to-cyan-600/40 steampunk:from-amber-500/30 steampunk:to-amber-600/40 minimalist:from-gray-500/30 minimalist:to-gray-600/40 luxury:from-yellow-500/30 luxury:to-yellow-600/40 rustic:from-amber-500/30 rustic:to-amber-600/40 tropical:from-emerald-500/30 tropical:to-emerald-600/40 arctic:from-cyan-500/30 arctic:to-cyan-600/40 sahara:from-yellow-500/30 sahara:to-yellow-600/40 dark-red:from-red-500/30 dark-red:to-red-600/40 rounded-full blur-xl"
             animate={{
               scale: windowWidth <= 768 ? 1.1 : (isHovered ? 1.2 : 1),
               rotate: windowWidth <= 768 ? 90 : (isHovered ? 180 : 0),
@@ -429,7 +451,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
           />
           
           <motion.div
-            className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-secondary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-600/30 lofi:to-purple-700/40 nature:from-green-600/30 nature:to-green-700/40 rain:from-blue-600/30 rain:to-blue-700/40 ocean:from-cyan-600/30 ocean:to-cyan-700/40 forest:from-amber-600/30 forest:to-amber-700/40 cafe:from-orange-600/30 cafe:to-orange-700/40 rounded-full blur-xl"
+            className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-secondary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-600/30 lofi:to-purple-700/40 nature:from-green-600/30 nature:to-green-700/40 rain:from-blue-600/30 rain:to-blue-700/40 ocean:from-cyan-600/30 ocean:to-cyan-700/40 forest:from-amber-600/30 forest:to-amber-700/40 cafe:from-orange-600/30 cafe:to-orange-700/40 symphony1:from-purple-600/30 symphony1:to-purple-700/40 symphony2:from-pink-600/30 symphony2:to-pink-700/40 warm:from-rose-600/30 warm:to-rose-700/40 cool:from-cyan-600/30 cool:to-cyan-700/40 neutral:from-gray-600/30 neutral:to-gray-700/40 vibrant:from-yellow-600/30 vibrant:to-yellow-700/40 pastel:from-pink-600/30 pastel:to-pink-700/40 monochrome:from-gray-600/30 monochrome:to-gray-700/40 sunset:from-orange-600/30 sunset:to-orange-700/40 midnight:from-indigo-600/30 midnight:to-indigo-700/40 trees:from-green-600/30 trees:to-green-700/40 desert:from-amber-600/30 desert:to-amber-700/40 aurora:from-emerald-600/30 aurora:to-emerald-700/40 neon:from-green-600/30 neon:to-green-700/40 spring:from-lime-600/30 spring:to-lime-700/40 summer:from-yellow-600/30 summer:to-yellow-700/40 autumn:from-orange-600/30 autumn:to-orange-700/40 winter:from-cyan-600/30 winter:to-cyan-700/40 cosmic:from-purple-600/30 cosmic:to-purple-700/40 galaxy:from-indigo-600/30 galaxy:to-indigo-700/40 mountain:from-gray-600/30 mountain:to-gray-700/40 city:from-yellow-600/30 city:to-yellow-700/40 vintage:from-amber-600/30 vintage:to-amber-700/40 retro:from-pink-600/30 retro:to-pink-700/40 cyberpunk:from-cyan-600/30 cyberpunk:to-cyan-700/40 steampunk:from-amber-600/30 steampunk:to-amber-700/40 minimalist:from-gray-600/30 minimalist:to-gray-700/40 luxury:from-yellow-600/30 luxury:to-yellow-700/40 rustic:from-amber-600/30 rustic:to-amber-700/40 tropical:from-emerald-600/30 tropical:to-emerald-700/40 arctic:from-cyan-600/30 arctic:to-cyan-700/40 sahara:from-yellow-600/30 sahara:to-yellow-700/40 dark-red:from-red-600/30 dark-red:to-red-700/40 rounded-full blur-xl"
             animate={{
               scale: windowWidth <= 768 ? 1.15 : (isHovered ? 1.3 : 1),
               rotate: windowWidth <= 768 ? -90 : (isHovered ? -180 : 0),
@@ -439,7 +461,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
 
               {/* Title */}
               <motion.h3
-                className="text-sm sm:text-xl font-bold mb-2 sm:mb-3 mt-2 sm:mt-4 text-white dark:text-foreground lofi:text-purple-200 nature:text-green-200 rain:text-blue-200 ocean:text-cyan-200 forest:text-amber-200 cafe:text-orange-200 relative z-10"
+                className="text-sm sm:text-xl font-bold mb-2 sm:mb-3 mt-2 sm:mt-4 text-white dark:text-foreground lofi:text-purple-200 nature:text-green-200 rain:text-blue-200 ocean:text-cyan-200 forest:text-amber-200 cafe:text-orange-200 symphony1:text-purple-200 symphony2:text-pink-200 warm:text-rose-200 cool:text-cyan-200 neutral:text-gray-200 vibrant:text-yellow-200 pastel:text-pink-200 monochrome:text-gray-200 sunset:text-orange-200 midnight:text-indigo-200 trees:text-green-200 desert:text-amber-200 aurora:text-emerald-200 neon:text-green-200 spring:text-lime-200 summer:text-yellow-200 autumn:text-orange-200 winter:text-cyan-200 cosmic:text-purple-200 galaxy:text-indigo-200 mountain:text-gray-200 city:text-yellow-200 vintage:text-amber-200 retro:text-pink-200 cyberpunk:text-cyan-200 steampunk:text-amber-200 minimalist:text-gray-200 luxury:text-yellow-200 rustic:text-amber-200 tropical:text-emerald-200 arctic:text-cyan-200 sahara:text-yellow-200 dark-red:text-red-200 relative z-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -450,7 +472,40 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                     document.documentElement.classList.contains('rain') ? "#93C5FD" :
                     document.documentElement.classList.contains('ocean') ? "#67E8F9" :
                     document.documentElement.classList.contains('forest') ? "#FCD34D" :
-                    document.documentElement.classList.contains('cafe') ? "#FDBA74" : "#3B82F6"
+                    document.documentElement.classList.contains('cafe') ? "#FDBA74" :
+                    document.documentElement.classList.contains('symphony1') ? "#A855F7" :
+                    document.documentElement.classList.contains('symphony2') ? "#EC4899" :
+                    document.documentElement.classList.contains('warm') ? "#FB7185" :
+                    document.documentElement.classList.contains('cool') ? "#06B6D4" :
+                    document.documentElement.classList.contains('neutral') ? "#6B7280" :
+                    document.documentElement.classList.contains('vibrant') ? "#F59E0B" :
+                    document.documentElement.classList.contains('pastel') ? "#F472B6" :
+                    document.documentElement.classList.contains('monochrome') ? "#374151" :
+                    document.documentElement.classList.contains('sunset') ? "#F97316" :
+                    document.documentElement.classList.contains('midnight') ? "#6366F1" :
+                    document.documentElement.classList.contains('trees') ? "#16A34A" :
+                    document.documentElement.classList.contains('desert') ? "#D97706" :
+                    document.documentElement.classList.contains('aurora') ? "#10B981" :
+                    document.documentElement.classList.contains('neon') ? "#22C55E" :
+                    document.documentElement.classList.contains('spring') ? "#84CC16" :
+                    document.documentElement.classList.contains('summer') ? "#EAB308" :
+                    document.documentElement.classList.contains('autumn') ? "#F97316" :
+                    document.documentElement.classList.contains('winter') ? "#7DD3FC" :
+                    document.documentElement.classList.contains('cosmic') ? "#A855F7" :
+                    document.documentElement.classList.contains('galaxy') ? "#6366F1" :
+                    document.documentElement.classList.contains('mountain') ? "#6B7280" :
+                    document.documentElement.classList.contains('city') ? "#F59E0B" :
+                    document.documentElement.classList.contains('vintage') ? "#B45309" :
+                    document.documentElement.classList.contains('retro') ? "#EC4899" :
+                    document.documentElement.classList.contains('cyberpunk') ? "#06B6D4" :
+                    document.documentElement.classList.contains('steampunk') ? "#B45309" :
+                    document.documentElement.classList.contains('minimalist') ? "#6B7280" :
+                    document.documentElement.classList.contains('luxury') ? "#F59E0B" :
+                    document.documentElement.classList.contains('rustic') ? "#92400E" :
+                    document.documentElement.classList.contains('tropical') ? "#10B981" :
+                    document.documentElement.classList.contains('arctic') ? "#7DD3FC" :
+                    document.documentElement.classList.contains('sahara') ? "#F59E0B" :
+                    document.documentElement.classList.contains('dark-red') ? "#DC2626" : "#3B82F6"
                 }}
               >
                 {project.title}
@@ -476,7 +531,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 {project.technologies.map((tech, techIndex) => (
                   <motion.span
                     key={tech}
-                    className="px-2 sm:px-3 py-1 text-xs font-medium bg-white/20 dark:bg-black/40 text-white dark:text-foreground lofi:bg-purple-500/30 lofi:text-purple-100 nature:bg-green-500/30 nature:text-green-100 rain:bg-blue-500/30 rain:text-blue-100 ocean:bg-cyan-500/30 ocean:text-cyan-100 forest:bg-amber-500/30 forest:text-amber-100 cafe:bg-orange-500/30 cafe:text-orange-100 rounded-full backdrop-blur-sm"
+                    className="px-2 sm:px-3 py-1 text-xs font-medium bg-white/20 dark:bg-black/40 text-white dark:text-foreground lofi:bg-purple-500/30 lofi:text-purple-100 nature:bg-green-500/30 nature:text-green-100 rain:bg-blue-500/30 rain:text-blue-100 ocean:bg-cyan-500/30 ocean:text-cyan-100 forest:bg-amber-500/30 forest:text-amber-100 cafe:bg-orange-500/30 cafe:text-orange-100 symphony1:bg-purple-500/30 symphony1:text-purple-100 symphony2:bg-pink-500/30 symphony2:text-pink-100 warm:bg-rose-500/30 warm:text-rose-100 cool:bg-cyan-500/30 cool:text-cyan-100 neutral:bg-gray-500/30 neutral:text-gray-100 vibrant:bg-yellow-500/30 vibrant:text-yellow-100 pastel:bg-pink-500/30 pastel:text-pink-100 monochrome:bg-gray-500/30 monochrome:text-gray-100 sunset:bg-orange-500/30 sunset:text-orange-100 midnight:bg-indigo-500/30 midnight:text-indigo-100 trees:bg-green-500/30 trees:text-green-100 desert:bg-amber-500/30 desert:text-amber-100 aurora:bg-emerald-500/30 aurora:text-emerald-100 neon:bg-green-500/30 neon:text-green-100 spring:bg-lime-500/30 spring:text-lime-100 summer:bg-yellow-500/30 summer:text-yellow-100 autumn:bg-orange-500/30 autumn:text-orange-100 winter:bg-cyan-500/30 winter:text-cyan-100 cosmic:bg-purple-500/30 cosmic:text-purple-100 galaxy:bg-indigo-500/30 galaxy:text-indigo-100 mountain:bg-gray-500/30 mountain:text-gray-100 city:bg-yellow-500/30 city:text-yellow-100 vintage:bg-amber-500/30 vintage:text-amber-100 retro:bg-pink-500/30 retro:text-pink-100 cyberpunk:bg-cyan-500/30 cyberpunk:text-cyan-100 steampunk:bg-amber-500/30 steampunk:text-amber-100 minimalist:bg-gray-500/30 minimalist:text-gray-100 luxury:bg-yellow-500/30 luxury:text-yellow-100 rustic:bg-amber-500/30 rustic:text-amber-100 tropical:bg-emerald-500/30 tropical:text-emerald-100 arctic:bg-cyan-500/30 arctic:text-cyan-100 sahara:bg-yellow-500/30 sahara:text-yellow-100 dark-red:bg-red-500/30 dark-red:text-red-100 rounded-full backdrop-blur-sm"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ 
@@ -491,7 +546,40 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                         document.documentElement.classList.contains('rain') ? "#DBEAFE" :
                         document.documentElement.classList.contains('ocean') ? "#CFFAFE" :
                         document.documentElement.classList.contains('forest') ? "#FEF3C7" :
-                        document.documentElement.classList.contains('cafe') ? "#FED7AA" : "#DBEAFE",
+                        document.documentElement.classList.contains('cafe') ? "#FED7AA" :
+                        document.documentElement.classList.contains('symphony1') ? "#F3E8FF" :
+                        document.documentElement.classList.contains('symphony2') ? "#FCE7F3" :
+                        document.documentElement.classList.contains('warm') ? "#FEE2E2" :
+                        document.documentElement.classList.contains('cool') ? "#CFFAFE" :
+                        document.documentElement.classList.contains('neutral') ? "#F3F4F6" :
+                        document.documentElement.classList.contains('vibrant') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('pastel') ? "#FCE7F3" :
+                        document.documentElement.classList.contains('monochrome') ? "#F3F4F6" :
+                        document.documentElement.classList.contains('sunset') ? "#FED7AA" :
+                        document.documentElement.classList.contains('midnight') ? "#E0E7FF" :
+                        document.documentElement.classList.contains('trees') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('desert') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('aurora') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('neon') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('spring') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('summer') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('autumn') ? "#FED7AA" :
+                        document.documentElement.classList.contains('winter') ? "#CFFAFE" :
+                        document.documentElement.classList.contains('cosmic') ? "#F3E8FF" :
+                        document.documentElement.classList.contains('galaxy') ? "#E0E7FF" :
+                        document.documentElement.classList.contains('mountain') ? "#F3F4F6" :
+                        document.documentElement.classList.contains('city') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('vintage') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('retro') ? "#FCE7F3" :
+                        document.documentElement.classList.contains('cyberpunk') ? "#CFFAFE" :
+                        document.documentElement.classList.contains('steampunk') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('minimalist') ? "#F3F4F6" :
+                        document.documentElement.classList.contains('luxury') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('rustic') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('tropical') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('arctic') ? "#CFFAFE" :
+                        document.documentElement.classList.contains('sahara') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('dark-red') ? "#FEE2E2" : "#DBEAFE",
                       border: "none",
                       color: windowWidth <= 768 ? "#1F2937" :
                         document.documentElement.classList.contains('lofi') ? "#581C87" :
@@ -499,7 +587,40 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                         document.documentElement.classList.contains('rain') ? "#1E40AF" :
                         document.documentElement.classList.contains('ocean') ? "#0E7490" :
                         document.documentElement.classList.contains('forest') ? "#92400E" :
-                        document.documentElement.classList.contains('cafe') ? "#C2410C" : "#1F2937",
+                        document.documentElement.classList.contains('cafe') ? "#C2410C" :
+                        document.documentElement.classList.contains('symphony1') ? "#6B21A8" :
+                        document.documentElement.classList.contains('symphony2') ? "#BE185D" :
+                        document.documentElement.classList.contains('warm') ? "#BE185D" :
+                        document.documentElement.classList.contains('cool') ? "#0E7490" :
+                        document.documentElement.classList.contains('neutral') ? "#374151" :
+                        document.documentElement.classList.contains('vibrant') ? "#92400E" :
+                        document.documentElement.classList.contains('pastel') ? "#BE185D" :
+                        document.documentElement.classList.contains('monochrome') ? "#374151" :
+                        document.documentElement.classList.contains('sunset') ? "#C2410C" :
+                        document.documentElement.classList.contains('midnight') ? "#3730A3" :
+                        document.documentElement.classList.contains('trees') ? "#15803D" :
+                        document.documentElement.classList.contains('desert') ? "#92400E" :
+                        document.documentElement.classList.contains('aurora') ? "#15803D" :
+                        document.documentElement.classList.contains('neon') ? "#15803D" :
+                        document.documentElement.classList.contains('spring') ? "#65A30D" :
+                        document.documentElement.classList.contains('summer') ? "#A16207" :
+                        document.documentElement.classList.contains('autumn') ? "#C2410C" :
+                        document.documentElement.classList.contains('winter') ? "#0E7490" :
+                        document.documentElement.classList.contains('cosmic') ? "#6B21A8" :
+                        document.documentElement.classList.contains('galaxy') ? "#3730A3" :
+                        document.documentElement.classList.contains('mountain') ? "#374151" :
+                        document.documentElement.classList.contains('city') ? "#A16207" :
+                        document.documentElement.classList.contains('vintage') ? "#92400E" :
+                        document.documentElement.classList.contains('retro') ? "#BE185D" :
+                        document.documentElement.classList.contains('cyberpunk') ? "#0E7490" :
+                        document.documentElement.classList.contains('steampunk') ? "#92400E" :
+                        document.documentElement.classList.contains('minimalist') ? "#374151" :
+                        document.documentElement.classList.contains('luxury') ? "#A16207" :
+                        document.documentElement.classList.contains('rustic') ? "#92400E" :
+                        document.documentElement.classList.contains('tropical') ? "#15803D" :
+                        document.documentElement.classList.contains('arctic') ? "#0E7490" :
+                        document.documentElement.classList.contains('sahara') ? "#A16207" :
+                        document.documentElement.classList.contains('dark-red') ? "#991B1B" : "#1F2937",
                     }}
                   >
                     {tech}
@@ -512,7 +633,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
           {/* Hover Glow Effect - Only for center card */}
           {isCenter && (
             <motion.div
-              className="absolute backdrop-blur-md bg-black/50 dark:bg-background/80 inset-0 bg-gradient-to-r from-primary/5 to-accent/5 lofi:from-purple-500/10 lofi:to-purple-600/10 nature:from-green-500/10 nature:to-green-600/10 rain:from-blue-500/10 rain:to-blue-600/10 ocean:from-cyan-500/10 ocean:to-cyan-600/10 forest:from-amber-500/10 forest:to-amber-600/10 cafe:from-orange-500/10 cafe:to-orange-600/10 rounded-xl"
+              className="absolute backdrop-blur-md bg-black/50 dark:bg-background/80 inset-0 bg-gradient-to-r from-primary/5 to-accent/5 lofi:from-purple-500/10 lofi:to-purple-600/10 nature:from-green-500/10 nature:to-green-600/10 rain:from-blue-500/10 rain:to-blue-600/10 ocean:from-cyan-500/10 ocean:to-cyan-600/10 forest:from-amber-500/10 forest:to-amber-600/10 cafe:from-orange-500/10 cafe:to-orange-600/10 symphony1:from-purple-500/10 symphony1:to-purple-600/10 symphony2:from-pink-500/10 symphony2:to-pink-600/10 warm:from-rose-500/10 warm:to-rose-600/10 cool:from-cyan-500/10 cool:to-cyan-600/10 neutral:from-gray-500/10 neutral:to-gray-600/10 vibrant:from-yellow-500/10 vibrant:to-yellow-600/10 pastel:from-pink-500/10 pastel:to-pink-600/10 monochrome:from-gray-500/10 monochrome:to-gray-600/10 sunset:from-orange-500/10 sunset:to-orange-600/10 midnight:from-indigo-500/10 midnight:to-indigo-600/10 trees:from-green-500/10 trees:to-green-600/10 desert:from-amber-500/10 desert:to-amber-600/10 aurora:from-emerald-500/10 aurora:to-emerald-600/10 neon:from-green-500/10 neon:to-green-600/10 spring:from-lime-500/10 spring:to-lime-600/10 summer:from-yellow-500/10 summer:to-yellow-600/10 autumn:from-orange-500/10 autumn:to-orange-600/10 winter:from-cyan-500/10 winter:to-cyan-600/10 cosmic:from-purple-500/10 cosmic:to-purple-600/10 galaxy:from-indigo-500/10 galaxy:to-indigo-600/10 mountain:from-gray-500/10 mountain:to-gray-600/10 city:from-yellow-500/10 city:to-yellow-600/10 vintage:from-amber-500/10 vintage:to-amber-600/10 retro:from-pink-500/10 retro:to-pink-600/10 cyberpunk:from-cyan-500/10 cyberpunk:to-cyan-600/10 steampunk:from-amber-500/10 steampunk:to-amber-600/10 minimalist:from-gray-500/10 minimalist:to-gray-600/10 luxury:from-yellow-500/10 luxury:to-yellow-600/10 rustic:from-amber-500/10 rustic:to-amber-600/10 tropical:from-emerald-500/10 tropical:to-emerald-600/10 arctic:from-cyan-500/10 arctic:to-cyan-600/10 sahara:from-yellow-500/10 sahara:to-yellow-600/10 dark-red:from-red-500/10 dark-red:to-red-600/10 rounded-xl"
               animate={{
                 opacity: windowWidth <= 768 ? 0.3 : (isHovered ? 1 : 0),
               }}
