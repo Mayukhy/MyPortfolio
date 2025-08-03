@@ -29,6 +29,8 @@ type ThemeProviderState = {
   isMobile: boolean
   isEmojiSphereTransitioning: boolean
   setIsEmojiSphereTransitioning: (isTransitioning: boolean) => void
+  soundsEnabled: boolean
+  setSoundsEnabled: (enabled: boolean) => void
 }
 
 const initialState: ThemeProviderState = {
@@ -55,14 +57,16 @@ const initialState: ThemeProviderState = {
   isEmojisphereActive: false,
   setIsEmojisphereActive: () => null,
   isEmojiSphereTransitioning: false,
-  setIsEmojiSphereTransitioning: () => null
+  setIsEmojiSphereTransitioning: () => null,
+  soundsEnabled: false,
+  setSoundsEnabled: () => null
 }
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "light",
   storageKey = "ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -78,6 +82,7 @@ export function ThemeProvider({
   })
   const [mounted, setMounted] = useState(false)
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
+  const [soundsEnabled, setSoundsEnabled] = useState(false)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const [isEmojiSphereTransitioning, setIsEmojiSphereTransitioning] = useState<boolean>(false)
   const [currentMusic, setCurrentMusic] = useState<Music | null>(null)
@@ -114,14 +119,14 @@ export function ThemeProvider({
     }
   }, [themeList])
 
-  useEffect(() => {
-    if(!audioRef.current) return
-    if (currentMusic) {
-      audioRef.current.play()
-    } else {
-      audioRef.current.pause()
-    }
-  }, [currentMusic, isPlaying, audioRef])
+  // useEffect(() => {
+  //   if(!audioRef.current) return
+  //   if (currentMusic) {
+  //     audioRef.current.play()
+  //   } else {
+  //     audioRef.current.pause()
+  //   }
+  // }, [currentMusic, isPlaying, audioRef, soundsEnabled])
 
   useEffect(() => {
     if (!mounted) return
@@ -167,7 +172,9 @@ export function ThemeProvider({
     setIsEmojisphereActive,
     isMobile,
     isEmojiSphereTransitioning,
-    setIsEmojiSphereTransitioning
+    setIsEmojiSphereTransitioning,
+    soundsEnabled,
+    setSoundsEnabled
   }
 
   return (

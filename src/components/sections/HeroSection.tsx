@@ -23,8 +23,8 @@ const socialLinks = [
 ]
 
 export default function HeroSection() {
-  const { playHover, playClick, soundsEnabled } = useSounds()
-  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning} = useTheme()
+  const { playHover, playClick } = useSounds()
+  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning, soundsEnabled} = useTheme()
   const growingSpan = useRef(null)
   const headingref = useRef(null)
   

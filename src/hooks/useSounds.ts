@@ -3,8 +3,7 @@ import soundManager from '@/utils/sounds'
 import { useTheme } from '@/components/theme/ThemeProvider'
 
 export const useSounds = () => {
-  const [soundsEnabled, setSoundsEnabled] = useState(false)
-  const { setCurrentMusic, setIsPlaying, isEmojisphereActive, currentMusic, isPlaying } = useTheme()
+  const { setCurrentMusic, setIsPlaying, isEmojisphereActive, currentMusic, isPlaying, soundsEnabled, setSoundsEnabled } = useTheme()
   
   useEffect(() => {
     if(!soundsEnabled) {
@@ -21,16 +20,12 @@ export const useSounds = () => {
     }
   }, [soundsEnabled, currentMusic?.name, isEmojisphereActive, isPlaying, setCurrentMusic, setIsPlaying])
 
+
   useEffect(() => {
     // Initialize sounds on mount
     soundManager.init()
-    // Load sound preference from localStorage
-    const soundsEnabled = localStorage.getItem('sounds-enabled')
-    if (soundsEnabled !== null) {
-      const enabled = soundsEnabled === 'true'
-      soundManager.setSoundsEnabled(enabled)
-      setSoundsEnabled(enabled)
-    }
+    soundManager.setSoundsEnabled(soundsEnabled)
+    
   }, [])
 
   const playClick = useCallback(() => {

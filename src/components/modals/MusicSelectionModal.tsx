@@ -40,6 +40,7 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
       playClick()
       setIsPlaying(false)
       setCurrentMusic(null)
+      setTheme("light")
     }
     onClose()
   }

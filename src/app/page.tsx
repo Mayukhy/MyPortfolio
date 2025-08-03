@@ -66,7 +66,7 @@ const sectionVariants = {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-  const { currentMusic, audioRef } = useTheme()
+  const { currentMusic, audioRef, soundsEnabled } = useTheme()
   useEffect(() => {
     // Simulate page load time
     const timer = setTimeout(() => {
@@ -75,7 +75,7 @@ export default function Home() {
 
     return () => clearTimeout(timer)
   }, [])
-
+  
   return (
     <>
       <AnimatePresence mode="wait">
@@ -83,7 +83,7 @@ export default function Home() {
       </AnimatePresence>
       <AnimatePresence mode="wait">
         {currentMusic && (
-          <audio ref={audioRef} src={currentMusic.src} loop />
+          <audio ref={audioRef} src={currentMusic.src} autoPlay muted={!soundsEnabled} loop />
         )}
         {!isLoading && (
           <motion.div

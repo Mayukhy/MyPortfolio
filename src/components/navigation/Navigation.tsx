@@ -35,8 +35,8 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [isMusicModalOpen, setIsMusicModalOpen] = useState(false)
   const [isCreateThemeModalOpen, setIsCreateThemeModalOpen] = useState(false)
-  const { theme, setTheme, isPlaying, setCreateThemeData } = useTheme()
-  const { playClick, playHover, playButtonPress, playThemeChange, toggleSounds, soundsEnabled } = useSounds()
+  const { theme, setTheme, isPlaying, setCreateThemeData, setIsEmojisphereActive, setIsEmojiSphereTransitioning, isEmojisphereActive, setIsPlaying, setCurrentMusic, soundsEnabled } = useTheme()
+  const { playClick, playHover, playButtonPress, playThemeChange, toggleSounds } = useSounds()
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -54,8 +54,14 @@ export default function Navigation() {
   }, [])
 
   const toggleTheme = () => {
+    if (isEmojisphereActive) {
+      setIsPlaying(false)
+      setCurrentMusic(null)
+      setIsEmojiSphereTransitioning(false)
+      setIsEmojisphereActive(false)
+    }
     playThemeChange()
-    setTheme(theme === "dark" ? "light" : "dark")
+    setTheme(theme === "dark" || theme === "lofi" || theme === "rain" || theme === "forest" || theme === "midnight" || theme === "cosmic" || theme === "galaxy" || theme === "cyberpunk" || theme === "dark-red" ? "light" : "dark")
   }
 
   const toggleThemeMusic = () => {
