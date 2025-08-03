@@ -1,7 +1,5 @@
 # Next.js Portfolio with Cloud Storage
 A modern portfolio website built with Next.js, featuring theme customization and cloud storage for audio files.
-# Development Theme Link:
-https://my-portfolio-1tt3fh0g1-mayukhys-projects.vercel.app/
 
 ## Features
 
@@ -39,11 +37,10 @@ npm run dev
 
 This project supports multiple cloud storage providers for audio files:
 
-### 🌟 Cloudinary (Recommended)
+### 🌟 Cloudinary
 - Easy setup
 - Generous free tier
 - No server-side code needed
-
 
 ### Setup Instructions
 
@@ -89,21 +86,6 @@ NEXT_PUBLIC_CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
 ```
 
-### Firebase
-```env
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
-NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
-```
-
-### AWS S3
-```env
-NEXT_PUBLIC_AWS_S3_BUCKET=your-bucket-name
-NEXT_PUBLIC_AWS_S3_REGION=us-east-1
-NEXT_PUBLIC_AWS_ACCESS_KEY_ID=your-access-key
-AWS_SECRET_ACCESS_KEY=your-secret-key
-```
 
 ## Project Structure
 
