@@ -3,6 +3,9 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef, useState } from "react"
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react"
+import Canvas from "../ui/Canvas"
+import { randomCanvasData } from "@/data/data"
+import { useTheme } from "../theme/ThemeProvider"
 
 const contactInfo = [
   {
@@ -61,7 +64,7 @@ export default function ContactSection() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  
+  const { isEmojisphereActive, isMobile } = useTheme()
   // Parallax effects
   const contactRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -94,6 +97,12 @@ export default function ContactSection() {
 
   return (
     <section ref={contactRef} id="contact" className="section-padding relative overflow-hidden">
+      {/* Emojisphere Component */}
+      { isEmojisphereActive && !isMobile && randomCanvasData[5].map((canvasDetails, index) => (
+        <div key={`contact-${index}`} className="z-30">
+          <Canvas details={canvasDetails} />
+        </div>
+      ))}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

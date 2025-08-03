@@ -319,5 +319,152 @@ export const randomCanvasData = [
       section: 'testimonials',
       emoji: emojiConfigs.testimonials.emojis[5]
     }
+  ],
+  [ // data[5] - Contact section (6 canvases)
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 72,
+      left: 17,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[0]
+    },
+    {
+      startIndex: 2,
+      numImages: 4,
+      duration: 4,
+      size: 84,
+      top: 65,
+      left: 40,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[1]
+    },
+    {
+      startIndex: 1,
+      numImages: 4,
+      duration: 6,
+      size: 84,
+      top: 53,
+      left: 82,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[2]
+    },
+    {
+      startIndex: 3,
+      numImages: 4,
+      duration: 5,
+      size: 96,
+      top: 4,
+      left: 57,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[3]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 80,
+      left: 75,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[4]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 72,
+      left: 17,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[5]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 76,
+      top: 17,
+      left: 27,
+      zIndex: 50,
+      section: 'contact',
+      emoji: emojiConfigs.contact.emojis[6]
+    }
+  ],
+  [ // data[6] - Achievements section (6 canvases)
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 18,
+      left: 13,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[0]
+    },
+    {
+      startIndex: 2,
+      numImages: 4,
+      duration: 4,
+      size: 84,
+      top: 65,
+      left: 40,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[1]
+    },
+    {
+      startIndex: 1,
+      numImages: 4,
+      duration: 6,
+      size: 84,
+      top: 35,
+      left: 80,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[2]
+    },
+    {
+      startIndex: 3,
+      numImages: 4,
+      duration: 5,
+      size: 96,
+      top: 4,
+      left: 57,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[3]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 80,
+      left: 75,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[4]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 72,
+      left: 17,
+      zIndex: 50,
+      section: 'achievements',
+      emoji: emojiConfigs.achievements.emojis[5]
+    }
   ]
 ] 

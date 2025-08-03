@@ -52,5 +52,13 @@ export const emojiConfigs = {
   testimonials: {
     emojis: ["🙏", "🌟", "💬", "💝", "🤝", "👍"],
     description: "Gratitude & Praise"
+  },
+  contact: {
+    emojis: ["💬", "📞", "📱", "✏️", "🤙", "💬", "📧"],
+    description: "Contact & Feedback"
+  },
+  achievements: {
+    emojis: ["🏆", "🎉", "🎖️", "🔖", "🎗️", "🎯"],
+    description: "Achievements & Awards"
   }
 }

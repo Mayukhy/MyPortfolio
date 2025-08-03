@@ -4,6 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { Trophy, Award, Star, Target, TrendingUp, Users, Code, Zap } from "lucide-react"
 import { useSounds } from "@/hooks/useSounds"
+import Canvas from "../ui/Canvas"
+import { randomCanvasData } from "@/data/data"
+import { useTheme } from "../theme/ThemeProvider"
 
 const achievements = [
   {
@@ -76,7 +79,7 @@ const itemVariants = {
 
 export default function AchievementsSection() {
   const { playHover } = useSounds()
-  
+  const { isEmojisphereActive, isMobile } = useTheme()
   // Parallax effects
   const achievementsRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -90,7 +93,13 @@ export default function AchievementsSection() {
   const ctaY = useTransform(scrollYProgress, [0, 1], [0, -50])
 
   return (
-    <section ref={achievementsRef} id="achievements" className="py-20 z-20">
+    <section ref={achievementsRef} id="achievements" className="py-20 z-20 relative">
+      {/* Emojisphere Component */}
+      { isEmojisphereActive && !isMobile && randomCanvasData[6].map((canvasDetails, index) => (
+        <div key={`achievements-${index}`} className="z-30">
+          <Canvas details={canvasDetails} />
+        </div>
+      ))}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
