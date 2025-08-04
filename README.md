@@ -1,9 +1,7 @@
-# A modern portfolio website built with Next.js, featuring theme customization and cloud storage for audio files.
-
+# Next.js Portfolio with Cloud Storage
+A modern portfolio website built with Next.js, featuring theme customization and cloud storage for audio files.
 # Development Theme Link:
 https://my-portfolio-1tt3fh0g1-mayukhys-projects.vercel.app/
-
-# Next.js Portfolio with Cloud Storage
 
 ## Features
 
@@ -12,6 +10,7 @@ https://my-portfolio-1tt3fh0g1-mayukhys-projects.vercel.app/
 - 📱 **Responsive Design** - Works perfectly on desktop and mobile
 - 🎵 **Audio Integration** - Upload and play custom audio files with themes
 - 🎭 **Smooth Animations** - Beautiful transitions powered by Framer Motion
+- 🧠 **Emojisphere** - Interactive 3D emoji animations that respond to scroll position
 
 ## Quick Start
 
@@ -40,14 +39,11 @@ npm run dev
 
 This project supports multiple cloud storage providers for audio files:
 
-### 🌟 Cloudinary
+### 🌟 Cloudinary (Recommended)
 - Easy setup
 - Generous free tier
 - No server-side code needed
 
-### 💾 Local Storage
-- Fallback option
-- Limited by browser storage quota
 
 ### Setup Instructions
 
@@ -63,6 +59,24 @@ This project supports multiple cloud storage providers for audio files:
 
 4. **For detailed setup instructions, see:** `CLOUDINARY_SETUP.md`
 
+## 🧠 Emojisphere Feature
+
+The Emojisphere is an interactive feature that adds floating 3D emojis to your portfolio:
+
+### How to Use
+1. **Click on the hero banner text** ("Creative Developer") to activate the Emojisphere
+2. **Scroll through different sections** to see emojis change based on the content:
+   - **Hero**: 👏 ✨ 💖 🎉 (Appreciation vibes)
+   - **About**: 👨‍💻 🧠 🛠️ 💡 (Coding & Dev vibes)
+   - **Projects**: 📚 🧩 🔧 📁 (Library & Tools)
+   - **Testimonials**: 🙏 🌟 💬 💝 (Gratitude & Praise)
+
+### Technical Details
+- Built with **GSAP** for smooth animations
+- **3D effects** with CSS transforms and drop shadows
+- **Scroll-triggered** transitions between emoji sets
+- **Responsive design** that works on all devices
+
 ## Environment Variables
 
 The following environment variables are supported:
@@ -75,6 +89,21 @@ NEXT_PUBLIC_CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
 ```
 
+### Firebase
+```env
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.appspot.com
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+```
+
+### AWS S3
+```env
+NEXT_PUBLIC_AWS_S3_BUCKET=your-bucket-name
+NEXT_PUBLIC_AWS_S3_REGION=us-east-1
+NEXT_PUBLIC_AWS_ACCESS_KEY_ID=your-access-key
+AWS_SECRET_ACCESS_KEY=your-secret-key
+```
 
 ## Project Structure
 
