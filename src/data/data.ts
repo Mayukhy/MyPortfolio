@@ -466,5 +466,73 @@ export const randomCanvasData = [
       section: 'achievements',
       emoji: emojiConfigs.achievements.emojis[5]
     }
+  ],
+  [ // data[7] - Experience section (6 canvases)
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 18,
+      left: 13,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[0]
+    },
+    {
+      startIndex: 2,
+      numImages: 4,
+      duration: 4,
+      size: 84,
+      top: 65,
+      left: 40,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[1]
+    },
+    {
+      startIndex: 1,
+      numImages: 4,
+      duration: 6,
+      size: 84,
+      top: 35,
+      left: 80,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[2]
+    },
+    {
+      startIndex: 3,
+      numImages: 4,
+      duration: 5,
+      size: 96,
+      top: 4,
+      left: 57,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[3]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 80,
+      left: 75,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[4]
+    },
+    {
+      startIndex: 0,
+      numImages: 4,
+      duration: 7,
+      size: 92,
+      top: 72,
+      left: 17,
+      zIndex: 50,
+      section: 'experience',
+      emoji: emojiConfigs.experience.emojis[5]
+    }
   ]
 ] 

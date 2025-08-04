@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import Navigation from "@/components/navigation/Navigation"
 import HeroSection from "@/components/sections/HeroSection"
 import AboutSection from "@/components/sections/AboutSection"
+import ExperienceSection from "@/components/sections/ExperienceSection"
 import ProjectsSection from "@/components/sections/ProjectsSection"
 import TestimonialSection from "@/components/sections/TestimonialSection"
 import AchievementsSection from "@/components/sections/AchievementsSection"
@@ -107,6 +108,10 @@ export default function Home() {
               
               <motion.div variants={sectionVariants}>
                 <AboutSection />
+              </motion.div>
+              
+              <motion.div variants={sectionVariants}>
+                <ExperienceSection />
               </motion.div>
               
               <motion.div variants={sectionVariants}>

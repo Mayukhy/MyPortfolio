@@ -60,5 +60,9 @@ export const emojiConfigs = {
   achievements: {
     emojis: ["🏆", "🎉", "🎖️", "🔖", "🎗️", "🎯"],
     description: "Achievements & Awards"
+  },
+  experience: {
+    emojis: ["💼", "🚀", "⚡", "🎯", "📈", "🔧"],
+    description: "Work Experience"
   }
 }
