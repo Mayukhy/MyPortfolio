@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import { useDrag } from "@use-gesture/react"
+import { useSounds } from "@/hooks/useSounds"
 
 const projects = [
   {
@@ -117,6 +118,7 @@ export default function ProjectsSection() {
   const hasSwipedRef = useRef(false)
   const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
   const [mounted, setMounted] = useState(false)
+  const { playCardFlip, playHover, playClick } = useSounds()
 
   useEffect(() => {
     setMounted(true)
@@ -258,6 +260,7 @@ export default function ProjectsSection() {
                   }}
                   onClick={() => {
                     if (!isDragging && !isCenter) {
+                      playCardFlip()
                       setIndex(i)
                     }
                   }}
@@ -281,12 +284,16 @@ export default function ProjectsSection() {
             {projects.map((_, i) => (
               <motion.button
                 key={i}
-                onClick={() => setIndex(i)}
+                onClick={() => {
+                  playClick()
+                  setIndex(i)
+                }}
                 className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
                   i === index ? "bg-primary" : "bg-muted"
                 }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
+                onHoverStart={playHover}
               />
             ))}
           </motion.div>
@@ -315,18 +322,22 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, index, isCenter, windowWidth, isClient }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const { playHover, playClick } = useSounds()
 
   return (
     <motion.div
       className="w-full h-full flex flex-col group relative overflow-hidden"
-      onHoverStart={() => setIsHovered(true)}
+      onHoverStart={() => {
+        setIsHovered(true)
+        playHover()
+      }}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
       {/* Background Gradient */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 dark:from-background/80 dark:via-background/60 dark:to-background/80"
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 dark:from-background/80 dark:via-background/60 dark:to-background/80 lofi:from-purple-500/20 lofi:via-purple-600/10 lofi:to-purple-700/20 nature:from-green-500/20 nature:via-green-600/10 nature:to-green-700/20 rain:from-blue-500/20 rain:via-blue-600/10 rain:to-blue-700/20 ocean:from-cyan-500/20 ocean:via-cyan-600/10 ocean:to-cyan-700/20 forest:from-amber-500/20 forest:via-amber-600/10 forest:to-amber-700/20 cafe:from-orange-500/20 cafe:via-orange-600/10 cafe:to-orange-700/20"
                             animate={{
           opacity: windowWidth <= 768 ? 1 : (isHovered ? 1 : 0.5),
         }}
@@ -376,6 +387,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
+                onHoverStart={playHover}
+                onClick={playClick}
                 aria-label="View live project"
               >
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
@@ -385,6 +398,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
+                onHoverStart={playHover}
+                onClick={playClick}
                 aria-label="View source code"
               >
                 <Github className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
@@ -403,32 +418,40 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              {/* Animated Background Elements */}
-              <motion.div
-                className="absolute top-0 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/20 to-accent/20 dark:from-background/40 dark:to-background/60 rounded-full blur-xl"
-                animate={{
-                  scale: windowWidth <= 768 ? 1.1 : (isHovered ? 1.2 : 1),
-                  rotate: windowWidth <= 768 ? 90 : (isHovered ? 180 : 0),
-                }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-              />
-              
-              <motion.div
-                className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-secondary/20 to-accent/20 dark:from-background/40 dark:to-background/60 rounded-full blur-xl"
-                animate={{
-                  scale: windowWidth <= 768 ? 1.15 : (isHovered ? 1.3 : 1),
-                  rotate: windowWidth <= 768 ? -90 : (isHovered ? -180 : 0),
-                }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              />
+                        {/* Animated Background Elements */}
+          <motion.div
+            className="absolute top-0 right-0 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-500/30 lofi:to-purple-600/40 nature:from-green-500/30 nature:to-green-600/40 rain:from-blue-500/30 rain:to-blue-600/40 ocean:from-cyan-500/30 ocean:to-cyan-600/40 forest:from-amber-500/30 forest:to-amber-600/40 cafe:from-orange-500/30 cafe:to-orange-600/40 rounded-full blur-xl"
+            animate={{
+              scale: windowWidth <= 768 ? 1.1 : (isHovered ? 1.2 : 1),
+              rotate: windowWidth <= 768 ? 90 : (isHovered ? 180 : 0),
+            }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          />
+          
+          <motion.div
+            className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-secondary/20 to-accent/20 dark:from-background/40 dark:to-background/60 lofi:from-purple-600/30 lofi:to-purple-700/40 nature:from-green-600/30 nature:to-green-700/40 rain:from-blue-600/30 rain:to-blue-700/40 ocean:from-cyan-600/30 ocean:to-cyan-700/40 forest:from-amber-600/30 forest:to-amber-700/40 cafe:from-orange-600/30 cafe:to-orange-700/40 rounded-full blur-xl"
+            animate={{
+              scale: windowWidth <= 768 ? 1.15 : (isHovered ? 1.3 : 1),
+              rotate: windowWidth <= 768 ? -90 : (isHovered ? -180 : 0),
+            }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          />
 
               {/* Title */}
               <motion.h3
-                className="text-sm sm:text-xl font-bold mb-2 sm:mb-3 mt-2 sm:mt-4 text-white dark:text-foreground relative z-10"
+                className="text-sm sm:text-xl font-bold mb-2 sm:mb-3 mt-2 sm:mt-4 text-white dark:text-foreground lofi:text-purple-200 nature:text-green-200 rain:text-blue-200 ocean:text-cyan-200 forest:text-amber-200 cafe:text-orange-200 relative z-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ color: "#3B82F6" }}
+                whileHover={{ 
+                  color: windowWidth <= 768 ? "#3B82F6" : 
+                    document.documentElement.classList.contains('lofi') ? "#C084FC" :
+                    document.documentElement.classList.contains('nature') ? "#86EFAC" :
+                    document.documentElement.classList.contains('rain') ? "#93C5FD" :
+                    document.documentElement.classList.contains('ocean') ? "#67E8F9" :
+                    document.documentElement.classList.contains('forest') ? "#FCD34D" :
+                    document.documentElement.classList.contains('cafe') ? "#FDBA74" : "#3B82F6"
+                }}
               >
                 {project.title}
               </motion.h3>
@@ -453,7 +476,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 {project.technologies.map((tech, techIndex) => (
                   <motion.span
                     key={tech}
-                    className="px-2 sm:px-3 py-1 text-xs font-medium bg-white/20 dark:bg-black/40 text-white dark:text-foreground rounded-full backdrop-blur-sm"
+                    className="px-2 sm:px-3 py-1 text-xs font-medium bg-white/20 dark:bg-black/40 text-white dark:text-foreground lofi:bg-purple-500/30 lofi:text-purple-100 nature:bg-green-500/30 nature:text-green-100 rain:bg-blue-500/30 rain:text-blue-100 ocean:bg-cyan-500/30 ocean:text-cyan-100 forest:bg-amber-500/30 forest:text-amber-100 cafe:bg-orange-500/30 cafe:text-orange-100 rounded-full backdrop-blur-sm"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ 
@@ -462,9 +485,21 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                     }}
                     whileHover={{ 
                       scale: 1.1,
-                      backgroundColor: "#DBEAFE",
+                      backgroundColor: windowWidth <= 768 ? "#DBEAFE" :
+                        document.documentElement.classList.contains('lofi') ? "#E9D5FF" :
+                        document.documentElement.classList.contains('nature') ? "#DCFCE7" :
+                        document.documentElement.classList.contains('rain') ? "#DBEAFE" :
+                        document.documentElement.classList.contains('ocean') ? "#CFFAFE" :
+                        document.documentElement.classList.contains('forest') ? "#FEF3C7" :
+                        document.documentElement.classList.contains('cafe') ? "#FED7AA" : "#DBEAFE",
                       border: "none",
-                      color: "#1F2937",
+                      color: windowWidth <= 768 ? "#1F2937" :
+                        document.documentElement.classList.contains('lofi') ? "#581C87" :
+                        document.documentElement.classList.contains('nature') ? "#166534" :
+                        document.documentElement.classList.contains('rain') ? "#1E40AF" :
+                        document.documentElement.classList.contains('ocean') ? "#0E7490" :
+                        document.documentElement.classList.contains('forest') ? "#92400E" :
+                        document.documentElement.classList.contains('cafe') ? "#C2410C" : "#1F2937",
                     }}
                   >
                     {tech}
@@ -477,7 +512,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
           {/* Hover Glow Effect - Only for center card */}
           {isCenter && (
             <motion.div
-              className="absolute backdrop-blur-md bg-black/50 dark:bg-background/80 inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl"
+              className="absolute backdrop-blur-md bg-black/50 dark:bg-background/80 inset-0 bg-gradient-to-r from-primary/5 to-accent/5 lofi:from-purple-500/10 lofi:to-purple-600/10 nature:from-green-500/10 nature:to-green-600/10 rain:from-blue-500/10 rain:to-blue-600/10 ocean:from-cyan-500/10 ocean:to-cyan-600/10 forest:from-amber-500/10 forest:to-amber-600/10 cafe:from-orange-500/10 cafe:to-orange-600/10 rounded-xl"
               animate={{
                 opacity: windowWidth <= 768 ? 0.3 : (isHovered ? 1 : 0),
               }}
