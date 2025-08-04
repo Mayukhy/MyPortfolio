@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Youtube } from "lucide-react"
 import { useDrag } from "@use-gesture/react"
 import { useSounds } from "@/hooks/useSounds"
 import { randomCanvasData } from "@/data/data"
@@ -12,74 +12,94 @@ import { useTheme } from "../theme/ThemeProvider"
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with Next.js, featuring real-time inventory management, secure payments, and responsive design.",
-    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "Das Entertainment",
+    description: "A Movie and TV show streaming platform with movie details and ratings.",
+    image: "/projects/movie.png",
+    technologies: ["React", "JavaScript", "SCSS", "TMDB API"],
+    liveUrl: "https://dasentertainment.netlify.app",
+    githubUrl: "https://github.com/Mayukhy/Movieapp-Das-Entertainment-using-React-Redux",
     featured: true,
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+    title: "Tv Experience",
+    description: "A tv play app with channels, drag-and-drop functionality for channels categories",
+    image: "/projects/tv.png",
+    technologies: ["React", "Node.js", "Material UI", "Tailwind CSS"],
+    liveUrl: "https://tv-remote-channels.netlify.app",
+    githubUrl: "https://github.com/Mayukhy/React-Real-TV-experiance",
+    featured: true
   },
   {
     id: 3,
     title: "Portfolio Website",
     description: "A creative portfolio website showcasing projects with smooth animations and modern design principles.",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/projects/portfolio.png",
+    technologies: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS", "GSAP"],
+    liveUrl: "https://mayukh-das.vercel.app",
+    githubUrl: "https://github.com/Mayukhy/Portfolio-Website",
     featured: false,
   },
   {
     id: 4,
-    title: "Weather Dashboard",
-    description: "A weather dashboard with interactive maps, detailed forecasts, and location-based weather information.",
-    image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "OpenWeather API", "Chart.js", "CSS Grid"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "Google Form Clone",
+    description: "A google form clone with google form features.",
+    image: "/projects/gform.png",
+    technologies: ["React", "Node.js", "JavaScript", "Material UI", "MERN Stack"],
+    liveUrl: "https://googleformclonemayukh.netlify.app",
+    githubUrl: "https://github.com/Mayukhy/Google-Form-clone",
     featured: false,
   },
   {
     id: 5,
-    title: "Social Media Clone",
-    description: "A social media platform with user authentication, real-time messaging, and content sharing capabilities.",
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "Firebase", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "Media Connect",
+    description: "A social media platform with user authentication, and content sharing capabilities.",
+    image: "/projects/media.png",
+    technologies: ["React", "Sanity", "Tailwind CSS"],
+    liveUrl: "https://mediaconnect2023.netlify.app",
+    githubUrl: "https://github.com/Mayukhy/MediaConnect-Full-Stack-Media-Application",
     featured: false,
   },
   {
     id: 6,
-    title: "AI Chat Application",
-    description: "An AI-powered chat application with natural language processing and intelligent response generation.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "OpenAI API", "Node.js", "WebSocket"],
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "EHS Ecommerce",
+    description: "Designed and developed a client-designer interaction workflow, enabling clients to collaborate with designers more effectively, in real time",
+    image: "/projects/ehs.jpg",
+    technologies: ["MERN", "WebSocket", "Socket.io", "Tailwind CSS", "Material UI"],
+    liveUrl: "https://stencii.com",
+    githubUrl: "https://github.com/ehsprints21",
     featured: false,
+    asociatedWith: ["EHS Paints", "EHS Prints"],
   },
   {
     id: 7,
     title: "YT AI Application",
     description: "An AI-powered Video/ Studio with AI companion intelligent response generation.",
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "OpenAI API", "Node.js", "WebSocket"],
-    liveUrl: "#",
-    githubUrl: "#",
+    image: "/projects/aiyt.jpg",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Replicate", "NeonDB", "Postgres", "Node.js", "MUX"],
+    demoVideo: "https://www.loom.com/share/0c036366aedf4c4caacce0ceaaac3702?sid=ea331188-23f2-431b-89ba-9d5fc808bbbf",
     featured: false,
   },
+  {
+    id: 8,
+    title: "Escentric Molecules",
+    description: "A Shopify store with a custom theme for client's perfumery brand business.",
+    image: "/projects/esm.png",
+    technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
+    liveUrl: "https://www.escentric.com",
+    featured: false,
+    asociatedWith: ["Tech Mahindra", "TechM"],
+  },
+  {
+    id: 9,
+    title: "Jewells",
+    description: "A Shopify store with a custom theme for client's jewellery business.",
+    image: "/projects/jewells.png",
+    technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
+    liveUrl: "https://jewells.com",
+    featured: false,
+    asociatedWith: ["Tech Mahindra", "TechM"],
+  }
 ]
 
 const CARD_WIDTH = 400
@@ -88,7 +108,7 @@ const SWIPE_THRESHOLD = 120
 const MAX_DRAG = 120
 const TAB_CARD_WIDTH = 280
 // Mobile responsive constants
-const MOBILE_CARD_WIDTH = 180
+const MOBILE_CARD_WIDTH = 230
 const MOBILE_CARD_GAP = 20
 
 const containerVariants = {
@@ -204,7 +224,7 @@ export default function ProjectsSection() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="w-full md:min-h-[600px] min-h-[400px] overflow-hidden flex items-center justify-center relative"
+            className="w-full md:min-h-[600px] min-h-[420px] overflow-hidden flex items-center justify-center relative"
             style={{ y: carouselY }}
           >
           <div
@@ -265,7 +285,7 @@ export default function ProjectsSection() {
                   className="absolute bg-card rounded-xl shadow-xl overflow-hidden"
                   style={{
                     width: `${cardWidth}px`,
-                    height: windowWidth < 650 ? "250px" : windowWidth < 1024 ? "350px" : "450px",
+                    height: windowWidth < 650 ? "300px" : windowWidth < 1024 ? "350px" : "450px",
                     transform,
                     transformStyle: "preserve-3d",
                     cursor: "grab",
@@ -296,7 +316,7 @@ export default function ProjectsSection() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="flex justify-center items-center space-x-2 mt-4 md:mt-8"
+            className="flex justify-center items-center space-x-2 md:mt-8"
           >
             {projects.map((_, i) => (
               <motion.button
@@ -327,9 +347,11 @@ interface ProjectCardProps {
     description: string
     image: string
     technologies: string[]
-    liveUrl: string
-    githubUrl: string
+    liveUrl?: string
+    githubUrl?: string
     featured: boolean
+    asociatedWith?: string[]
+    demoVideo?: string
   }
   index: number
   isCenter: boolean
@@ -340,6 +362,7 @@ interface ProjectCardProps {
 function ProjectCard({ project, index, isCenter, windowWidth, isClient }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const { playHover, playClick } = useSounds()
+  const { isMobile } = useTheme()
 
   return (
     <motion.div
@@ -404,7 +427,7 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <motion.a
+              {project.liveUrl && <motion.a
                 href={project.liveUrl}
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -414,8 +437,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 aria-label="View live project"
               >
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-              </motion.a>
-              <motion.a
+              </motion.a>}
+              {project.githubUrl && <motion.a
                 href={project.githubUrl}
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: -5 }}
@@ -425,8 +448,23 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 aria-label="View source code"
               >
                 <Github className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-              </motion.a>
+              </motion.a>}
+              {project.demoVideo && (
+                <motion.a
+                href={project.demoVideo}
+                target="_blank"
+                className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+                onHoverStart={playHover}
+                onClick={playClick}
+                aria-label="View demo video"
+                >
+                  <Youtube className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                </motion.a>
+              )}
             </motion.div>
+            
           )}
 
           {/* Content Overlay - Only for center card */}
@@ -520,6 +558,41 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               >
                 {project.description}
               </motion.p>
+
+              {/* Associated With Badge */}
+              {project.asociatedWith && (
+                <motion.div
+                  className="mb-3 sm:mb-4 relative z-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.15 }}
+                >
+                  <motion.div
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 dark:from-emerald-400/40 dark:to-teal-400/40 backdrop-blur-md rounded-full"
+                    whileHover={{ 
+                      scale: 1.05,
+
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div
+                      className="w-2 h-2 sm:w-3 sm:h-3 bg-emerald-400 rounded-full"
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        opacity: [0.7, 1, 0.7]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    <span className="text-xs sm:text-sm font-semibold text-emerald-100 dark:text-emerald-200">
+                      Associated with  { isMobile ? project.asociatedWith[1] : project.asociatedWith[0]}
+                    </span>
+                  </motion.div>
+                </motion.div>
+              )}
 
               {/* Technologies */}
               <motion.div

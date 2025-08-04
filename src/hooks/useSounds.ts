@@ -73,6 +73,11 @@ export const useSounds = () => {
     setSoundsEnabled(soundManager.getSoundsEnabled())
   }, [])
 
+  const soundsOn = useCallback(() => {
+    soundManager.soundsOn()
+    setSoundsEnabled(soundManager.getSoundsEnabled())
+  }, [])
+
   return {
     playClick,
     playHover,
@@ -85,6 +90,7 @@ export const useSounds = () => {
     playThemeChange,
     playMusicSelect,
     toggleSounds,
-    soundsEnabled
+    soundsEnabled,
+    soundsOn
   }
 } 
