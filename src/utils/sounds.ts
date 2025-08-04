@@ -16,6 +16,10 @@ class SoundManager {
     // localStorage.setItem('sounds-enabled', this.isEnabled.toString())
   }
 
+  soundsOn() {
+    this.isEnabled = true
+  }
+
   setSoundsEnabled(enabled: boolean) {
     this.isEnabled = enabled
     // localStorage.setItem('sounds-enabled', enabled.toString())

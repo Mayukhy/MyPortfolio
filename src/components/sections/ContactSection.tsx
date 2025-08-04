@@ -11,27 +11,27 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@example.com",
-    href: "mailto:hello@example.com",
+    value: "dasmayukh2019@gmail.com",
+    href: "mailto:dasmayukh2019@gmail.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+91 8420636379",
+    href: "tel:+918420636379",
   },
   {
     icon: MapPin,
     title: "Location",
-    value: "San Francisco, CA",
-    href: "#",
+    value: "Kolkata, India",
+    href: "",
   },
 ]
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/Mayukhy", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mayukh-das-536185238", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/MayukhDas_2000", label: "Twitter" },
 ]
 
 const containerVariants = {

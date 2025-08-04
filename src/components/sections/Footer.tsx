@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 import { Github, Linkedin, Twitter, Heart } from "lucide-react"
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/Mayukhy", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mayukh-das-536185238", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/MayukhDas_2000", label: "Twitter" },
 ]
 
 export default function Footer() {

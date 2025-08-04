@@ -3,17 +3,18 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Code, Palette, Zap, Globe } from "lucide-react"
+import { Code, Palette, Zap, Globe, Droplet } from "lucide-react"
 import { randomCanvasData } from "@/data/data"
 import Canvas from "../ui/Canvas"
 import { useTheme } from "../theme/ThemeProvider"
 
 const skills = [
+  { name: "Shopify Liquid", level: 80, icon: Droplet },
   { name: "React", level: 90, icon: Code },
   { name: "TypeScript", level: 85, icon: Code },
   { name: "Next.js", level: 88, icon: Zap },
-  { name: "Tailwind CSS", level: 92, icon: Palette },
-  { name: "Framer Motion", level: 80, icon: Zap },
+  { name: "Tailwind CSS", level: 90, icon: Palette },
+  { name: "Framer Motion", level: 65, icon: Zap },
   { name: "Node.js", level: 75, icon: Globe },
 ]
 
