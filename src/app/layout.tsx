@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import CustomCursor from '@/components/ui/CustomCursor'
 import { Analytics } from '@vercel/analytics/react'
+import { Toaster } from '@/components/ui/toaster'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({
           <CustomCursor />
           {children}
           <Analytics />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
