@@ -11,44 +11,44 @@ import { useTheme } from "../theme/ThemeProvider"
 const achievements = [
   {
     icon: Trophy,
-    title: "Best Developer Award",
-    description: "Recognized as the top developer in the 2023 Tech Innovation Challenge",
-    year: "2023",
+    title: "Bravo Award (2x)",
+    description: "Recognized as the top developer in the 2025 Tech Innovation Challenge",
+    year: "2025",
     category: "Recognition"
   },
   {
     icon: Users,
-    title: "10K+ Happy Clients",
+    title: "50+ Happy Clients",
     description: "Successfully delivered projects for over 10,000 satisfied clients worldwide",
-    year: "2023",
+    year: "2024-2025",
     category: "Client Success"
   },
   {
     icon: Code,
-    title: "100+ Projects Completed",
+    title: "20+ Projects Completed",
     description: "Successfully completed over 100 diverse projects across various technologies",
-    year: "2023",
+    year: "2024-2025",
     category: "Project Milestone"
   },
   {
     icon: TrendingUp,
     title: "95% Client Satisfaction",
     description: "Maintained exceptional client satisfaction rate across all projects",
-    year: "2023",
+    year: "2025",
     category: "Quality"
   },
   {
     icon: Target,
-    title: "50+ Technologies Mastered",
+    title: "12+ Technologies Mastered",
     description: "Proficient in over 50 different technologies and frameworks",
-    year: "2023",
+    year: "2025",
     category: "Skills"
   },
   {
     icon: Zap,
     title: "24/7 Support Excellence",
     description: "Provided round-the-clock support with 99.9% uptime guarantee",
-    year: "2023",
+    year: "2025",
     category: "Service"
   }
 ]
@@ -198,10 +198,10 @@ export default function AchievementsSection() {
           className=" grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8"
         >
           {[
-            { number: "100+", label: "Projects", icon: Code },
-            { number: "10K+", label: "Clients", icon: Users },
+            { number: "20+", label: "Projects", icon: Code },
+            { number: "50+", label: "Clients", icon: Users },
             { number: "95%", label: "Satisfaction", icon: Star },
-            { number: "50+", label: "Technologies", icon: Zap }
+            { number: "12+", label: "Technologies", icon: Zap }
           ].map((stat, index) => (
             <motion.div
               key={index}

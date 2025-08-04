@@ -17,14 +17,14 @@ const floatingElements = [
 ]
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/Mayukhy", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mayukh-das-536185238", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/MayukhDas_2000", label: "Twitter" },
 ]
 
 export default function HeroSection() {
-  const { playHover, playClick } = useSounds()
-  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning, soundsEnabled} = useTheme()
+  const { playHover, playClick, soundsOn } = useSounds()
+  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning, soundsEnabled, setSoundsEnabled} = useTheme()
   const growingSpan = useRef(null)
   const headingref = useRef(null)
   
@@ -59,7 +59,8 @@ export default function HeroSection() {
       if(!isEmojisphereActive) {
         setTheme("dark-red")
         setCurrentMusic({name: "Emoji Sphere", src: "/audios/symphony2.mp3", icon: "🎉"})
-        setIsPlaying(true)
+        soundsOn()
+        setSoundsEnabled(true)
       } else {
         setTheme("light")
         if(!soundsEnabled) {
@@ -175,14 +176,14 @@ export default function HeroSection() {
 
           {/* Description */}
           <motion.p
-            className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            className="text-xl flex flex-col gap-2 sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             Crafting digital experiences with modern technologies and creative design.
             <br />
-            <span className="text-primary font-medium">React • Next.js • TypeScript • Framer Motion</span>
+            <span className="text-primary font-medium">Shopify • React • Next.js • TypeScript</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -204,14 +205,15 @@ export default function HeroSection() {
             </motion.a>
             
             <motion.a
-              href="#contact"
+              href="/cv.pdf"
+              target="_blank"
               className={`px-8 py-4 dark:text-white border-2 border-border text-foreground rounded-full font-semibold hover:bg-muted transition-all duration-300 focus-ring`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onHoverStart={playHover}
               onClick={playClick}
             >
-              Get In Touch
+              Download CV
             </motion.a>
           </motion.div>
 
