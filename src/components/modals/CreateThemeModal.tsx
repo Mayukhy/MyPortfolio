@@ -29,6 +29,7 @@ export default function CreateThemeModal({
     setTheme,
     setCurrentMusic,
     setIsPlaying,
+    setIsEmojisphereActive
   } = useTheme();
   const { playButtonPress, playClick } = useSounds();
   const { toast } = useToast();
@@ -115,6 +116,7 @@ export default function CreateThemeModal({
 
   const handleTheme = () => {
     if (createThemeData.id) {
+      setIsEmojisphereActive(false)
       updateTheme();
     } else {
       CreateNewTheme();

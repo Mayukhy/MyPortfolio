@@ -15,7 +15,7 @@ interface MusicSelectionModalProps {
 }
 
 export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, onEditTheme }: MusicSelectionModalProps) {
-  const { themeList, currentMusic, setCurrentMusic, setIsPlaying, setTheme } = useTheme()
+  const { themeList, currentMusic, setCurrentMusic, setIsPlaying, setTheme, setIsEmojisphereActive } = useTheme()
   const { playMusicSelect, playClick } = useSounds()
   const [showTopFade, setShowTopFade] = useState(false)
   const [showBottomFade, setShowBottomFade] = useState(true)
@@ -28,6 +28,7 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
   }, [])
 
   const handleMusicSelect = (music: any) => {
+    setIsEmojisphereActive(false)
     const isActive = currentMusic?.name === music.name
     
     if (!isActive ) {
@@ -39,6 +40,7 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
       playClick()
       setIsPlaying(false)
       setCurrentMusic(null)
+      setTheme("light")
     }
     onClose()
   }

@@ -1,8 +1,11 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef, useState } from "react"
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react"
+import Canvas from "../ui/Canvas"
+import { randomCanvasData } from "@/data/data"
+import { useTheme } from "../theme/ThemeProvider"
 
 const contactInfo = [
   {
@@ -61,6 +64,17 @@ export default function ContactSection() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const { isEmojisphereActive, isMobile } = useTheme()
+  // Parallax effects
+  const contactRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: contactRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const formY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const infoY = useTransform(scrollYProgress, [0, 1], [0, -150])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,7 +96,13 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
+    <section ref={contactRef} id="contact" className="section-padding relative overflow-hidden">
+      {/* Emojisphere Component */}
+      { isEmojisphereActive && !isMobile && randomCanvasData[5].map((canvasDetails, index) => (
+        <div key={`contact-${index}`} className="z-30">
+          <Canvas details={canvasDetails} />
+        </div>
+      ))}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -90,6 +110,7 @@ export default function ContactSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="text-center mb-16"
+          style={{ y: headerY }}
         >
           <motion.h2
             className="text-4xl sm:text-5xl font-bold mb-4"
@@ -110,6 +131,7 @@ export default function ContactSection() {
           <motion.div
             variants={itemVariants}
             className="space-y-6"
+            style={{ y: formY }}
           >
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
             
@@ -199,6 +221,7 @@ export default function ContactSection() {
           <motion.div
             variants={itemVariants}
             className="space-y-8"
+            style={{ y: infoY }}
           >
             <div>
               <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>

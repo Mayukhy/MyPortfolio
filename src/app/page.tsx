@@ -7,6 +7,7 @@ import HeroSection from "@/components/sections/HeroSection"
 import AboutSection from "@/components/sections/AboutSection"
 import ProjectsSection from "@/components/sections/ProjectsSection"
 import TestimonialSection from "@/components/sections/TestimonialSection"
+import AchievementsSection from "@/components/sections/AchievementsSection"
 import ContactSection from "@/components/sections/ContactSection"
 import Footer from "@/components/sections/Footer"
 import LoadingScreen from "@/components/LoadingScreen"
@@ -65,7 +66,7 @@ const sectionVariants = {
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
-  const { currentMusic, audioRef } = useTheme()
+  const { currentMusic, audioRef, soundsEnabled } = useTheme()
   useEffect(() => {
     // Simulate page load time
     const timer = setTimeout(() => {
@@ -74,7 +75,7 @@ export default function Home() {
 
     return () => clearTimeout(timer)
   }, [])
-
+  
   return (
     <>
       <AnimatePresence mode="wait">
@@ -82,7 +83,7 @@ export default function Home() {
       </AnimatePresence>
       <AnimatePresence mode="wait">
         {currentMusic && (
-          <audio ref={audioRef} src={currentMusic.src} loop />
+          <audio ref={audioRef} src={currentMusic.src} autoPlay muted={!soundsEnabled} loop />
         )}
         {!isLoading && (
           <motion.div
@@ -114,6 +115,10 @@ export default function Home() {
               
               <motion.div variants={sectionVariants}>
                 <TestimonialSection />
+              </motion.div>
+              
+              <motion.div variants={sectionVariants}>
+                <AchievementsSection />
               </motion.div>
               
               <motion.div variants={sectionVariants}>
