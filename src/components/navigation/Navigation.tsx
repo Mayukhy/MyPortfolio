@@ -7,15 +7,7 @@ import { Sun, Moon, Menu, X, AudioLines, HeadphoneOff, Volume2, VolumeX } from "
 import { useSounds } from "@/hooks/useSounds"
 import MusicSelectionModal from "@/components/modals/MusicSelectionModal"
 import CreateThemeModal from "@/components/modals/CreateThemeModal"
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Achievements", href: "#achievements" },
-  { name: "Contact", href: "#contact" },
-]
+import { navItems } from "@/constants"
 
 // Animation variants for navigation items
 const navItemVariants = {
@@ -142,43 +134,45 @@ export default function Navigation() {
               </motion.a>
             ))}
           </div>
-          {/* Theme music toggle */}
-          <motion.button
-              onClick={toggleThemeMusic}
-              className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors focus-ring"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.6 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle theme music"
-            >
-              <AnimatePresence mode="wait">
-                {isPlaying ? (
-                  <motion.div
-                    key="playing-waveform"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <AudioLines className="w-5 h-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="pause-waveform"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <HeadphoneOff className="w-5 h-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-          </motion.button>
+
           {/* Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            {/* Theme music toggle */}
+            <motion.button
+                onClick={toggleThemeMusic}
+                className="p-2 rounded-full bg-muted hover:bg-muted/80 transition-colors focus-ring"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Toggle theme music"
+              >
+                <AnimatePresence mode="wait">
+                  {isPlaying ? (
+                    <motion.div
+                      key="playing-waveform"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <AudioLines className="w-5 h-5" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="pause-waveform"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HeadphoneOff className="w-5 h-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+            </motion.button>
+
             {/* Sound Toggle */}
             <motion.button
               onClick={toggleSounds}

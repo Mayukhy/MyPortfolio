@@ -8,99 +8,7 @@ import { useSounds } from "@/hooks/useSounds"
 import { randomCanvasData } from "@/data/data"
 import Canvas from "../ui/Canvas"
 import { useTheme } from "../theme/ThemeProvider"
-
-const projects = [
-  {
-    id: 1,
-    title: "Das Entertainment",
-    description: "A Movie and TV show streaming platform with movie details and ratings.",
-    image: "/projects/movie.png",
-    technologies: ["React", "JavaScript", "SCSS", "TMDB API"],
-    liveUrl: "https://dasentertainment.netlify.app",
-    githubUrl: "https://github.com/Mayukhy/Movieapp-Das-Entertainment-using-React-Redux",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Tv Experience",
-    description: "A tv play app with channels, drag-and-drop functionality for channels categories",
-    image: "/projects/tv.png",
-    technologies: ["React", "Node.js", "Material UI", "Tailwind CSS"],
-    liveUrl: "https://tv-remote-channels.netlify.app",
-    githubUrl: "https://github.com/Mayukhy/React-Real-TV-experiance",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description: "A creative portfolio website showcasing projects with smooth animations and modern design principles.",
-    image: "/projects/portfolio.png",
-    technologies: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS", "GSAP"],
-    liveUrl: "https://mayukh-das.vercel.app",
-    githubUrl: "https://github.com/Mayukhy/Portfolio-Website",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Google Form Clone",
-    description: "A google form clone with google form features.",
-    image: "/projects/gform.png",
-    technologies: ["React", "Node.js", "JavaScript", "Material UI", "MERN Stack"],
-    liveUrl: "https://googleformclonemayukh.netlify.app",
-    githubUrl: "https://github.com/Mayukhy/Google-Form-clone",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Media Connect",
-    description: "A social media platform with user authentication, and content sharing capabilities.",
-    image: "/projects/media.png",
-    technologies: ["React", "Sanity", "Tailwind CSS"],
-    liveUrl: "https://mediaconnect2023.netlify.app",
-    githubUrl: "https://github.com/Mayukhy/MediaConnect-Full-Stack-Media-Application",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "EHS Ecommerce",
-    description: "Designed and developed a client-designer interaction workflow, enabling clients to collaborate with designers more effectively, in real time",
-    image: "/projects/ehs.jpg",
-    technologies: ["MERN", "WebSocket", "Socket.io", "Tailwind CSS", "Material UI"],
-    liveUrl: "https://stencii.com",
-    githubUrl: "https://github.com/ehsprints21",
-    featured: false,
-    asociatedWith: ["EHS Paints", "EHS Prints"],
-  },
-  {
-    id: 7,
-    title: "YT AI Application",
-    description: "An AI-powered Video/ Studio with AI companion intelligent response generation.",
-    image: "/projects/aiyt.jpg",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Replicate", "NeonDB", "Postgres", "Node.js", "MUX"],
-    demoVideo: "https://www.loom.com/share/0c036366aedf4c4caacce0ceaaac3702?sid=ea331188-23f2-431b-89ba-9d5fc808bbbf",
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "Escentric Molecules",
-    description: "A Shopify store with a custom theme for client's perfumery brand business.",
-    image: "/projects/esm.png",
-    technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
-    liveUrl: "https://www.escentric.com",
-    featured: false,
-    asociatedWith: ["Tech Mahindra", "TechM"],
-  },
-  {
-    id: 9,
-    title: "Jewells",
-    description: "A Shopify store with a custom theme for client's jewellery business.",
-    image: "/projects/jewells.png",
-    technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
-    liveUrl: "https://jewells.com",
-    featured: false,
-    asociatedWith: ["Tech Mahindra", "TechM"],
-  }
-]
+import { filterTags, projects } from "@/constants"
 
 const CARD_WIDTH = 400
 const CARD_GAP = 40
@@ -132,17 +40,188 @@ const itemVariants = {
   },
 }
 
+// New Project Card Grid Component
+function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: boolean }) {
+  const { playHover, playClick } = useSounds()
+  const { isMobile } = useTheme()
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mx-[16px] md:mx-0 mt-14"
+    >
+      {projects.map((project, index) => (
+        <motion.div
+          key={project.id}
+          variants={itemVariants}
+          className="group relative"
+          // whileHover={{ y: -8 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <div className="relative bg-card hover:translate-y-[-8px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border/50 hover:border-primary/30">
+            {/* Image Container */}
+            <div className="relative h-48 md:h-56 overflow-hidden">
+              <motion.img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.4 }}
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            </div>
+
+            {/* Content */}
+            <div className="p-6">
+              {/* Title */}
+              <motion.h3
+                className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                {project.title}
+              </motion.h3>
+
+              {/* Description */}
+              <motion.p
+                className="text-muted-foreground mb-4 text-sm leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.1 }}
+              >
+                {project.description}
+              </motion.p>
+
+              {/* Action Buttons */}
+              <div className="relative flex gap-2 mb-3 duration-300 z-30">
+                {project.liveUrl && (
+                  <motion.a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onHoverStart={playHover}
+                    onClick={playClick}
+                  >
+                    <ExternalLink className="w-4 h-4 light:text-black light:bg-black" />
+                  </motion.a>
+                )}
+                {project.githubUrl && (
+                  <motion.a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onHoverStart={playHover}
+                    onClick={playClick}
+                  >
+                    <Github className="w-4 h-4 light:text-black light:bg-black" />
+                  </motion.a>
+                )}
+                {project.demoVideo && (
+                  <motion.a
+                    href={project.demoVideo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onHoverStart={playHover}
+                    onClick={playClick}
+                  >
+                    <Youtube className="w-4 h-4 light:text-black light:bg-black" />
+                  </motion.a>
+                )}
+              </div>
+
+              {/* Associated With Badge */}
+              {project.asociatedWith && (
+                <motion.div
+                  className="mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.15 }}
+                >
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                    <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                      Associated with {isMobile ? project.asociatedWith[1] : project.asociatedWith[0]}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Technologies */}
+              <motion.div
+                className="flex flex-wrap gap-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.2 }}
+              >
+                {project.technologies.map((tech: string, techIndex: number) => (
+                  <motion.span
+                    key={tech}
+                    className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ 
+                      delay: index * 0.1 + 0.2 + techIndex * 0.05,
+                      duration: 0.3 
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      backgroundColor: "hsl(var(--primary))",
+                      color: "hsl(var(--primary-foreground))"
+                    }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Hover Glow Effect */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              initial={false}
+            />
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  )
+}
+
 export default function ProjectsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [index, setIndex] = useState(2)
   const [isDragging, setIsDragging] = useState(false)
+  const [currentTag, setCurrentTag] = useState("All")
   const [dragX, setDragX] = useState(0)
   const hasSwipedRef = useRef(false)
   const [windowWidth, setWindowWidth] = useState(1024) // Default desktop width
   const [mounted, setMounted] = useState(false)
   const { playCardFlip, playHover, playClick } = useSounds()
   const {isEmojisphereActive, isMobile} = useTheme()
+
+  const filteredProjects = projects.filter(project => {
+    if (currentTag === "All") return true
+    return project.technologies.includes(currentTag)
+  })
+
+  const handleTagClick = (tag: string) => {
+    setCurrentTag(tag)
+  }
+
   
   // Parallax effects
   const projectsRef = useRef<HTMLElement>(null)
@@ -214,111 +293,124 @@ export default function ProjectsSection() {
           </p>
         </motion.div>
 
-        {/* 3D Carousel */}
+        <div className="flex flex-wrap gap-2 md:px-0 px-[16px] justify-center items-center space-x-2 mb-4">
+          {filterTags.map((tag) => (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onHoverStart={playHover}
+              onTapStart={playClick}
+            key={tag} onClick={() => handleTagClick(tag)} className={`px-4 py-2 rounded-full md:text-base text-sm z-30 ${currentTag === tag ? "bg-primary text-white dark:text-black cyberpunk:text-black" : "bg-muted text-muted-foreground"}`}>
+              {tag}
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Conditional Rendering */}
         {!mounted ? (
           <div className="w-full md:min-h-[600px] min-h-[400px] flex items-center justify-center">
             <div className="text-muted-foreground">Loading projects...</div>
           </div>
-        ) : (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="w-full md:min-h-[600px] min-h-[420px] overflow-hidden flex items-center justify-center relative"
-            style={{ y: carouselY }}
-          >
-          <div
-            className="w-full h-full flex items-center justify-center"
-            {...bind()}
-          >
-            {projects.map((project, i) => {
-              const offset = mod(i - index, projects.length)
-              const isLeft = offset > projects.length / 2
-              const visualOffset = isLeft ? offset - projects.length : offset
-              const isCenter = visualOffset === 0
+        ) : currentTag === "All" ? (
+          // 3D Carousel for "All" tag
+          <>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="w-full md:mt-10 mt-14 md:min-h-[600px] min-h-[420px] overflow-hidden flex items-center justify-center relative"
+              style={{ y: carouselY }}
+            >
+            <div
+              className="w-full h-full flex items-center justify-center"
+              {...bind()}
+            >
+              {filteredProjects.map((project, i) => {
+                const offset = mod(i - index, filteredProjects.length)
+                const isLeft = offset > filteredProjects.length / 2
+                const visualOffset = isLeft ? offset - projects.length : offset
+                const isCenter = visualOffset === 0
 
-              const zIndex = 1000 - Math.abs(visualOffset)
-              
-              const scaleMap: Record<string, number> = {
-                "-3": 0.7,
-                "-2": 0.75,
-                "-1": 0.8,
-                "0": isDragging ? 1.05 : 1,
-                "1": 0.8,
-                "2": 0.75,
-                "3": 0.7,
-              }
+                const zIndex = 1000 - Math.abs(visualOffset)
+                
+                const scaleMap: Record<string, number> = {
+                  "-3": 0.7,
+                  "-2": 0.75,
+                  "-1": 0.8,
+                  "0": isDragging ? 1.05 : 1,
+                  "1": 0.8,
+                  "2": 0.75,
+                  "3": 0.7,
+                }
 
-              const scale = scaleMap[String(visualOffset)] ?? 0.5
+                const scale = scaleMap[String(visualOffset)] ?? 0.5
 
-              // Define transform maps - adjusted for mobile
-              const offsetMap: Record<string, { x: number; z: number; rotate: number }> = {
-                "-3": { x: -80, z: -60, rotate: 45 },
-                "-2": { x: -50, z: -40, rotate: 30 },
-                "-1": { x: -25, z: -20, rotate: 15 },
-                "0": { x: 0, z: 0, rotate: 0 },
-                "1": { x: 25, z: -20, rotate: -15 },
-                "2": { x: 50, z: -40, rotate: -30 },
-                "3": { x: 80, z: -60, rotate: -45 },
-              }
+                // Define transform maps - adjusted for mobile
+                const offsetMap: Record<string, { x: number; z: number; rotate: number }> = {
+                  "-3": { x: -80, z: -60, rotate: 45 },
+                  "-2": { x: -50, z: -40, rotate: 30 },
+                  "-1": { x: -25, z: -20, rotate: 15 },
+                  "0": { x: 0, z: 0, rotate: 0 },
+                  "1": { x: 25, z: -20, rotate: -15 },
+                  "2": { x: 50, z: -40, rotate: -30 },
+                  "3": { x: 80, z: -60, rotate: -45 },
+                }
 
-              const key = String(visualOffset)
-              const transformValues = offsetMap[key] || { x: 150 * visualOffset, z: -60, rotate: visualOffset < 0 ? 60 : -60 }
-              
-              // Responsive card width
-              const cardWidth = windowWidth < 649 ? MOBILE_CARD_WIDTH : windowWidth < 990 ? TAB_CARD_WIDTH : CARD_WIDTH
-              const cardGap = windowWidth <= 768 ? MOBILE_CARD_GAP : CARD_GAP
-              const x = isCenter
-                ? dragX
-                : visualOffset * (cardWidth * 0.3 + cardGap * 0.1)
-              const translateX = isCenter ? dragX : transformValues.x
-              const translateZ = transformValues.z
-              const rotateY = transformValues.rotate
+                const key = String(visualOffset)
+                const transformValues = offsetMap[key] || { x: 150 * visualOffset, z: -60, rotate: visualOffset < 0 ? 60 : -60 }
+                
+                // Responsive card width
+                const cardWidth = windowWidth < 649 ? MOBILE_CARD_WIDTH : windowWidth < 990 ? TAB_CARD_WIDTH : CARD_WIDTH
+                const cardGap = windowWidth <= 768 ? MOBILE_CARD_GAP : CARD_GAP
+                const x = isCenter
+                  ? dragX
+                  : visualOffset * (cardWidth * 0.3 + cardGap * 0.1)
+                const translateX = isCenter ? dragX : transformValues.x
+                const translateZ = transformValues.z
+                const rotateY = transformValues.rotate
 
-              const transform = `translate3d(${translateX}%, 0, ${translateZ}px) rotateY(${rotateY}deg)`
+                const transform = `translate3d(${translateX}%, 0, ${translateZ}px) rotateY(${rotateY}deg)`
 
-              return (
-                <motion.div
-                  key={project.id}
-                  animate={{ x, scale, zIndex, rotateY }}
-                  transition={{ type: "spring", stiffness: 150, damping: 25 }}
-                  className="absolute bg-card rounded-xl shadow-xl overflow-hidden"
-                  style={{
-                    width: `${cardWidth}px`,
-                    height: windowWidth < 650 ? "300px" : windowWidth < 1024 ? "350px" : "450px",
-                    transform,
-                    transformStyle: "preserve-3d",
-                    cursor: "grab",
-                    boxShadow:
-                      isCenter && isDragging
-                        ? "0 15px 40px rgba(0,0,0,0.2)"
-                        : "0 8px 20px rgba(0,0,0,0.1)",
-                    opacity: scale < 0.5 ? 0 : 1,
-                  }}
-                  onClick={() => {
-                    if (!isDragging && !isCenter) {
-                      playCardFlip()
-                      setIndex(i)
-                    }
-                  }}
-                >
-                  <ProjectCard project={project} index={i} isCenter={isCenter} windowWidth={windowWidth} isClient={mounted} />
-                </motion.div>
-              )
-            })}
-          </div>
-        </motion.div>
-        )}
+                return (
+                  <motion.div
+                    key={project.id}
+                    animate={{ x, scale, zIndex, rotateY }}
+                    transition={{ type: "spring", stiffness: 150, damping: 25 }}
+                    className="absolute bg-card rounded-xl shadow-xl overflow-hidden"
+                    style={{
+                      width: `${cardWidth}px`,
+                      height: windowWidth < 650 ? "300px" : windowWidth < 1024 ? "350px" : "450px",
+                      transform,
+                      transformStyle: "preserve-3d",
+                      cursor: "grab",
+                      boxShadow:
+                        isCenter && isDragging
+                          ? "0 15px 40px rgba(0,0,0,0.2)"
+                          : "0 8px 20px rgba(0,0,0,0.1)",
+                      opacity: scale < 0.5 ? 0 : 1,
+                    }}
+                    onClick={() => {
+                      if (!isDragging && !isCenter) {
+                        playCardFlip()
+                        setIndex(i)
+                      }
+                    }}
+                  >
+                    <ProjectCard project={project} index={i} isCenter={isCenter} windowWidth={windowWidth} isClient={mounted} />
+                  </motion.div>
+                )
+              })}
+            </div>
+          </motion.div>
 
-        {/* Navigation Dots */}
-        {mounted && (
+          {/* Navigation Dots */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="flex justify-center items-center space-x-2 md:mt-8"
           >
-            {projects.map((_, i) => (
+            {filteredProjects.map((_, i) => (
               <motion.button
                 key={i}
                 onClick={() => {
@@ -334,6 +426,10 @@ export default function ProjectsSection() {
               />
             ))}
           </motion.div>
+          </>
+        ) : (
+          // Project Card Grid for other tags
+          <ProjectCardGrid projects={filteredProjects} isInView={isInView} />
         )}
       </div>
     </section>
