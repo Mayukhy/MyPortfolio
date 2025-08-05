@@ -1,25 +1,20 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import { useSounds } from "@/hooks/useSounds"
 import Canvas from "../ui/Canvas"
 import { randomCanvasData } from "@/data/data"
 import { useTheme } from "../theme/ThemeProvider"
 import { useRef } from "react"
 import { gsap } from "gsap"
+import { socialLinks } from "@/constants"
 
 const floatingElements = [
   { icon: "⚡", delay: 0 },
   { icon: "🚀", delay: 0.2 },
   { icon: "💡", delay: 0.4 },
   { icon: "🎨", delay: 0.6 },
-]
-
-const socialLinks = [
-  { icon: Github, href: "https://github.com/Mayukhy", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/mayukh-das-536185238", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/MayukhDas_2000", label: "Twitter" },
 ]
 
 export default function HeroSection() {

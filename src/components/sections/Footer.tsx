@@ -1,13 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Twitter, Heart } from "lucide-react"
-
-const socialLinks = [
-  { icon: Github, href: "https://github.com/Mayukhy", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/mayukh-das-536185238", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/MayukhDas_2000", label: "Twitter" },
-]
+import { Heart } from "lucide-react"
+import { socialLinks } from "@/constants"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
