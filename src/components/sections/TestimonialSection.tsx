@@ -14,7 +14,7 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Senior Developer",
     company: "TechCorp",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=150&q=80",
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80",
     content: "Working with this developer was an absolute pleasure. The attention to detail and modern design approach exceeded our expectations. The final product was not only functional but also visually stunning.",
     rating: 5,
   },
