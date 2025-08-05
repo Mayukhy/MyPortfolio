@@ -7,56 +7,7 @@ import { Briefcase, Calendar, MapPin, Building, Code, ShoppingCart } from "lucid
 import { randomCanvasData } from "@/data/data"
 import Canvas from "../ui/Canvas"
 import { useTheme } from "../theme/ThemeProvider"
-
-const experiences = [
-  {
-    company: "Tech Mahindra",
-    position: "Software Engineer",
-    location: "Kolkata, India",
-    duration: "March 2025 - Current",
-    icon: ShoppingCart,
-    highlights: [
-      "Led end-to-end development on luxury Shopify stores, including Escentric Molecules and Jewells, delivering fully customized e-commerce experiences aligned with each brand's premium positioning.",
-      "Custom Feature Implementation: Developed free gifts with purchase logic based on cart value or product combinations.",
-      "Built a dynamic free sample allocation system that adjusted in real-time based on cart quantity.",
-      "Created advanced cart and checkout logic for gifting, product bundling, and promotions tailored to specific customer behaviors.",
-      "Theme Development & Customization: Extended Shopify's default themes with custom Liquid templates, JavaScript, and Shopify Scripts, enabling features not available out-of-the-box.",
-      "UI/UX Design Integration: Collaborated closely with design teams to implement elegant, intuitive interfaces that matched the luxury feel of each brand.",
-      "Mobile Optimization & Performance Tuning: Delivered fully responsive designs across all screen sizes and conducted in-depth cross-browser and cross-device QA testing.",
-      "Cross-Functional Collaboration: Worked with product managers, designers, and QA to translate business goals into seamless digital experiences."
-    ]
-  },
-  {
-    company: "Tech Mahindra",
-    position: "Associate Software Engineer",
-    location: "Kolkata, India",
-    duration: "March 2024 - March 2025",
-    icon: ShoppingCart,
-    highlights: [
-      "Led end-to-end development on luxury Shopify stores, including Escentric Molecules and Jewells, delivering fully customized e-commerce experiences aligned with each brand's premium positioning.",
-      "Custom Feature Implementation: Developed free gifts with purchase logic based on cart value or product combinations.",
-      "Built a dynamic free sample allocation system that adjusted in real-time based on cart quantity.",
-      "Created advanced cart and checkout logic for gifting, product bundling, and promotions tailored to specific customer behaviors.",
-      "Theme Development & Customization: Extended Shopify's default themes with custom Liquid templates, JavaScript, and Shopify Scripts, enabling features not available out-of-the-box.",
-      "UI/UX Design Integration: Collaborated closely with design teams to implement elegant, intuitive interfaces that matched the luxury feel of each brand.",
-      "Mobile Optimization & Performance Tuning: Delivered fully responsive designs across all screen sizes and conducted in-depth cross-browser and cross-device QA testing.",
-      "Cross-Functional Collaboration: Worked with product managers, designers, and QA to translate business goals into seamless digital experiences."
-    ]
-  },
-  {
-    company: "EHS Prints",
-    position: "MERN Developer",
-    location: "Remote, India",
-    duration: "November 2023 - February 2024",
-    icon: Code,
-    highlights: [
-      "Implemented new features to enhance the functionality and overall user experience of the company's web platform.",
-      "Designed and developed a client-designer interaction workflow, enabling clients to collaborate with designers more effectively, in real time.",
-      "Built an interactive instruction form, allowing clients to submit design briefs and visualize their instructions through a responsive UI, improving clarity, and reducing back-and-forth revisions.",
-      "Worked with the MERN stack (MongoDB, Express, React.js, Node.js) to build a scalable and maintainable application structure."
-    ]
-  }
-]
+import { experiences } from "@/constants"
 
 const containerVariants = {
   hidden: { opacity: 0 },
