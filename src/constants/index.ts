@@ -39,7 +39,6 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
 
   // Navigation items
   export const navItems = [
-    { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Achievements", href: "#achievements" },
