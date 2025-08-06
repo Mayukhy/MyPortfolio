@@ -139,6 +139,16 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
     },
     {
       id: 10,
+      title: "Castore",
+      description: "A Shopify store with a custom theme for client's sportswear brand business.",
+      image: "/projects/castore.png",
+      technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
+      liveUrl: "https://castore.com",
+      featured: false,
+      asociatedWith: ["Tech Mahindra", "TechM"],
+    },
+    {
+      id: 11,
       title: "Jewells",
       description: "A Shopify store with a custom theme for client's jewellery business.",
       image: "/projects/jewells.png",
