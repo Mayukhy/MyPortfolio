@@ -105,7 +105,7 @@ export default function Navigation() {
           {/* Logo */}
           <motion.div
             onClick={() => window.location.href = "#hero"}
-            className="text-2xl font-bold heading-gradient cursor-pointer"
+            className="md:text-2xl text-lg font-bold heading-gradient cursor-pointer"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
