@@ -7,63 +7,7 @@ import Image from "next/image"
 import { randomCanvasData } from "@/data/data"
 import Canvas from "../ui/Canvas"
 import { useTheme } from "../theme/ThemeProvider"
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    role: "Senior Developer",
-    company: "TechCorp",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=150&q=80",
-    content: "Working with this developer was an absolute pleasure. The attention to detail and modern design approach exceeded our expectations. The final product was not only functional but also visually stunning.",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Michael Chen",
-    role: "Product Manager",
-    company: "InnovateLab",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
-    content: "Exceptional communication and technical skills. The project was delivered on time and within budget. The code quality and documentation were outstanding. Highly recommended!",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Emily Rodriguez",
-    role: "UX Designer",
-    company: "DesignStudio",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
-    content: "The collaboration was seamless and the results were impressive. The developer's understanding of user experience and modern web standards made our project a success.",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "David Thompson",
-    role: "Startup Founder",
-    company: "NextGen",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-    content: "Outstanding work ethic and technical expertise. The developer transformed our vision into a beautiful, functional application that our users love. Will definitely work together again!",
-    rating: 5,
-  },
-  {
-    id: 5,
-    name: "Lisa Wang",
-    role: "Marketing Director",
-    company: "GrowthCo",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
-    content: "Professional, reliable, and incredibly talented. The website they built for us has significantly improved our conversion rates. The attention to performance and SEO was impressive.",
-    rating: 5,
-  },
-  {
-    id: 6,
-    name: "James Wilson",
-    role: "CTO",
-    company: "ScaleTech",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
-    content: "Technical excellence combined with business understanding. The developer delivered a scalable solution that has grown with our business. The architecture and code quality are exemplary.",
-    rating: 5,
-  },
-]
+import { testimonials } from "@/constants"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -117,7 +61,7 @@ export default function TestimonialSection() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Client <span className="heading-gradient">Testimonials</span>
+            Team <span className="heading-gradient">Testimonials</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Hear what clients have to say about working together and the results we&apos;ve achieved.
@@ -129,14 +73,14 @@ export default function TestimonialSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="testimonials__grid grid grid-cols-1 md:grid-cols-8 gap-6 md:gap-8"
           style={{ y: cardsY }}
         >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
               variants={itemVariants}
-              className="group relative"
+              className="group testimonials__grid-item relative"
             >
               <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 {/* Quote Icon */}
@@ -161,24 +105,14 @@ export default function TestimonialSection() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300"
-                    />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-card"></div>
-                  </div>
-                  <div className="flex-1">
+                  <a href={testimonial.profile} target="_blank" rel="noopener noreferrer" className="flex-1">
                     <h4 className="font-semibold text-foreground">
                       {testimonial.name}
                     </h4>
                     <p className="text-sm text-muted-foreground">
                       {testimonial.role} at {testimonial.company}
                     </p>
-                  </div>
+                  </a>
                 </div>
 
                 {/* Hover Effect Background */}

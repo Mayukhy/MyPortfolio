@@ -1,4 +1,4 @@
-import { Code, Github, Linkedin, ShoppingCart, Twitter } from "lucide-react";
+import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitter, Users, Zap } from "lucide-react";
 
   // All available themes (30 total)
   export const allThemes = [
@@ -39,7 +39,6 @@ import { Code, Github, Linkedin, ShoppingCart, Twitter } from "lucide-react";
 
   // Navigation items
   export const navItems = [
-    { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Achievements", href: "#achievements" },
@@ -120,6 +119,16 @@ import { Code, Github, Linkedin, ShoppingCart, Twitter } from "lucide-react";
     },
     {
       id: 8,
+      title: "Chelsea Peers",
+      description: "A Shopify store with a custom theme for client's luxury brand business.",
+      image: "/projects/chelsea.png",
+      technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
+      liveUrl: "https://www.chelseapeers.com",
+      featured: false,
+      asociatedWith: ["Tech Mahindra", "TechM"],
+    },
+    {
+      id: 9,
       title: "Escentric Molecules",
       description: "A Shopify store with a custom theme for client's perfumery brand business.",
       image: "/projects/esm.png",
@@ -129,7 +138,17 @@ import { Code, Github, Linkedin, ShoppingCart, Twitter } from "lucide-react";
       asociatedWith: ["Tech Mahindra", "TechM"],
     },
     {
-      id: 9,
+      id: 10,
+      title: "Castore",
+      description: "A Shopify store with a custom theme for client's sportswear brand business.",
+      image: "/projects/castore.png",
+      technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
+      liveUrl: "https://castore.com",
+      featured: false,
+      asociatedWith: ["Tech Mahindra", "TechM"],
+    },
+    {
+      id: 11,
       title: "Jewells",
       description: "A Shopify store with a custom theme for client's jewellery business.",
       image: "/projects/jewells.png",
@@ -189,6 +208,108 @@ import { Code, Github, Linkedin, ShoppingCart, Twitter } from "lucide-react";
         "Built an interactive instruction form, allowing clients to submit design briefs and visualize their instructions through a responsive UI, improving clarity, and reducing back-and-forth revisions.",
         "Worked with the MERN stack (MongoDB, Express, React.js, Node.js) to build a scalable and maintainable application structure."
       ]
+    }
+  ]
+
+  // Testimonials
+  export const testimonials = [
+    {
+      id: 1,
+      name: "Jose Paitamala",
+      role: "Lead Front End Developer",
+      profile: "https://www.linkedin.com/in/josepaitamala/",
+      company: "BORN Group",
+      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=150&q=80",
+      content: "I had the pleasure of working with Mayukh on a Shopify project where his development skills and in-depth Shopify knowledge proved to be incredibly valuable. From day one, he brought a great attitude, strong technical skills, and a solid understanding of the platform, which helped move the project forward smoothly and efficiently.Throughout the project, I conducted code reviews for his work and was consistently impressed by his openness to feedback and willingness to make improvements. He always responded with professionalism, taking suggestions on board and implementing changes quickly and thoughtfully.The project was a success, and Mayukh played a significant role in that outcome.",
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: "Debnil Majumder",
+      role: "Senior Software Engineer",
+      company: "Tech Mahindra",
+      profile: "https://www.linkedin.com/in/debnil-majumder-2695441b0/",
+      content: "I've had the pleasure of working with Mayukh, and he's incredibly technically sound with outstanding debugging skills. He's always up for a challenge and handles them with confidence and clarity. What I appreciate most is his collaborative spirit—working with him has always been smooth and productive. A dependable teammate you can count on!",
+      rating: 5,
+    },
+    {
+      id: 3,
+      name: "Kaushik Basu",
+      role: "Head - BORN-XDS Industry Business Unit",
+      company: "Tech Mahindra",
+      content: "I wanted to take a moment to express my heartfelt appreciation for your unwavering dedication and hard work on the ESM project delivery. Your commitment and effort have truly paid off, and I am thrilled with the outstanding results we have achieved together. Kudos to each and every one of you for giving your best and making this project a success. I am excited about the future and looking forward to tackling more challenging opportunities with this incredible team. Once again, great job, and let's continue striving for excellence in all our endeavors.",
+      rating: 5,
+    },
+    {
+      id: 4,
+      name: "Ankit Kumar",
+      role: "Software Engineer",
+      company: "Tech Mahindra",
+      profile: "https://www.linkedin.com/in/ankit-kumar-5a85711bb/",
+      content: "I've had the pleasure of working closely with Mayukh Das, and his dedication to work is truly commendable. He consistently delivers high-quality results, takes full ownership of tasks, and always goes the extra mile to support the team.His professionalism, reliability, and collaborative nature make him a key asset to any project or team. I highly recommend him for any role that values commitment and excellence.",
+      rating: 5,
+    },
+    // {
+    //   id: 5,
+    //   name: "Lisa Wang",
+    //   role: "Marketing Director",
+    //   company: "GrowthCo",
+    //   content: "Professional, reliable, and incredibly talented. The website they built for us has significantly improved our conversion rates. The attention to performance and SEO was impressive.",
+    //   rating: 5,
+    // },
+    // {
+    //   id: 6,
+    //   name: "James Wilson",
+    //   role: "CTO",
+    //   company: "ScaleTech",
+    //   content: "Technical excellence combined with business understanding. The developer delivered a scalable solution that has grown with our business. The architecture and code quality are exemplary.",
+    //   rating: 5,
+    // },
+  ]
+
+  // Achievements
+  export const achievements = [
+    {
+      icon: Trophy,
+      title: "Bravo Award (2x)",
+      description: "Recognized for exceptional performance in Projects and Teamwork",
+      year: "2025",
+      category: "Recognition"
+    },
+    {
+      icon: Users,
+      title: "50+ Happy Clients",
+      description: "Successfully delivered projects for over 10,000 satisfied clients worldwide",
+      year: "2024-2025",
+      category: "Client Success"
+    },
+    {
+      icon: Code,
+      title: "20+ Projects Completed",
+      description: "Successfully completed over 100 diverse projects across various technologies",
+      year: "2024-2025",
+      category: "Project Milestone"
+    },
+    {
+      icon: TrendingUp,
+      title: "95% Client Satisfaction",
+      description: "Maintained exceptional client satisfaction rate across all projects",
+      year: "2025",
+      category: "Quality"
+    },
+    {
+      icon: Target,
+      title: "12+ Technologies Mastered",
+      description: "Proficient in over 50 different technologies and frameworks",
+      year: "2025",
+      category: "Skills"
+    },
+    {
+      icon: Zap,
+      title: "24/7 Support Excellence",
+      description: "Provided round-the-clock support with 99.9% uptime guarantee",
+      year: "2025",
+      category: "Service"
     }
   ]
   

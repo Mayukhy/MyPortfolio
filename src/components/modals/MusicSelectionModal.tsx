@@ -15,11 +15,11 @@ interface MusicSelectionModalProps {
 }
 
 export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, onEditTheme }: MusicSelectionModalProps) {
-  const { themeList, currentMusic, setCurrentMusic, setIsPlaying, setTheme, setIsEmojisphereActive } = useTheme()
+  const { themeList, currentMusic, setCurrentMusic, setIsPlaying, theme, setTheme, setIsEmojisphereActive } = useTheme()
   const { playMusicSelect, playClick } = useSounds()
   const [showTopFade, setShowTopFade] = useState(false)
   const [showBottomFade, setShowBottomFade] = useState(true)
-
+  const currentTheme = themeList.find((t) => t.name.split(" ")[0].toLowerCase() === theme.toLowerCase() || t.colorScheme.split(" ")[1].toLowerCase() === theme.toLowerCase())
   // Cleanup body overflow when component unmounts
   useEffect(() => {
     return () => {
@@ -27,10 +27,24 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
     }
   }, [])
 
+  const findCurrentTheme = () => {
+    const currentTheme = themeList.find((t) => t.name.split(" ")[0].toLowerCase() === theme.toLowerCase() || t.colorScheme.split(" ")[1].toLowerCase() === theme.toLowerCase())
+    if (currentTheme) {
+      setCurrentMusic(currentTheme as Music)
+      setIsPlaying(true)
+    } else {
+      setCurrentMusic(null)
+      setIsPlaying(false)
+    }
+  }
+
+  useEffect(() => {
+    findCurrentTheme()
+  }, [])
+
   const handleMusicSelect = (music: any) => {
     setIsEmojisphereActive(false)
     const isActive = currentMusic?.name === music.name
-    
     if (!isActive ) {
       playMusicSelect()
       music.src ? setIsPlaying(true) : setIsPlaying(false)
@@ -104,7 +118,7 @@ export default function MusicSelectionModal({ isOpen, onClose, onCreateTheme, on
                   onScroll={(e) => handleScroll(e.currentTarget)}
                 >
                   {themeList.map((music, index) => {
-                    const isActive = currentMusic?.name === music.name
+                    const isActive = currentTheme?.name === music.name || currentTheme?.colorScheme.split(" ")[1] === music.colorScheme.split(" ")[1]
                     return (
                       <motion.button
                         key={music.name}

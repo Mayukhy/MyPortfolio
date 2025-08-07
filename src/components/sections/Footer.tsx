@@ -18,7 +18,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold heading-gradient">Portfolio</h3>
+            <h3 className="text-2xl font-bold heading-gradient">Mayukh Das</h3>
             <p className="text-muted-foreground max-w-sm">
               Crafting digital experiences with modern technologies and creative design solutions.
             </p>
@@ -33,7 +33,7 @@ export default function Footer() {
           >
             <h4 className="font-semibold">Quick Links</h4>
             <div className="flex flex-col space-y-2">
-              {["Home", "About", "Projects", "Contact"].map((link) => (
+              {["About", "Projects", "Testimonials"].map((link) => (
                 <motion.a
                   key={link}
                   href={`#${link.toLowerCase()}`}
@@ -67,7 +67,10 @@ export default function Footer() {
                   transition={{ delay: 0.3 + index * 0.1 }}
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5" />
+                  { social.label !== "Twitter" ? <social.icon className="w-5 h-5" /> : <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-twitter-x w-5 h-5" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                  </svg>
+                  }
                 </motion.a>
               ))}
             </div>
@@ -82,7 +85,7 @@ export default function Footer() {
           className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0"
         >
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Portfolio. All rights reserved.
+            © {currentYear} Mayukh Das. All rights reserved.
           </p>
           
           <motion.p

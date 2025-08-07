@@ -54,8 +54,8 @@ export default function HeroSection() {
       if(!isEmojisphereActive) {
         setTheme("dark-red")
         setCurrentMusic({name: "Emoji Sphere", src: "/audios/symphony2.mp3", icon: "🎉"})
-        soundsOn()
-        setSoundsEnabled(true)
+        // soundsOn()
+        // setSoundsEnabled(true)
       } else {
         setTheme("light")
         if(!soundsEnabled) {
@@ -140,7 +140,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8"
         >
           {/* Greeting */}
           <motion.p
@@ -164,21 +164,20 @@ export default function HeroSection() {
             onClick={handleEmojiSphere}
             onHoverStart={playHover}
           >
-            <span className="heading-gradient">Creative</span>
-            <br />
-            <span className="text-foreground">Developer</span>
+            <span >Mayukh <span className="heading-gradient">Das</span></span>
           </motion.h1>
-
+          <br />
+          <span className="heading-gradient font-normal md:text-4xl text-2xl">a creative developer</span>
           {/* Description */}
           <motion.p
-            className="text-xl flex flex-col gap-2 sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            className="md:text-xl text-base flex flex-col gap-2 sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             Crafting digital experiences with modern technologies and creative design.
             <br />
-            <span className="text-primary font-medium">Shopify • React • Next.js • TypeScript</span>
+            <span className="text-primary md:text-lg text-base font-medium">Shopify • React • Next.js • TypeScript</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -233,7 +232,10 @@ export default function HeroSection() {
                 onClick={playClick}
                 aria-label={social.label}
               >
-                <social.icon className="w-5 h-5" />
+                { social.label !== "Twitter" ? <social.icon className="w-5 h-5" /> : <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-twitter-x w-5 h-5" viewBox="0 0 16 16">
+                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                </svg>
+                }
               </motion.a>
             ))}
           </motion.div>
@@ -241,7 +243,7 @@ export default function HeroSection() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute md:bottom-[-40px] bottom-[-30px] left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}

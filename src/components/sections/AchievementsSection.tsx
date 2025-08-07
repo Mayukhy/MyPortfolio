@@ -2,56 +2,12 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
-import { Trophy, Award, Star, Target, TrendingUp, Users, Code, Zap } from "lucide-react"
+import { Star, Users, Code, Zap } from "lucide-react"
 import { useSounds } from "@/hooks/useSounds"
 import Canvas from "../ui/Canvas"
 import { randomCanvasData } from "@/data/data"
 import { useTheme } from "../theme/ThemeProvider"
-
-const achievements = [
-  {
-    icon: Trophy,
-    title: "Bravo Award (2x)",
-    description: "Recognized as the top developer in the 2025 Tech Innovation Challenge",
-    year: "2025",
-    category: "Recognition"
-  },
-  {
-    icon: Users,
-    title: "50+ Happy Clients",
-    description: "Successfully delivered projects for over 10,000 satisfied clients worldwide",
-    year: "2024-2025",
-    category: "Client Success"
-  },
-  {
-    icon: Code,
-    title: "20+ Projects Completed",
-    description: "Successfully completed over 100 diverse projects across various technologies",
-    year: "2024-2025",
-    category: "Project Milestone"
-  },
-  {
-    icon: TrendingUp,
-    title: "95% Client Satisfaction",
-    description: "Maintained exceptional client satisfaction rate across all projects",
-    year: "2025",
-    category: "Quality"
-  },
-  {
-    icon: Target,
-    title: "12+ Technologies Mastered",
-    description: "Proficient in over 50 different technologies and frameworks",
-    year: "2025",
-    category: "Skills"
-  },
-  {
-    icon: Zap,
-    title: "24/7 Support Excellence",
-    description: "Provided round-the-clock support with 99.9% uptime guarantee",
-    year: "2025",
-    category: "Service"
-  }
-]
+import { achievements } from "@/constants"
 
 const containerVariants = {
   hidden: { opacity: 0 },

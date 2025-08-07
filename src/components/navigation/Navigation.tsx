@@ -28,8 +28,10 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [isMusicModalOpen, setIsMusicModalOpen] = useState(false)
   const [isCreateThemeModalOpen, setIsCreateThemeModalOpen] = useState(false)
-  const { theme, setTheme, isPlaying, setCreateThemeData, setIsEmojisphereActive, setIsEmojiSphereTransitioning, isEmojisphereActive, setIsPlaying, setCurrentMusic, soundsEnabled } = useTheme()
+  const { themeList, theme, setTheme, isPlaying, setCreateThemeData, setIsEmojisphereActive, setIsEmojiSphereTransitioning, isEmojisphereActive, setIsPlaying, setCurrentMusic, soundsEnabled } = useTheme()
   const { playClick, playHover, playButtonPress, playThemeChange, toggleSounds } = useSounds()
+  const currentTheme = themeList.find((t) => t.name.split(" ")[0].toLowerCase() === theme.toLowerCase() || t.colorScheme.split(" ")[1].toLowerCase() === theme.toLowerCase())
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -104,14 +106,15 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold heading-gradient"
+            onClick={() => window.location.href = "#hero"}
+            className="text-2xl font-bold heading-gradient cursor-pointer"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Portfolio
+            Mayukh
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -149,7 +152,7 @@ export default function Navigation() {
                 aria-label="Toggle theme music"
               >
                 <AnimatePresence mode="wait">
-                  {isPlaying ? (
+                  {currentTheme?.src ? (
                     <motion.div
                       key="playing-waveform"
                       initial={{ rotate: -90, opacity: 0 }}

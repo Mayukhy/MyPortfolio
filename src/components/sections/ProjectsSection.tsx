@@ -276,7 +276,7 @@ export default function ProjectsSection() {
       { isEmojisphereActive && !isMobile && randomCanvasData[3].map((canvasDetails, index) => (
         <Canvas key={`projects-${index}`} details={canvasDetails} />
       ))}
-      <div className="md:container mx-auto px-0 md:px-4 lg:px-8">
+      <div className="md:container mx-auto px-0 md:px-4 lg:px-[24px]">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -334,19 +334,25 @@ export default function ProjectsSection() {
                 const zIndex = 1000 - Math.abs(visualOffset)
                 
                 const scaleMap: Record<string, number> = {
-                  "-3": 0.7,
-                  "-2": 0.75,
-                  "-1": 0.8,
+                  "-5": 0.7,
+                  "-4": 0.75,
+                  "-3": 0.8,
+                  "-2": 0.85,
+                  "-1": 0.9,
                   "0": isDragging ? 1.05 : 1,
-                  "1": 0.8,
-                  "2": 0.75,
-                  "3": 0.7,
+                  "1": 0.9,
+                  "2": 0.85,
+                  "3": 0.8,
+                  "4": 0.75,
+                  "5": 0.7,
                 }
 
                 const scale = scaleMap[String(visualOffset)] ?? 0.5
 
                 // Define transform maps - adjusted for mobile
                 const offsetMap: Record<string, { x: number; z: number; rotate: number }> = {
+                  "-5": { x: -120, z: -100, rotate: 75 },
+                  "-4": { x: -100, z: -80, rotate: 60 },
                   "-3": { x: -80, z: -60, rotate: 45 },
                   "-2": { x: -50, z: -40, rotate: 30 },
                   "-1": { x: -25, z: -20, rotate: 15 },
@@ -354,17 +360,19 @@ export default function ProjectsSection() {
                   "1": { x: 25, z: -20, rotate: -15 },
                   "2": { x: 50, z: -40, rotate: -30 },
                   "3": { x: 80, z: -60, rotate: -45 },
+                  "4": { x: 100, z: -80, rotate: -60 },
+                  "5": { x: 120, z: -100, rotate: -75 },
                 }
 
                 const key = String(visualOffset)
-                const transformValues = offsetMap[key] || { x: 150 * visualOffset, z: -60, rotate: visualOffset < 0 ? 60 : -60 }
+                const transformValues = offsetMap[key] || { x: 100 * visualOffset, z: -65, rotate: visualOffset < 0 ? 65 : -65 }
                 
                 // Responsive card width
                 const cardWidth = windowWidth < 649 ? MOBILE_CARD_WIDTH : windowWidth < 990 ? TAB_CARD_WIDTH : CARD_WIDTH
                 const cardGap = windowWidth <= 768 ? MOBILE_CARD_GAP : CARD_GAP
                 const x = isCenter
                   ? dragX
-                  : visualOffset * (cardWidth * 0.3 + cardGap * 0.1)
+                  : visualOffset * (cardWidth * 0.23 + cardGap * 0.1)
                 const translateX = isCenter ? dragX : transformValues.x
                 const translateZ = transformValues.z
                 const rotateY = transformValues.rotate
