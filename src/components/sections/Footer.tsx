@@ -18,7 +18,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold heading-gradient">Portfolio</h3>
+            <h3 className="text-2xl font-bold heading-gradient">Mayukh Das</h3>
             <p className="text-muted-foreground max-w-sm">
               Crafting digital experiences with modern technologies and creative design solutions.
             </p>
@@ -33,7 +33,7 @@ export default function Footer() {
           >
             <h4 className="font-semibold">Quick Links</h4>
             <div className="flex flex-col space-y-2">
-              {["Home", "About", "Projects", "Contact"].map((link) => (
+              {["About", "Projects", "Testimonials"].map((link) => (
                 <motion.a
                   key={link}
                   href={`#${link.toLowerCase()}`}
@@ -85,7 +85,7 @@ export default function Footer() {
           className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0"
         >
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Portfolio. All rights reserved.
+            © {currentYear} Mayukh Das. All rights reserved.
           </p>
           
           <motion.p

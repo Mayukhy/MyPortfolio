@@ -140,7 +140,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8"
         >
           {/* Greeting */}
           <motion.p
@@ -164,21 +164,20 @@ export default function HeroSection() {
             onClick={handleEmojiSphere}
             onHoverStart={playHover}
           >
-            <span className="heading-gradient">Creative</span>
-            <br />
-            <span className="text-foreground">Developer</span>
+            <span >Mayukh <span className="heading-gradient">Das</span></span>
           </motion.h1>
-
+          <br />
+          <span className="heading-gradient font-normal md:text-4xl text-2xl">a creative developer</span>
           {/* Description */}
           <motion.p
-            className="text-xl flex flex-col gap-2 sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+            className="md:text-xl text-base flex flex-col gap-2 sm:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             Crafting digital experiences with modern technologies and creative design.
             <br />
-            <span className="text-primary font-medium">Shopify • React • Next.js • TypeScript</span>
+            <span className="text-primary md:text-lg text-base font-medium">Shopify • React • Next.js • TypeScript</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -244,7 +243,7 @@ export default function HeroSection() {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2"
+          className="absolute md:bottom-[-40px] bottom-[-30px] left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}

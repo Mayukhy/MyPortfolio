@@ -3,7 +3,7 @@ import soundManager from '@/utils/sounds'
 import { useTheme } from '@/components/theme/ThemeProvider'
 
 export const useSounds = () => {
-  const { setCurrentMusic, setIsPlaying, isEmojisphereActive, currentMusic, isPlaying, soundsEnabled, setSoundsEnabled } = useTheme()
+  const { setCurrentMusic, setIsPlaying, isEmojisphereActive, currentMusic, isPlaying, soundsEnabled, setSoundsEnabled, theme } = useTheme()
   
   useEffect(() => {
     if(!soundsEnabled) {
@@ -13,12 +13,12 @@ export const useSounds = () => {
       }
     }
     else {
-      if(!isEmojisphereActive && !isPlaying) {
+      if(!isEmojisphereActive && !isPlaying && (theme === "light" || theme === "dark")) {
         setCurrentMusic({name: "base", src: "/audios/symphony1.mp3", icon: "🎉"})
         setIsPlaying(true)
       }
     }
-  }, [soundsEnabled, currentMusic?.name, isEmojisphereActive, isPlaying, setCurrentMusic, setIsPlaying])
+  }, [soundsEnabled, isEmojisphereActive, theme])
 
 
   useEffect(() => {

@@ -76,6 +76,23 @@ export default function Home() {
 
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    console.log(currentMusic);
+  }, [currentMusic])
+
+  useEffect(() => {
+    if (audioRef) {
+      if (currentMusic?.src) {
+        audioRef.current?.play()
+      }
+      else {
+        audioRef.current?.pause()
+      }
+      console.log(audioRef.current);
+      
+    }
+  }, [currentMusic])
   
   return (
     <>
@@ -83,7 +100,7 @@ export default function Home() {
         {isLoading && <LoadingScreen key="loading" />}
       </AnimatePresence>
       <AnimatePresence mode="wait">
-        {currentMusic && (
+        {currentMusic?.src && (
           <audio ref={audioRef} src={currentMusic.src} autoPlay muted={!soundsEnabled} loop />
         )}
         {!isLoading && (
