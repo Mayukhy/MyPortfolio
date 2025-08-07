@@ -21,10 +21,13 @@ export const metadata: Metadata = {
   title: 'Portfolio | Creative Developer',
   description: 'Modern portfolio showcasing creative web development projects with smooth animations and innovative design.',
   keywords: ['portfolio', 'web development', 'react', 'next.js', 'framer motion'],
-  authors: [{ name: 'Creative Developer' }],
-  creator: 'Creative Developer',
+  authors: [{ name: 'Mayukh Das' }],
+  creator: 'Mayukh Das',
+  icons: {
+    icon: '/logo.png',
+  },
   openGraph: {
-    title: 'Portfolio | Creative Developer',
+    title: 'Portfolio | Mayukh Das',
     description: 'Modern portfolio showcasing creative web development projects',
     type: 'website',
   },
