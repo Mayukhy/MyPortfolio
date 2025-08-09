@@ -13,7 +13,7 @@ export const useSounds = () => {
       }
     }
     else {
-      if(!isEmojisphereActive && !isPlaying && (theme === "light" || theme === "dark")) {
+      if(!isEmojisphereActive && !isPlaying && (theme === "light" || theme === "dark" || theme === "system")) {
         setCurrentMusic({name: "base", src: "/audios/symphony1.mp3", icon: "🎉"})
         setIsPlaying(true)
       }

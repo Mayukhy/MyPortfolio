@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react"
 
-type Theme = "dark" | "to-dark" | "to-light" | "to-dark-red" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon" | "spring" | "summer" | "autumn" | "winter" | "cosmic" | "galaxy" | "mountain" | "city" | "vintage" | "retro" | "cyberpunk" | "steampunk" | "minimalist" | "luxury" | "rustic" | "tropical" | "arctic" | "sahara" | "dark-red"
+type Theme = "dark" | "to-dark" | "to-light" | "to-light-dark-red" | "to-lofi-dark-red" | "to-nature-dark-red" | "to-ocean-dark-red" | "to-cafe-dark-red" | "to-warm-dark-red" | "to-cool-dark-red" | "to-neutral-dark-red" | "to-vibrant-dark-red" | "to-pastel-dark-red" | "to-monochrome-dark-red" | "to-sunset-dark-red" | "to-midnight-dark-red" | "to-trees-dark-red" | "to-desert-dark-red" | "to-aurora-dark-red" | "to-neon-dark-red" | "to-spring-dark-red" | "to-summer-dark-red" | "to-autumn-dark-red" | "to-winter-dark-red" | "to-cosmic-dark-red" | "to-galaxy-dark-red" | "to-mountain-dark-red" | "to-city-dark-red" | "to-vintage-dark-red" | "to-retro-dark-red" | "to-cyberpunk-dark-red" | "to-steampunk-dark-red" | "to-minimalist-dark-red" | "to-luxury-dark-red" | "to-rustic-dark-red" | "to-tropical-dark-red" | "to-arctic-dark-red" | "to-sahara-dark-red" | "to-forest-dark-red" | "to-rain-dark-red" | "to-dark-dark-red" | "light" | "system" | "lofi" | "nature" | "rain" | "ocean" | "forest" | "cafe" | "warm" | "cool" | "neutral" | "vibrant" | "pastel" | "monochrome" | "sunset" | "midnight" | "trees" | "desert" | "aurora" | "neon" | "spring" | "summer" | "autumn" | "winter" | "cosmic" | "galaxy" | "mountain" | "city" | "vintage" | "retro" | "cyberpunk" | "steampunk" | "minimalist" | "luxury" | "rustic" | "tropical" | "arctic" | "sahara" | "dark-red"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -66,7 +66,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = "light",
+  defaultTheme = "system",
   storageKey = "ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -134,7 +134,7 @@ export function ThemeProvider({
     const root = window.document.documentElement
 
     // Remove all theme classes
-    root.classList.remove("light", "to-dark", "to-light", "to-dark-red", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon", "spring", "summer", "autumn", "winter", "cosmic", "galaxy", "mountain", "city", "vintage", "retro", "cyberpunk", "steampunk", "minimalist", "luxury", "rustic", "tropical", "arctic", "sahara", "dark-red")
+    root.classList.remove("light", "to-dark", "to-light", "to-light-dark-red", "to-lofi-dark-red", "to-nature-dark-red", "to-ocean-dark-red", "to-cafe-dark-red", "to-warm-dark-red", "to-cool-dark-red", "to-neutral-dark-red", "to-vibrant-dark-red", "to-pastel-dark-red", "to-monochrome-dark-red", "to-sunset-dark-red", "to-midnight-dark-red", "to-trees-dark-red", "to-desert-dark-red", "to-aurora-dark-red", "to-neon-dark-red", "to-spring-dark-red", "to-summer-dark-red", "to-autumn-dark-red", "to-winter-dark-red", "to-cosmic-dark-red", "to-galaxy-dark-red", "to-mountain-dark-red", "to-city-dark-red", "to-vintage-dark-red", "to-retro-dark-red", "to-cyberpunk-dark-red", "to-steampunk-dark-red", "to-minimalist-dark-red", "to-luxury-dark-red", "to-rustic-dark-red", "to-tropical-dark-red", "to-arctic-dark-red", "to-sahara-dark-red", "to-forest-dark-red", "to-rain-dark-red", "to-dark-dark-red", "dark", "lofi", "nature", "rain", "ocean", "forest", "cafe", "warm", "cool", "neutral", "vibrant", "pastel", "monochrome", "sunset", "midnight", "trees", "desert", "aurora", "neon", "spring", "summer", "autumn", "winter", "cosmic", "galaxy", "mountain", "city", "vintage", "retro", "cyberpunk", "steampunk", "minimalist", "luxury", "rustic", "tropical", "arctic", "sahara", "dark-red")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")

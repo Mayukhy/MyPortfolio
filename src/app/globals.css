@@ -119,7 +119,7 @@
     --chart-5: 27 87% 67%;
   }
 
-  .to-dark-red {
+  .to-light-dark-red {
     --background: 0 0% 98%;
     --foreground: 0 0% 3.9%;
     --card: 0 100% 10%;
@@ -148,6 +148,37 @@
     --chart-4: 0 100% 65%;
     --chart-5: 0 95% 70%;
   }
+
+  .to-lofi-dark-red {
+    --background: 250 10% 8%;
+    --foreground: 250 5% 95%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+  
 
   /* Lofi Theme - Purple/Dark */
   .lofi {
@@ -1007,6 +1038,308 @@
     --chart-4: 0 100% 65%;
     --chart-5: 0 95% 70%;
   }
+
+  /* Additional Transition Themes with different backgrounds and dark-red styling */
+  .to-nature-dark-red {
+    --background: 120 20% 98%;
+    --foreground: 120 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-ocean-dark-red {
+    --background: 180 20% 98%;
+    --foreground: 180 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-cafe-dark-red {
+    --background: 25 20% 98%;
+    --foreground: 25 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  /* Color Theme Transitions */
+  .to-warm-dark-red {
+    --background: 30 20% 98%;
+    --foreground: 30 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-cool-dark-red {
+    --background: 210 20% 98%;
+    --foreground: 210 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-neutral-dark-red {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-vibrant-dark-red {
+    --background: 280 20% 98%;
+    --foreground: 280 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-pastel-dark-red {
+    --background: 300 20% 98%;
+    --foreground: 300 10% 10%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  .to-monochrome-dark-red {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 100% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 100% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 100% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 100% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 100% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 100% 20%;
+    --input: 0 100% 20%;
+    --ring: 0 100% 60%;
+    --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%);
+    --chart-1: 0 100% 60%;
+    --chart-2: 0 90% 55%;
+    --chart-3: 0 80% 50%;
+    --chart-4: 0 100% 65%;
+    --chart-5: 0 95% 70%;
+  }
+
+  /* Remaining Theme Transitions - All other themes with dark-red styling */
+  .to-sunset-dark-red { --background: 20 20% 98%; --foreground: 20 10% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-midnight-dark-red { --background: 240 15% 8%; --foreground: 240 5% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-trees-dark-red { --background: 120 15% 98%; --foreground: 120 10% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-desert-dark-red { --background: 45 20% 98%; --foreground: 45 10% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-aurora-dark-red { --background: 160 20% 98%; --foreground: 160 10% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-neon-dark-red { --background: 320 20% 98%; --foreground: 320 10% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-spring-dark-red { --background: 120 25% 98%; --foreground: 120 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-summer-dark-red { --background: 60 25% 98%; --foreground: 60 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-autumn-dark-red { --background: 30 25% 98%; --foreground: 30 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-winter-dark-red { --background: 210 25% 98%; --foreground: 210 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-cosmic-dark-red { --background: 280 15% 8%; --foreground: 280 5% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-galaxy-dark-red { --background: 260 20% 5%; --foreground: 260 10% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-mountain-dark-red { --background: 35 20% 98%; --foreground: 35 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-city-dark-red { --background: 0 0% 96%; --foreground: 0 0% 12%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-vintage-dark-red { --background: 25 20% 96%; --foreground: 25 15% 12%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-retro-dark-red { --background: 300 25% 98%; --foreground: 300 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-cyberpunk-dark-red { --background: 180 20% 5%; --foreground: 180 10% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-steampunk-dark-red { --background: 45 20% 96%; --foreground: 45 15% 12%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-minimalist-dark-red { --background: 0 0% 100%; --foreground: 0 0% 5%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-luxury-dark-red { --background: 45 30% 98%; --foreground: 45 20% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-rustic-dark-red { --background: 30 25% 96%; --foreground: 30 20% 12%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-tropical-dark-red { --background: 140 25% 98%; --foreground: 140 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-arctic-dark-red { --background: 200 25% 98%; --foreground: 200 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-sahara-dark-red { --background: 40 25% 98%; --foreground: 40 15% 10%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-forest-dark-red { --background: 30 15% 8%; --foreground: 30 5% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-rain-dark-red { --background: 220 15% 8%; --foreground: 220 5% 95%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+  .to-dark-dark-red { --background: 0 0% 3.9%; --foreground: 0 0% 98%; --card: 0 100% 10%; --card-foreground: 0 0% 98%; --popover: 0 100% 10%; --popover-foreground: 0 0% 98%; --primary: 0 100% 60%; --primary-foreground: 0 0% 98%; --secondary: 0 100% 15%; --secondary-foreground: 0 0% 98%; --muted: 0 100% 15%; --muted-foreground: 0 0% 70%; --accent: 0 100% 20%; --accent-foreground: 0 0% 98%; --destructive: 0 100% 50%; --destructive-foreground: 0 0% 98%; --border: 0 100% 20%; --input: 0 100% 20%; --ring: 0 100% 60%; --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); --gradient-secondary: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); --gradient-accent: linear-gradient(135deg, #fca5a5 0%, #dc2626 100%); --chart-1: 0 100% 60%; --chart-2: 0 90% 55%; --chart-3: 0 80% 50%; --chart-4: 0 100% 65%; --chart-5: 0 95% 70%; }
+
 }
 
 @layer base {

@@ -279,14 +279,14 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
     {
       icon: Users,
       title: "50+ Happy Clients",
-      description: "Successfully delivered projects for over 10,000 satisfied clients worldwide",
+      description: "Successfully delivered projects for over 50+ satisfied clients",
       year: "2024-2025",
       category: "Client Success"
     },
     {
       icon: Code,
       title: "20+ Projects Completed",
-      description: "Successfully completed over 100 diverse projects across various technologies",
+      description: "Successfully completed over 20+ diverse projects across various technologies",
       year: "2024-2025",
       category: "Project Milestone"
     },
@@ -300,7 +300,7 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
     {
       icon: Target,
       title: "12+ Technologies Mastered",
-      description: "Proficient in over 50 different technologies and frameworks",
+      description: "Proficient in over 12 different technologies and frameworks",
       year: "2025",
       category: "Skills"
     },
