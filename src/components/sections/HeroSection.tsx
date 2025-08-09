@@ -18,8 +18,8 @@ const floatingElements = [
 ]
 
 export default function HeroSection() {
-  const { playHover, playClick, soundsOn } = useSounds()
-  const {isEmojisphereActive, setIsEmojisphereActive, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning, soundsEnabled, setSoundsEnabled} = useTheme()
+  const { playHover, playClick} = useSounds()
+  const {isEmojisphereActive, setIsEmojisphereActive, theme, setTheme, setCurrentMusic, setIsPlaying, isMobile, setIsEmojiSphereTransitioning, isEmojiSphereTransitioning, soundsEnabled, setSoundsEnabled} = useTheme()
   const growingSpan = useRef(null)
   const headingref = useRef(null)
   
@@ -39,7 +39,9 @@ export default function HeroSection() {
     setIsEmojiSphereTransitioning(true)
     // Set "to-dark" theme immediately
     if(!isEmojisphereActive) {
-      setTheme("to-dark-red")
+      const baseTheme = theme.startsWith("to-") ? theme.replace("to-", "") : theme;
+      const targetTheme = baseTheme !== "dark-red" ? baseTheme : "light";
+      setTheme(`to-${targetTheme}-dark-red` as any)
     } else {
       setTheme("to-light")
     }
@@ -54,12 +56,9 @@ export default function HeroSection() {
       if(!isEmojisphereActive) {
         setTheme("dark-red")
         setCurrentMusic({name: "Emoji Sphere", src: "/audios/symphony2.mp3", icon: "🎉"})
-        // soundsOn()
-        // setSoundsEnabled(true)
       } else {
         setTheme("light")
         if(!soundsEnabled) {
-          setCurrentMusic(null)
           setIsPlaying(false)
         } else {
           setCurrentMusic({name: "base", src: "/audios/symphony1.mp3", icon: "🎉"})
