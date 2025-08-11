@@ -155,7 +155,7 @@ export default function AchievementsSection() {
         >
           {[
             { number: "20+", label: "Projects", icon: Code },
-            { number: "50+", label: "Clients", icon: Users },
+            { number: "10+", label: "Clients", icon: Users },
             { number: "95%", label: "Satisfaction", icon: Star },
             { number: "12+", label: "Technologies", icon: Zap }
           ].map((stat, index) => (
