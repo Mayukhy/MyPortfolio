@@ -8,6 +8,7 @@ import { useSounds } from "@/hooks/useSounds"
 import MusicSelectionModal from "@/components/modals/MusicSelectionModal"
 import CreateThemeModal from "@/components/modals/CreateThemeModal"
 import { navItems } from "@/constants"
+import Image from "next/image"
 
 // Animation variants for navigation items
 const navItemVariants = {
@@ -28,7 +29,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [isMusicModalOpen, setIsMusicModalOpen] = useState(false)
   const [isCreateThemeModalOpen, setIsCreateThemeModalOpen] = useState(false)
-  const { themeList, theme, setTheme, isPlaying, setCreateThemeData, setIsEmojisphereActive, setIsEmojiSphereTransitioning, isEmojisphereActive, setIsPlaying, setCurrentMusic, soundsEnabled } = useTheme()
+  const { themeList, theme, setTheme, setCreateThemeData, setIsEmojisphereActive, setIsEmojiSphereTransitioning, isEmojisphereActive, setIsPlaying, setCurrentMusic, soundsEnabled } = useTheme()
   const { playClick, playHover, playButtonPress, playThemeChange, toggleSounds } = useSounds()
   const currentTheme = themeList.find((t) => t.name.split(" ")[0].toLowerCase() === theme.toLowerCase() || t.colorScheme.split(" ")[1].toLowerCase() === theme.toLowerCase())
 
@@ -114,7 +115,16 @@ export default function Navigation() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Mayukh
+            <div className="flex items-center">
+              <Image 
+                src={theme === "light" || theme === "nature" || theme === "ocean" || theme === "cafe" || theme === "warm" || theme === "cool" || theme === "neutral" || theme === "vibrant" || theme === "pastel" || theme === "monochrome" || theme === "spring" || theme === "summer" || theme === "tropical" || theme === "minimalist" || theme === "luxury" || theme === "rustic" || theme === "vintage" || theme === "retro" || theme === "steampunk" ? "/logo-light.png" : "/logo.png"} 
+                alt="Mayukh" 
+                width={62} 
+                height={62} 
+                className="mr-1 rounded-full transition-all duration-300" 
+              />
+              {/* Mayukh */}
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}

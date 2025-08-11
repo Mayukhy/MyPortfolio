@@ -278,8 +278,8 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
     },
     {
       icon: Users,
-      title: "50+ Happy Clients",
-      description: "Successfully delivered projects for over 50+ satisfied clients",
+      title: "10+ Happy Clients",
+      description: "Successfully delivered projects for over 10+ satisfied clients",
       year: "2024-2025",
       category: "Client Success"
     },
