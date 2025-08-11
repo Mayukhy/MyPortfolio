@@ -44,6 +44,17 @@ const itemVariants = {
 function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: boolean }) {
   const { playHover, playClick } = useSounds()
   const { isMobile } = useTheme()
+  
+  // State for tracking loaded images
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set())
+  
+  const handleImageLoad = (projectId: number) => {
+    setLoadedImages(prev => {
+      const newSet = new Set(prev)
+      newSet.add(projectId)
+      return newSet
+    })
+  }
 
   return (
     <motion.div
@@ -63,12 +74,24 @@ function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: bo
           <div className="relative bg-card hover:translate-y-[-8px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-border/50 hover:border-primary/30">
             {/* Image Container */}
             <div className="relative h-48 md:h-56 overflow-hidden">
+              {/* Blur Placeholder */}
+              <motion.div
+                className="absolute inset-0 bg-gray-200 dark:bg-gray-800"
+                animate={{
+                  opacity: loadedImages.has(project.id) ? 0 : 1
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
               <motion.img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover"
+                onLoad={() => handleImageLoad(project.id)}
                 whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.4 }}
+                animate={{
+                  filter: loadedImages.has(project.id) ? "none" : "blur(20px) brightness(0.8)"
+                }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               />
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -100,6 +123,7 @@ function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: bo
               <div className="relative flex gap-2 mb-3 duration-300 z-30">
                 {project.liveUrl && (
                   <motion.a
+                    aria-label="View live project"
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -114,6 +138,7 @@ function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: bo
                 )}
                 {project.githubUrl && (
                   <motion.a
+                    aria-label="View source code"
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -128,6 +153,7 @@ function ProjectCardGrid({ projects, isInView }: { projects: any[], isInView: bo
                 )}
                 {project.demoVideo && (
                   <motion.a
+                    aria-label="View demo video"
                     href={project.demoVideo}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -465,6 +491,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, index, isCenter, windowWidth, isClient }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
   const { playHover, playClick } = useSounds()
   const { isMobile } = useTheme()
 
@@ -492,16 +519,25 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
       <div className="relative w-full h-full flex flex-col bg-card/80 rounded-xl overflow-hidden shadow-2xl">
         {/* Full Image Container */}
         <div className="relative w-full h-full overflow-hidden">
+          {/* Blur Placeholder */}
+          <motion.div
+            className="absolute inset-0 bg-gray-200 dark:bg-gray-800"
+            animate={{
+              opacity: imageLoaded ? 0 : 1
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
           {/* Image - Full Card */}
           <motion.img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
+            onLoad={() => setImageLoaded(true)}
             animate={{
               scale: windowWidth <= 768 ? 1.05 : (isHovered ? 1.15 : 1),
               filter: isCenter 
-                ? ""
-                : (isHovered && windowWidth > 768 ? "brightness(0.9) contrast(1.3)": isHovered && windowWidth < 768 ? "brightness(0.9) contrast(1.3) grayscale(100%)" : "brightness(0.8) grayscale(100%) contrast(1.2)")
+                ? (imageLoaded ? "" : "blur(20px) brightness(0.8)")
+                : (isHovered && windowWidth > 768 ? "brightness(0.9) contrast(1.3)" : isHovered && windowWidth < 768 ? "brightness(0.9) contrast(1.3) grayscale(100%)" : (imageLoaded ? "brightness(0.8) grayscale(100%) contrast(1.2)" : "blur(20px) brightness(0.8) grayscale(100%) contrast(1.2)"))
             }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           />
@@ -533,6 +569,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
             >
               {project.liveUrl && <motion.a
                 href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
@@ -544,6 +582,8 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
               </motion.a>}
               {project.githubUrl && <motion.a
                 href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 sm:p-3 bg-white/20 dark:bg-black/40 backdrop-blur-md rounded-full hover:bg-white/30 dark:hover:bg-black/60 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}

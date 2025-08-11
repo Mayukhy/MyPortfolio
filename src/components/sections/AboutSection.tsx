@@ -9,13 +9,13 @@ import Canvas from "../ui/Canvas"
 import { useTheme } from "../theme/ThemeProvider"
 
 const skills = [
-  { name: "Shopify Liquid", level: 80, icon: Droplet },
-  { name: "React", level: 90, icon: Code },
+  { name: "Shopify Liquid", level: 94, icon: Droplet },
+  { name: "React", level: 95, icon: Code },
   { name: "TypeScript", level: 85, icon: Code },
-  { name: "Next.js", level: 88, icon: Zap },
+  { name: "Next.js", level: 95, icon: Zap },
   { name: "Tailwind CSS", level: 90, icon: Palette },
-  { name: "Framer Motion", level: 65, icon: Zap },
-  { name: "Node.js", level: 75, icon: Globe },
+  { name: "Framer Motion", level: 75, icon: Zap },
+  { name: "Node.js", level: 80, icon: Globe },
 ]
 
 const containerVariants = {
@@ -141,7 +141,7 @@ export default function AboutSection() {
                       <skill.icon className="w-4 h-4 text-primary" />
                       <span className="font-medium">{skill.name}</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                    {/* <span className="text-sm text-muted-foreground">{skill.level}%</span> */}
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <motion.div

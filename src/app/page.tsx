@@ -111,11 +111,11 @@ export default function Home() {
               </motion.div>
               
               <motion.div variants={sectionVariants}>
-                <ExperienceSection />
+                <ProjectsSection />
               </motion.div>
               
               <motion.div variants={sectionVariants}>
-                <ProjectsSection />
+                <ExperienceSection />
               </motion.div>
               
               <motion.div variants={sectionVariants}>
