@@ -75,47 +75,57 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       technologies: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS", "GSAP"],
       liveUrl: "https://mayukh-das.vercel.app",
       githubUrl: "https://github.com/Mayukhy/Portfolio-Website",
-      featured: false,
+      featured: true,
     },
     {
       id: 4,
+      title: "Shopify Product Reviews App (Remix, React Router)",
+      description: "Embedded Shopify app for managing and creating product reviews, featuring authentication, product creation with Admin GraphQL API, and a modern UI built with Polaris web components.",
+      technologies: [
+        "TypeScript",
+        "Remix",
+        "GraphQL",
+        "Polaris",
+        "Prisma",
+        "Node.js",
+        "Shopify",
+        "React"
+      ],
+      image: "/projects/productreview.png",
+      liveUrl: "https://checkout-extension-store-25.myshopify.com/?_ab=0&_bt=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaTVqYUdWamEyOTFkQzFsZUhSbGJuTnBiMjR0YzNSdmNtVXRNalV1YlhsemFHOXdhV1o1TG1OdmJRWTZCa1ZVIiwiZXhwIjoiMjAyNS0xMC0xMVQwNzowMToxNy40NDJaIiwicHVyIjoicGVybWFuZW50X3Bhc3N3b3JkX2J5cGFzcyJ9fQ%3D%3D--393922b4979932aa347721ce3e8d2f41455db9b9&_fd=0&_sc=1&key=055a6e56ba04e2379816cc3cc867bb1b86b182d0e9122437be13365552cd64b1&preview_theme_id=182028829037",
+      githubUrl: "https://github.com/Mayukhy/Products-review-shopify-remix-app",
+      featured: true,
+      asociatedWith: ["Tech Mahindra", "TechM"]
+    },
+    {
+      id: 5,
       title: "Google Form Clone",
       description: "A google form clone with google form features.",
       image: "/projects/gform.png",
       technologies: ["React", "Node.js", "JavaScript", "Material UI", "MERN Stack"],
       liveUrl: "https://googleformclonemayukh.netlify.app",
       githubUrl: "https://github.com/Mayukhy/Google-Form-clone",
-      featured: false,
-    },
-    {
-      id: 5,
-      title: "Media Connect",
-      description: "A social media platform with user authentication, and content sharing capabilities.",
-      image: "/projects/media.png",
-      technologies: ["React", "Sanity", "Tailwind CSS"],
-      liveUrl: "https://mediaconnect2023.netlify.app",
-      githubUrl: "https://github.com/Mayukhy/MediaConnect-Full-Stack-Media-Application",
-      featured: false,
+      featured: true,
     },
     {
       id: 6,
       title: "EHS Ecommerce",
       description: "Designed and developed a client-designer interaction workflow, enabling clients to collaborate with designers more effectively, in real time",
-      image: "/projects/ehs.jpg",
+      image: "/projects/ehs.png",
       technologies: ["MERN", "WebSocket", "Socket.io", "Tailwind CSS", "Material UI"],
       liveUrl: "https://stencii.com",
       githubUrl: "https://github.com/ehsprints21",
-      featured: false,
+      featured: true,
       asociatedWith: ["EHS Paints", "EHS Prints"],
     },
     {
       id: 7,
       title: "YT AI Application",
       description: "An AI-powered Video/ Studio with AI companion intelligent response generation.",
-      image: "/projects/aiyt.jpg",
+      image: "/projects/aiyt.png",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Replicate", "NeonDB", "Postgres", "Node.js", "MUX"],
       demoVideo: "https://www.loom.com/share/0c036366aedf4c4caacce0ceaaac3702?sid=ea331188-23f2-431b-89ba-9d5fc808bbbf",
-      featured: false,
+      featured: true,
     },
     {
       id: 8,
@@ -124,7 +134,7 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       image: "/projects/chelsea.png",
       technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
       liveUrl: "https://www.chelseapeers.com",
-      featured: false,
+      featured: true,
       asociatedWith: ["Tech Mahindra", "TechM"],
     },
     {
@@ -134,7 +144,7 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       image: "/projects/esm.png",
       technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
       liveUrl: "https://www.escentric.com",
-      featured: false,
+      featured: true,
       asociatedWith: ["Tech Mahindra", "TechM"],
     },
     {
@@ -144,7 +154,7 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       image: "/projects/castore.png",
       technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
       liveUrl: "https://castore.com",
-      featured: false,
+      featured: true,
       asociatedWith: ["Tech Mahindra", "TechM"],
     },
     {
@@ -154,13 +164,23 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       image: "/projects/jewells.png",
       technologies: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
       liveUrl: "https://jewells.com",
-      featured: false,
+      featured: true,
       asociatedWith: ["Tech Mahindra", "TechM"],
-    }
+    },
+    {
+      id: 12,
+      title: "Media Connect",
+      description: "A social media platform with user authentication, and content sharing capabilities.",
+      image: "/projects/media.png",
+      technologies: ["React", "Sanity", "Tailwind CSS"],
+      liveUrl: "https://mediaconnect2023.netlify.app",
+      githubUrl: "https://github.com/Mayukhy/MediaConnect-Full-Stack-Media-Application",
+      featured: false,
+    },
   ]
 
   // Filter Tags
-  export const filterTags = ["All", "Shopify", "React", "Next.js", "Node.js", "MERN", "TypeScript"]
+  export const filterTags = ["All", "Shopify", "React","Remix", "Next.js", "Node.js", "MERN", "TypeScript"]
 
   // Experiences
   export const experiences = [
@@ -172,6 +192,9 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
       icon: ShoppingCart,
       highlights: [
         "Worked with end-to-end development on luxury Shopify stores, including Escentric Molecules, Jewells, Metamark, Chelsea Peers and more, delivering fully customized e-commerce experiences aligned with each brand's premium positioning.",
+        "Shopify App Development: Built custom Shopify apps using Shopify CLI, implementing product review Remix App with seamless store integration.",
+        "Checkout Extensions & Functions: Developed custom checkout extensions to enhance the purchasing experience.",
+        "Shopify Flow Automation: Created automated workflows using Shopify Flow for inventory management, order processing to streamline business operations.",
         "Custom Feature Implementation: Developed free gifts with purchase logic based on cart value or product combinations.",
         "Built a dynamic free sample allocation system that adjusted in real-time based on cart quantity.",
         "Created advanced cart and checkout logic for gifting, product bundling, and promotions tailored to specific customer behaviors.",

@@ -240,7 +240,7 @@ export default function ProjectsSection() {
   const {isEmojisphereActive, isMobile} = useTheme()
 
   const filteredProjects = projects.filter(project => {
-    if (currentTag === "All") return true
+    if (currentTag === "All" && project.featured) return true
     return project.technologies.includes(currentTag)
   })
 
@@ -281,10 +281,10 @@ export default function ProjectsSection() {
 
       if (down && !hasSwipedRef.current) {
         if (mx > SWIPE_THRESHOLD) {
-          setIndex((prev) => mod(prev - 1, projects.length))
+          setIndex((prev) => mod(prev - 1, filteredProjects.length))
           hasSwipedRef.current = true
         } else if (mx < -SWIPE_THRESHOLD) {
-          setIndex((prev) => mod(prev + 1, projects.length))
+          setIndex((prev) => mod(prev + 1, filteredProjects.length))
           hasSwipedRef.current = true
         }
       }
@@ -354,7 +354,7 @@ export default function ProjectsSection() {
               {filteredProjects.map((project, i) => {
                 const offset = mod(i - index, filteredProjects.length)
                 const isLeft = offset > filteredProjects.length / 2
-                const visualOffset = isLeft ? offset - projects.length : offset
+                const visualOffset = isLeft ? offset - filteredProjects.length : offset
                 const isCenter = visualOffset === 0
 
                 const zIndex = 1000 - Math.abs(visualOffset)
