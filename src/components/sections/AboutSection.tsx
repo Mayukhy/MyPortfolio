@@ -11,10 +11,11 @@ import { useTheme } from "../theme/ThemeProvider"
 const skills = [
   { name: "Shopify Liquid", level: 94, icon: Droplet },
   { name: "React", level: 95, icon: Code },
+  { name: "Remix", level: 70, icon: Zap },
   { name: "TypeScript", level: 85, icon: Code },
   { name: "Next.js", level: 95, icon: Zap },
   { name: "Tailwind CSS", level: 90, icon: Palette },
-  { name: "Framer Motion", level: 75, icon: Zap },
+  // { name: "Framer Motion", level: 75, icon: Zap },
   { name: "Node.js", level: 80, icon: Globe },
 ]
 

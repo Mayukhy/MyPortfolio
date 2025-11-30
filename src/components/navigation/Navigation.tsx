@@ -117,7 +117,7 @@ export default function Navigation() {
           >
             <div className="flex items-center">
               <Image 
-                src={theme === "light" || theme === "nature" || theme === "ocean" || theme === "cafe" || theme === "warm" || theme === "cool" || theme === "neutral" || theme === "vibrant" || theme === "pastel" || theme === "monochrome" || theme === "spring" || theme === "summer" || theme === "tropical" || theme === "minimalist" || theme === "luxury" || theme === "rustic" || theme === "vintage" || theme === "retro" || theme === "steampunk" ? "/logo-light.png" : "/logo.png"} 
+                src={theme === "light" || theme === "nature" || theme === "ocean" || theme === "cafe" || theme === "warm" || theme === "cool" || theme === "neutral" || theme === "vibrant" || theme === "pastel" || theme === "monochrome" || theme === "spring" || theme === "summer" || theme === "tropical" || theme === "minimalist" || theme === "luxury" || theme === "rustic" || theme === "vintage" || theme === "retro" || theme === "steampunk" || theme === "aurora" ? "/logo-light.png" : "/logo.png"} 
                 alt="Mayukh" 
                 width={62} 
                 height={62} 
