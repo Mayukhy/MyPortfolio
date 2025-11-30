@@ -92,8 +92,8 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
         "React"
       ],
       image: "/projects/productreview.png",
-      liveUrl: "https://shopify-product-reviews-app.onrender.com",
-      githubUrl: "https://github.com/Mayukhy/Shopify-Product-Reviews-App",
+      liveUrl: "https://checkout-extension-store-25.myshopify.com/?_ab=0&_bt=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaTVqYUdWamEyOTFkQzFsZUhSbGJuTnBiMjR0YzNSdmNtVXRNalV1YlhsemFHOXdhV1o1TG1OdmJRWTZCa1ZVIiwiZXhwIjoiMjAyNS0xMC0xMVQwNzowMToxNy40NDJaIiwicHVyIjoicGVybWFuZW50X3Bhc3N3b3JkX2J5cGFzcyJ9fQ%3D%3D--393922b4979932aa347721ce3e8d2f41455db9b9&_fd=0&_sc=1&key=055a6e56ba04e2379816cc3cc867bb1b86b182d0e9122437be13365552cd64b1&preview_theme_id=182028829037",
+      githubUrl: "https://github.com/Mayukhy/Products-review-shopify-remix-app",
       featured: true,
       asociatedWith: ["Tech Mahindra", "TechM"]
     },
