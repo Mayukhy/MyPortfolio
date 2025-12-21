@@ -700,7 +700,9 @@ function ProjectCard({ project, index, isCenter, windowWidth, isClient }: Projec
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.1 }}
               >
-                {project.description}
+                {project.description.length > 85 && windowWidth < 768
+                  ? project.description.slice(0, 85) + "..."
+                  : project.description}
               </motion.p>
 
               {/* Associated With Badge */}

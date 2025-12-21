@@ -60,10 +60,10 @@ import { Code, Github, Linkedin, ShoppingCart, Target, TrendingUp, Trophy, Twitt
     {
       id: 2,
       title: "Tv Experience",
-      description: "A tv play app with channels, drag-and-drop functionality for channels categories",
+      description: "A full-stack real-time TV remote control application with WebSocket communication, featuring a TV interface, mobile remote app, and complete CI/CD deployment pipeline",
       image: "/projects/tv.png",
-      technologies: ["React", "Node.js", "Material UI", "Tailwind CSS"],
-      liveUrl: "https://tv-remote-channels.netlify.app",
+      technologies: ["React", "Node.js", "Socket.io", "Material UI", "Tailwind CSS"],
+      liveUrl: "https://real-tv-experiance.vercel.app/channel/1",
       githubUrl: "https://github.com/Mayukhy/React-Real-TV-experiance",
       featured: true
     },
