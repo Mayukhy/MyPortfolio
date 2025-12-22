@@ -45,9 +45,8 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { y: 20 },
   visible: {
-    opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
@@ -86,6 +85,13 @@ export default function ContactSection() {
     
     // Reset form
     setFormData({ name: "", email: "", message: "" })
+  }
+
+  const handleDisable = () => {
+    const validateMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if ( formData.name.trim() === "" || formData.email.trim() === "" || formData.message.trim() === "" || isSubmitting ) return true
+    if ( !validateMail.test(formData.email) ) return true
+    return false
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -195,8 +201,8 @@ export default function ContactSection() {
 
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-lg font-semibold hover:shadow-lg transition-all duration-300 focus-ring disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={handleDisable()}
+                className="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-lg font-semibold hover:shadow-lg transition-all duration-300 focus-ring disabled:opacity-40 opacity-100 disabled:cursor-not-allowed"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 variants={itemVariants}
